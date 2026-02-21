@@ -404,20 +404,24 @@
             <p class="memo">※解説：JS不使用。CSSのホバーアクションとtranslateXのみで「開門」を表現。</p>
         </section>
         
-        <footer style="margin-top: 80px; padding: 40px 20px; border-top: 1px solid #30363d; text-align: center;">
-            <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 20px;">© 2026 Naoma Strategic Lab.</p>
-            <div style="margin-top: 10px;">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdaOXVPB7WV3KudvLKw7N1zoUl-cefB0C-rBurOP8Z9slYkVQ/viewform" 
-                   target="_blank" 
-                   style="color: #8b949e; text-decoration: underline; font-size: 0.7rem; opacity: 0.6; transition: 0.3s;"
-                   onmouseover="this.style.opacity='1'; this.style.color='var(--accent)';"
-                   onmouseout="this.style.opacity='0.6'; this.style.color='#8b949e';"
-                >
-                    CONTACT / お問い合わせフォーム
-                </a>
-            </div>
-        </footer>
-    </div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+    <a href="..." style="...">CONTACT / お問い合わせフォーム</a>
+
+    <a href="privacy.html" style="font-size: 0.75rem; color: #888; text-decoration: none; border: 1px solid #444; padding: 2px 8px; border-radius: 4px; transition: 0.3s;">
+        PRIVACY POLICY
+    </a>
+
+</div>
+
+<style>
+    /* 控えめに光らせる演出 */
+    a[href="privacy.html"]:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+        box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+    }
+</style>
 
     <script>
         // 文字数カウント
