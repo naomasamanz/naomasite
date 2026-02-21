@@ -27,21 +27,17 @@
         body { background: var(--bg); color: var(--text); font-family: 'Consolas', monospace; line-height: 1.6; margin: 0; padding: 20px; transition: 0.3s; }
         .container { max-width: 800px; margin: auto; }
         
-        /* 切替スイッチの配置 */
-        .mode-toggle {
-            text-align: right; margin-bottom: 20px;
-        }
-        #toggle-btn {
-            background: var(--accent); color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;
-        }
+        .mode-toggle { text-align: right; margin-bottom: 20px; }
+        #toggle-btn { background: var(--accent); color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
 
         header { border-bottom: 2px solid var(--accent); margin-bottom: 30px; }
         h1 { color: var(--accent); font-size: 1.5rem; }
         
         .code-box { background: var(--box-bg); border: 1px solid #30363d; padding: 15px; border-radius: 6px; overflow-x: auto; position: relative; margin-bottom: 10px; }
-       .copy-btn { position: absolute; top: 8px; right: 8px; background: var(--box-bg); color: var(--text); border: 1px solid var(--accent); border-radius: 4px; padding: 4px 8px; font-size: 0.7rem; cursor: pointer; transition: 0.2s; }
-.copy-btn:hover { background: var(--accent); color: white; }
+        .copy-btn { position: absolute; top: 8px; right: 8px; background: var(--box-bg); color: var(--text); border: 1px solid var(--accent); border-radius: 4px; padding: 4px 8px; font-size: 0.7rem; cursor: pointer; transition: 0.2s; }
+        .copy-btn:hover { background: var(--accent); color: white; }
         .memo { font-size: 0.9rem; color: #8b949e; border-left: 3px solid #30363d; padding-left: 10px; margin-bottom: 30px; }
+        a { color: var(--accent); }
     </style>
 </head>
 <body id="castle-body">
@@ -50,7 +46,7 @@
             <button id="toggle-btn" onclick="toggleMode()">🌙 Mode Switch</button>
         </div>
 
-        <h4 class="memo"><a href="kenkyu-2.html">現在開発途中</a></h4>
+        <h4 class="memo"><a href="kenkyu-2.html">現在開発途中（第2研究室へ）</a></h4>
 
         <header>
             <h1>> NAOMA_DEVELOPMENT_LOG</h1>
@@ -70,7 +66,7 @@
             <h3>■ 02. 動的な入力監視 (Input Monitor)</h3>
             <textarea id="memo-area" placeholder="ここに極秘事項を入力せよ..." style="width: 100%; height: 100px; background: var(--box-bg); color: var(--text); border: 1px solid #30363d; border-radius: 6px; padding: 10px; font-family: inherit;"></textarea>
             <p id="char-count" style="text-align: right; font-size: 0.8rem; color: var(--accent);">文字数: 0</p>
-            <p class="memo">※解説：入力された信号をリアルタイムで解析。レポート作成や暗号文の長さチェックに最適。</p>
+            <p class="memo">※解説：入力信号をリアルタイム解析。</p>
         </section>
 
         <section style="margin-top:40px;">
@@ -78,12 +74,12 @@
             <details style="background: var(--box-bg); border: 1px solid var(--accent); border-radius: 6px; padding: 10px; cursor: pointer;">
                 <summary style="font-weight: bold; color: var(--accent);">[ クリックして極秘ファイルを開く ]</summary>
                 <div style="margin-top: 15px; padding: 10px; border-top: 1px dashed var(--accent);">
-                    <p>・いろんなメモ</p>
-                    <p>・独り言を書きまくる</p>
-                    <p>・ここに次に作りたい機能をリストアップする</p>
+                    <p>・GitHub掌握計画</p>
+                    <p>・Vercelの無料枠を使い切る覚悟</p>
+                    <p>・第100セクションまで増築する野望</p>
                 </div>
             </details>
-            <p class="memo">※解説：スクリプトを介さずブラウザ標準機能のみで動作。</p>
+            <p class="memo">※解説：ブラウザ標準機能のみで動作。</p>
         </section>
 
         <section style="margin-top:40px;">
@@ -96,17 +92,14 @@
                     input[name="tab-choice"] { display: none; }
                     input[name="tab-choice"]:checked + .tab-label { background: var(--accent); color: white; }
                 </style>
-                
                 <input type="radio" name="tab-choice" id="tab1" checked>
                 <label for="tab1" class="tab-label">公開メモ</label>
-                
                 <input type="radio" name="tab-choice" id="tab2">
                 <label for="tab2" class="tab-label">極秘作戦</label>
-
                 <div class="tab-content content1">これは外部向けのダミーデータである。</div>
                 <div class="tab-content content2" style="color: #ff7b72;">刺客をコードの濁流に沈める計画。</div>
             </div>
-            <p class="memo">※解説：チェックボックスの仕組みを利用し、JSなしで表示内容をスイッチする高等戦術。</p>
+            <p class="memo">※解説：JSなしで表示内容をスイッチする高等戦術。</p>
         </section>
 
         <section style="margin-top:40px;">
@@ -117,284 +110,118 @@
                     <div style="width: 75%; background: var(--accent); height: 100%; transition: 1s;"></div>
                 </div>
             </div>
-            <p class="memo">※解説：スタイル指定のみで進捗を視覚化。</p>
-        </section>
-
-        <section style="margin-top:40px;">
-            <h3>■ 06. 外部リソースへの転送門 (Hyperlink)</h3>
-            <div class="code-box">
-                <style>
-                    .link-list a { color: #58a6ff; text-decoration: none; display: block; margin: 5px 0; }
-                    .link-list a:hover { text-decoration: underline; }
-                </style>
-                <div class="link-list">
-                    <a href="https://github.com" target="_blank">> GitHub Portal</a>
-                    <a href="https://vercel.com" target="_blank">> Vercel Control</a>
-                    <a href="https://google.com" target="_blank">> Global Search</a>
-                </div>
-            </div>
-            <p class="memo">※解説：頻繁に利用する聖域へのショートカット。ブックマークを汚さずに移動可能。</p>
-        </section>
-
-        <section style="margin-top:40px;">
-            <h3>■ 07. 色彩調和の定義 (Color Palette)</h3>
-            <div class="code-box" style="display: flex; gap: 10px;">
-                <div style="width: 50px; height: 50px; background: #58a6ff; border-radius: 4px;" title="Accent"></div>
-                <div style="width: 50px; height: 50px; background: #79c0ff; border-radius: 4px;" title="Sub"></div>
-                <div style="width: 50px; height: 50px; background: #d2a8ff; border-radius: 4px;" title="Secret"></div>
-            </div>
-            <p class="memo">※解説：城のデザインを統一するための魔力。視覚的な美しさを保つための基準点。</p>
-        </section>
-        
-        <section style="margin-top:40px;">
-            <h3>■ 08. 視覚的強調の術 (Hover Effects)</h3>
-            <div class="hover-card" style="background: var(--box-bg); padding: 20px; border-radius: 6px; border: 1px solid #30363d; transition: 0.3s; cursor: help;">
-                <style>
-                    .hover-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(88, 166, 255, 0.2); }
-                </style>
-                <p style="margin: 0; color: var(--accent); font-weight: bold;">[ Hover Me ]</p>
-                <p style="font-size: 0.8rem; margin-top: 10px;">マウス（または指）を置くと、カードが浮き上がり、魔力が供給される演出。JSなしでも「生きているサイト」を演出可能。</p>
-            </div>
-            <p class="memo">※解説：疑似クラス :hover を活用。訪問者に「反応するサイト」という印象を植え付ける。</p>
-        </section>
-
-        <section style="margin-top:40px;">
-            <h3>■ 09. 優先順位の可視化 (Status Badges)</h3>
-            <div class="code-box" style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <style>
-                    .badge { padding: 2px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: bold; border: 1px solid; }
-                    .critical { color: #ff7b72; border-color: #f85149; background: rgba(248, 81, 73, 0.1); }
-                    .stable { color: #3fb950; border-color: #238636; background: rgba(35, 134, 54, 0.1); }
-                }
-                </style>
-                <span class="badge critical">CRITICAL: 監視中...</span>
-                <span class="badge stable">STABLE: Vercel通信良好</span>
-            </div>
-            <p class="memo">※解説：色と枠線だけで情報の緊急性を表現。一目で状況を把握するための視覚言語。</p>
+            <p class="memo">※解説：進捗を視覚化。</p>
         </section>
 
         <section style="margin-top:40px;">
             <h3>■ 10. 空間の流転 (Animated Border)</h3>
             <div class="magic-box" style="padding: 2px; border-radius: 8px; background: linear-gradient(45deg, #58a6ff, #d2a8ff, #58a6ff); background-size: 200% 200%; animation: moveGradient 3s linear infinite;">
                 <style>
-                    @keyframes moveGradient {
-                        0% { background-position: 0% 50%; }
-                        100% { background-position: 200% 50%; }
-                    }
+                    @keyframes moveGradient { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
                     .magic-inner { background: var(--bg); padding: 20px; border-radius: 6px; }
                 </style>
                 <div class="magic-inner">
                     <p style="margin: 0; text-align: center; font-weight: bold; letter-spacing: 2px;">STATUS: RESONATING</p>
                 </div>
             </div>
-            <p class="memo">※解説：アニメーション（@keyframes）による視覚的躍動。JSを1行も使わず、サイトのシステムが稼働中であることを示す。</p>
-        </section>
-
-        <section style="margin-top:40px;">
-            <h3>■ 11. 秘匿された転送経路 (Hidden Path)</h3>
-            <div class="code-box">
-                <p style="margin: 0; font-size: 0.9rem;">
-                    この城の地下には、膨大な<a href="https://www.google.com" target="_blank" style="color: inherit; text-decoration: none; cursor: default; border-bottom: 1px dashed #30363d;">知識</a>が眠っている。
-                    不用意に触れる者は、コードの深淵に呑み込まれるだろう。
-                </p>
-            </div>
-            <p class="memo">※解説：一見ただのテキストだが、「知識」という単語にのみGoogleへのリンクを擬態させている。知る者のみが辿り着ける通路。</p>
-        </section>
-
-        <section style="margin-top:40px;">
-            <h3>■ 12. 多次元リソース・デッキ (Resource Grid)</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
-                <style>
-                    .link-card {
-                        background: var(--box-bg);
-                        border: 1px solid #30363d;
-                        padding: 15px;
-                        border-radius: 8px;
-                        text-align: center;
-                        text-decoration: none;
-                        color: var(--text);
-                        transition: 0.3s;
-                        display: block;
-                    }
-                    .link-card:hover {
-                        border-color: var(--accent);
-                        background: rgba(88, 166, 255, 0.05);
-                        transform: scale(1.05);
-                    }
-                    .link-tag {
-                        font-size: 0.6rem;
-                        color: var(--accent);
-                        display: block;
-                        margin-bottom: 5px;
-                        text-transform: uppercase;
-                    }
-                </style>
-                
-                <a href="https://www.google.com" target="_blank" class="link-card">
-                    <span class="link-tag">Search Engine</span>
-                    <strong>Google</strong>
-                </a>
-                
-                <a href="https://chatgpt.com" target="_blank" class="link-card">
-                    <span class="link-tag">AI Intelligence</span>
-                    <strong>ChatGPT</strong>
-                </a>
-
-                <a href="https://youtube.com" target="_blank" class="link-card">
-                    <span class="link-tag">Media Base</span>
-                    <strong>YouTube</strong>
-                </a>
-
-                <a href="https://discord.com" target="_blank" class="link-card">
-                    <span class="link-tag">Comm Unit</span>
-                    <strong>Discord</strong>
-                </a>
-            </div>
-            <p class="memo">※解説：主要拠点へのダイレクトアクセス・パネル。グリッドレイアウトにより、デバイスの幅に合わせて自動で整列する。</p>
+            <p class="memo">※解説：JSなしでシステムの稼働を表現。</p>
         </section>
 
         <section style="margin-top:40px;">
             <h3>■ 13. 居住者生体スキャン (Bio-Metric Scan)</h3>
             <div style="background: var(--box-bg); padding: 20px; border-radius: 8px; border: 1px solid #30363d; position: relative; overflow: hidden;">
                 <style>
-                    .scan-line {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 2px;
-                        background: var(--accent);
-                        box-shadow: 0 0 15px var(--accent);
-                        animation: scanMove 4s ease-in-out infinite;
-                    }
-                    @keyframes scanMove {
-                        0% { top: 0%; }
-                        50% { top: 100%; }
-                        100% { top: 0%; }
-                    }
+                    .scan-line { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--accent); box-shadow: 0 0 15px var(--accent); animation: scanMove 4s ease-in-out infinite; }
+                    @keyframes scanMove { 0% { top: 0%; } 50% { top: 100%; } 100% { top: 0%; } }
                     .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.8rem; }
-                    .status-item { color: #8b949e; }
                     .status-value { color: var(--accent); font-weight: bold; }
                 </style>
                 <div class="scan-line"></div>
                 <div class="status-grid">
-                    <div class="status-item">ID: <span class="status-value">NAOMA_01</span></div>
-                    <div class="status-item">RANK: <span class="status-value">OVERLORD</span></div>
-                    <div class="status-item">PULSE: <span class="status-value">STABLE</span></div>
-                    <div class="status-item">AUTH: <span class="status-value">GRANTED</span></div>
+                    <div>ID: <span class="status-value">NAOMA_01</span></div>
+                    <div>RANK: <span class="status-value">OVERLORD</span></div>
+                    <div>PULSE: <span class="status-value">STABLE</span></div>
+                    <div>AUTH: <span class="status-value">GRANTED</span></div>
                 </div>
             </div>
-            <p class="memo">※解説：上下に動く光のラインが、常になおまの存在をスキャンし続けている演出。視覚的威嚇。</p>
-        </section>
-
-        <section style="margin-top:40px;">
-            <h3>■ 14. 偽装認証隔壁 (Dummy Logic Gate)</h3>
-            <div style="background: var(--box-bg); padding: 20px; border-radius: 8px; border: 1px solid #f85149; text-align: center;">
-                <p style="font-size: 0.7rem; color: #f85149; margin-bottom: 10px;">⚠ RESTRICTED AREA: AUTHORIZATION REQUIRED</p>
-                <input type="password" id="dummy-pass" placeholder="Enter Secret Code..." style="background: #000; color: #f85149; border: 1px solid #f85149; padding: 10px; border-radius: 4px; width: 80%; font-family: inherit; margin-bottom: 10px;">
-                <br>
-                <button onclick="accessDenied()" style="background: #f85149; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">EXECUTE</button>
-                <p id="access-msg" style="height: 20px; font-size: 0.8rem; margin-top: 10px; color: #f85149; font-weight: bold;"></p>
-            </div>
-            <script>
-                function accessDenied() {
-                    const msg = document.getElementById('access-msg');
-                    msg.innerText = "ACCESS DENIED: INVALID AUTHORITY";
-                    setTimeout(() => { msg.innerText = ""; }, 2000);
-                    document.getElementById('dummy-pass').value = "";
-                }
-            </script>
-            <p class="memo">※解説：侵入者に対し「何か重大な秘密がある」と思わせ、無駄な試行錯誤を強いる精神的防衛設備。どんな入力をしても、返ってくるのは冷徹な拒絶のみである。</p>
+            <p class="memo">※解説：視覚的威嚇。</p>
         </section>
 
         <section style="margin-top:40px;">
             <h3>■ 15. 魔力供給・共鳴鼓動 (Mana Channeling)</h3>
             <div style="text-align: center; background: var(--box-bg); padding: 30px; border-radius: 8px; border: 1px solid var(--accent);">
-                <style>
-                    .mana-btn {
-                        width: 100px; height: 100px;
-                        background: none; border: 4px solid var(--accent);
-                        border-radius: 50%; color: var(--accent);
-                        font-weight: bold; cursor: pointer;
-                        transition: 0.1s; outline: none;
-                        box-shadow: 0 0 10px var(--accent);
-                    }
-                    .mana-btn:active {
-                        transform: scale(0.9);
-                        background: var(--accent);
-                        color: white;
-                        box-shadow: 0 0 30px var(--accent);
-                    }
-                </style>
-                <button id="mana-trigger" class="mana-btn">PUSH<br>HOLD</button>
+                <button id="mana-trigger" style="width: 100px; height: 100px; background: none; border: 4px solid var(--accent); border-radius: 50%; color: var(--accent); font-weight: bold; cursor: pointer; transition: 0.1s; outline: none; box-shadow: 0 0 10px var(--accent);">PUSH<br>HOLD</button>
                 <p id="mana-status" style="margin-top: 15px; font-size: 0.8rem; color: #8b949e;">STATUS: IDLE</p>
-                
-                <audio id="castle-bgm" loop>
-                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-                </audio>
+                <audio id="castle-bgm" loop><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio>
             </div>
-
-            <script>
-                const manaBtn = document.getElementById('mana-trigger');
-                const castleAudio = document.getElementById('castle-bgm');
-                const manaStatus = document.getElementById('mana-status');
-
-                // 押し下げた時（PC & スマホ両対応）
-                const startMagic = (e) => {
-                    e.preventDefault();
-                    castleAudio.play();
-                    manaStatus.innerText = "STATUS: RESONATING (RECOVERY ON)";
-                    manaStatus.style.color = "var(--accent)";
-                };
-
-                // 離した時
-                const stopMagic = () => {
-                    castleAudio.pause();
-                    manaStatus.innerText = "STATUS: IDLE";
-                    manaStatus.style.color = "#8b949e";
-                };
-
-                manaBtn.addEventListener('mousedown', startMagic);
-                manaBtn.addEventListener('mouseup', stopMagic);
-                manaBtn.addEventListener('mouseleave', stopMagic);
-                manaBtn.addEventListener('touchstart', startMagic);
-                manaBtn.addEventListener('touchend', stopMagic);
-            </script>
-            <p class="memo">※解説：ボタンを保持している間だけ音声回路を接続。離せば即座に沈黙する。この「不便さ」こそが、魔力供給を行っているというリアリティを生む。</p>
+            <p class="memo">※解説：保持中のみ音声回路接続。</p>
         </section>
-        
-        <div class="footer">© 2026 Naoma Strategic Lab.</div>
+
+        <footer style="margin-top: 80px; padding: 40px 20px; border-top: 1px solid #30363d; text-align: center;">
+            <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 20px;">© 2026 Naoma Strategic Lab.</p>
+            <div style="margin-top: 10px;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdaOXVPB7WV3KudvLKw7N1zoUl-cefB0C-rBurOP8Z9slYkVQ/viewform" 
+                   target="_blank" 
+                   style="color: #8b949e; text-decoration: underline; font-size: 0.7rem; opacity: 0.6; transition: 0.3s;"
+                   onmouseover="this.style.opacity='1'; this.style.color='var(--accent)';"
+                   onmouseout="this.style.opacity='0.6'; this.style.color='#8b949e';"
+                >
+                    CONTACT / お問い合わせフォーム
+                </a>
+            </div>
+        </footer>
     </div>
 
-        // ★文字数カウントの仕組み
+    <script>
+        // 文字数カウント
         const memoArea = document.getElementById('memo-area');
         const charCount = document.getElementById('char-count');
-
-        memoArea.addEventListener('input', () => {
-            charCount.innerText = `文字数: ${memoArea.value.length}`;
-        });
+        if(memoArea) {
+            memoArea.addEventListener('input', () => {
+                charCount.innerText = `文字数: ${memoArea.value.length}`;
+            });
+        }
         
         // コピー機能
         function copyCode(btn) {
             const code = btn.nextElementSibling.innerText;
             navigator.clipboard.writeText(code).then(() => {
                 const originalText = btn.innerText;
-                btn.innerText = 'Copy';
+                btn.innerText = 'Copied!';
                 setTimeout(() => { btn.innerText = originalText; }, 2000);
             });
         }
 
-        // ★モード切替機能
+        // モード切替
         function toggleMode() {
             const body = document.getElementById('castle-body');
             const btn = document.getElementById('toggle-btn');
             body.classList.toggle('light-mode');
-            
-            if(body.classList.contains('light-mode')) {
-                btn.innerText = '☀️ Light Mode';
-            } else {
-                btn.innerText = '🌙 Dark Mode';
-            }
+            btn.innerText = body.classList.contains('light-mode') ? '☀️ Light Mode' : '🌙 Mode Switch';
+        }
+
+        // BGM制御
+        const manaBtn = document.getElementById('mana-trigger');
+        const castleAudio = document.getElementById('castle-bgm');
+        const manaStatus = document.getElementById('mana-status');
+
+        if(manaBtn && castleAudio) {
+            const startMagic = (e) => {
+                e.preventDefault();
+                castleAudio.play();
+                manaStatus.innerText = "STATUS: RESONATING";
+                manaStatus.style.color = "var(--accent)";
+            };
+            const stopMagic = () => {
+                castleAudio.pause();
+                manaStatus.innerText = "STATUS: IDLE";
+                manaStatus.style.color = "#8b949e";
+            };
+            manaBtn.addEventListener('mousedown', startMagic);
+            manaBtn.addEventListener('mouseup', stopMagic);
+            manaBtn.addEventListener('mouseleave', stopMagic);
+            manaBtn.addEventListener('touchstart', startMagic);
+            manaBtn.addEventListener('touchend', stopMagic);
         }
     </script>
 </body>
