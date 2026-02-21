@@ -304,6 +304,62 @@
             </script>
             <p class="memo">※解説：侵入者に対し「何か重大な秘密がある」と思わせ、無駄な試行錯誤を強いる精神的防衛設備。どんな入力をしても、返ってくるのは冷徹な拒絶のみである。</p>
         </section>
+
+        <section style="margin-top:40px;">
+            <h3>■ 15. 魔力供給・共鳴鼓動 (Mana Channeling)</h3>
+            <div style="text-align: center; background: var(--box-bg); padding: 30px; border-radius: 8px; border: 1px solid var(--accent);">
+                <style>
+                    .mana-btn {
+                        width: 100px; height: 100px;
+                        background: none; border: 4px solid var(--accent);
+                        border-radius: 50%; color: var(--accent);
+                        font-weight: bold; cursor: pointer;
+                        transition: 0.1s; outline: none;
+                        box-shadow: 0 0 10px var(--accent);
+                    }
+                    .mana-btn:active {
+                        transform: scale(0.9);
+                        background: var(--accent);
+                        color: white;
+                        box-shadow: 0 0 30px var(--accent);
+                    }
+                </style>
+                <button id="mana-trigger" class="mana-btn">PUSH<br>HOLD</button>
+                <p id="mana-status" style="margin-top: 15px; font-size: 0.8rem; color: #8b949e;">STATUS: IDLE</p>
+                
+                <audio id="castle-bgm" loop>
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+
+            <script>
+                const manaBtn = document.getElementById('mana-trigger');
+                const castleAudio = document.getElementById('castle-bgm');
+                const manaStatus = document.getElementById('mana-status');
+
+                // 押し下げた時（PC & スマホ両対応）
+                const startMagic = (e) => {
+                    e.preventDefault();
+                    castleAudio.play();
+                    manaStatus.innerText = "STATUS: RESONATING (RECOVERY ON)";
+                    manaStatus.style.color = "var(--accent)";
+                };
+
+                // 離した時
+                const stopMagic = () => {
+                    castleAudio.pause();
+                    manaStatus.innerText = "STATUS: IDLE";
+                    manaStatus.style.color = "#8b949e";
+                };
+
+                manaBtn.addEventListener('mousedown', startMagic);
+                manaBtn.addEventListener('mouseup', stopMagic);
+                manaBtn.addEventListener('mouseleave', stopMagic);
+                manaBtn.addEventListener('touchstart', startMagic);
+                manaBtn.addEventListener('touchend', stopMagic);
+            </script>
+            <p class="memo">※解説：ボタンを保持している間だけ音声回路を接続。離せば即座に沈黙する。この「不便さ」こそが、魔力供給を行っているというリアリティを生む。</p>
+        </section>
         
         <div class="footer">© 2026 Naoma Strategic Lab.</div>
     </div>
