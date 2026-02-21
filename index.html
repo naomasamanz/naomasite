@@ -195,6 +195,58 @@
             </div>
             <p class="memo">※解説：一見ただのテキストだが、「知識」という単語にのみGoogleへのリンクを擬態させている。知る者のみが辿り着ける通路。</p>
         </section>
+
+        <section style="margin-top:40px;">
+            <h3>■ 13. 多次元リソース・デッキ (Resource Grid)</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                <style>
+                    .link-card {
+                        background: var(--box-bg);
+                        border: 1px solid #30363d;
+                        padding: 15px;
+                        border-radius: 8px;
+                        text-align: center;
+                        text-decoration: none;
+                        color: var(--text);
+                        transition: 0.3s;
+                        display: block;
+                    }
+                    .link-card:hover {
+                        border-color: var(--accent);
+                        background: rgba(88, 166, 255, 0.05);
+                        transform: scale(1.05);
+                    }
+                    .link-tag {
+                        font-size: 0.6rem;
+                        color: var(--accent);
+                        display: block;
+                        margin-bottom: 5px;
+                        text-transform: uppercase;
+                    }
+                </style>
+                
+                <a href="https://www.google.com" target="_blank" class="link-card">
+                    <span class="link-tag">Search Engine</span>
+                    <strong>Google</strong>
+                </a>
+                
+                <a href="https://chatgpt.com" target="_blank" class="link-card">
+                    <span class="link-tag">AI Intelligence</span>
+                    <strong>ChatGPT</strong>
+                </a>
+
+                <a href="https://youtube.com" target="_blank" class="link-card">
+                    <span class="link-tag">Media Base</span>
+                    <strong>YouTube</strong>
+                </a>
+
+                <a href="https://discord.com" target="_blank" class="link-card">
+                    <span class="link-tag">Comm Unit</span>
+                    <strong>Discord</strong>
+                </a>
+            </div>
+            <p class="memo">※解説：主要拠点へのダイレクトアクセス・パネル。グリッドレイアウトにより、デバイスの幅に合わせて自動で整列する。</p>
+        </section>
         
         <div class="footer">© 2026 Naoma Strategic Lab.</div>
     </div>
