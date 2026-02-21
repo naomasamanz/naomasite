@@ -140,6 +140,33 @@
             <p class="memo">※解説：城のデザインを統一するための魔力。視覚的な美しさを保つための基準点。</p>
         </section>
         
+        <section style="margin-top:40px;">
+            <h3>■ 08. 視覚的強調の術 (Hover Effects)</h3>
+            <div class="hover-card" style="background: var(--box-bg); padding: 20px; border-radius: 6px; border: 1px solid #30363d; transition: 0.3s; cursor: help;">
+                <style>
+                    .hover-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(88, 166, 255, 0.2); }
+                </style>
+                <p style="margin: 0; color: var(--accent); font-weight: bold;">[ Hover Me ]</p>
+                <p style="font-size: 0.8rem; margin-top: 10px;">マウス（または指）を置くと、カードが浮き上がり、魔力が供給される演出。JSなしでも「生きている城」を演出可能。</p>
+            </div>
+            <p class="memo">※解説：疑似クラス :hover を活用。訪問者に「反応するサイト」という印象を植え付ける。</p>
+        </section>
+
+        <section style="margin-top:40px;">
+            <h3>■ 09. 優先順位の可視化 (Status Badges)</h3>
+            <div class="code-box" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <style>
+                    .badge { padding: 2px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: bold; border: 1px solid; }
+                    .critical { color: #ff7b72; border-color: #f85149; background: rgba(248, 81, 73, 0.1); }
+                    .stable { color: #3fb950; border-color: #238636; background: rgba(35, 134, 54, 0.1); }
+                }
+                </style>
+                <span class="badge critical">CRITICAL: 監視中...</span>
+                <span class="badge stable">STABLE: Vercel通信良好</span>
+            </div>
+            <p class="memo">※解説：色と枠線だけで情報の緊急性を表現。一目で状況を把握するための視覚言語。</p>
+        </section>
+        
         <div class="footer">© 2026 Naoma Strategic Lab.</div>
     </div>
 
