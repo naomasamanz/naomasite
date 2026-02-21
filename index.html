@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>DevLog // Naoma Strategic Lab</title>
+    <style>
+        :root { --bg: #0d1117; --text: #c9d1d9; --accent: #58a6ff; }
+        body { background: var(--bg); color: var(--text); font-family: 'Consolas', monospace; line-height: 1.6; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        header { border-bottom: 2px solid var(--accent); margin-bottom: 30px; }
+        h1 { color: var(--accent); font-size: 1.5rem; }
+        .code-box { background: #161b22; border: 1px solid #30363d; padding: 15px; border-radius: 6px; overflow-x: auto; position: relative; }
+        .code-box::before { content: "JS Snippet"; position: absolute; top: 0; right: 10px; font-size: 0.7rem; color: #8b949e; }
+        code { color: #79c0ff; }
+        .memo { margin-top: 10px; font-size: 0.9rem; color: #8b949e; border-left: 3px solid #30363d; padding-left: 10px; }
+        .footer { margin-top: 50px; font-size: 0.8rem; text-align: center; opacity: 0.5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>> NAOMA_DEVELOPMENT_LOG</h1>
+            <p>Vercel & GitHub 連携のデプロイテストと技術検証</p>
+        </header>
+
+        <section>
+            <h3>■ 01. 背景色を動的に変更する呪文</h3>
+            <div class="code-box">
+                <code>document.body.style.backgroundColor = 'midnightblue';</code>
+            </div>
+            <p class="memo">※解説：DOM操作の基本。これにより城の雰囲気を瞬時に変えられる。</p>
+        </section>
+
+        <section style="margin-top:40px;">
+            <h3>■ 02. 未来の自分へのメッセージ</h3>
+            <p>ここには、次なる「世界改変」のためのコードを蓄積していく予定だ。</p>
+        </section>
+
+        <div class="footer">© 2026 Naoma Strategic Lab. Unauthorized access denied.</div>
+    </div>
+</body>
+</html>
