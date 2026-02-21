@@ -261,50 +261,51 @@
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 13. 三位一体の記録 (Trinity Archives)</h3>
-            <div class="trinity-box" style="background: var(--box-bg); border: 1px solid var(--accent); border-radius: 8px; padding: 20px;">
-                
-                <input type="radio" id="tab1" name="trinity" checked style="display:none;">
-                <input type="radio" id="tab2" name="trinity" style="display:none;">
-                <input type="radio" id="tab3" name="trinity" style="display:none;">
-
-                <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                    <label for="tab1" class="tab-btn">過去</label>
-                    <label for="tab2" class="tab-btn">現在</label>
-                    <label for="tab3" class="tab-btn">未来</label>
-                </div>
-
-                <div class="content-panel panel1" style="display:none;">
-                    <p style="color: #8b949e;">[アーカイブ] 2026年、なおまの研究所は一つのURLから始まった…。</p>
-                </div>
-                <div class="content-panel panel2" style="display:none;">
-                    <p style="color: var(--accent); font-weight: bold;">[ライブ] 現在、第13セクションまで拡張完了。なおまの覇道は止まらない。</p>
-                </div>
-                <div class="content-panel panel3" style="display:none;">
-                    <p style="color: #ff79c6; text-shadow: 0 0 5px;">[予言] 第100セクションに到達せし時、なおまは喜ぶだろう。</p>
-                </div>
-
-                <style>
-                    /* スイッチの見た目 */
-                    .tab-btn {
-                        flex: 1; padding: 10px; border: 1px solid var(--accent);
-                        text-align: center; cursor: pointer; border-radius: 4px; transition: 0.3s;
-                    }
-                    .tab-btn:hover { background: rgba(88, 166, 255, 0.2); }
-
-                    /* 選択された時の魔法（CSSのみで判定！） */
-                    #tab1:checked ~ div label[for="tab1"] { background: var(--accent); color: #000; }
-                    #tab2:checked ~ div label[for="tab2"] { background: var(--accent); color: #000; }
-                    #tab3:checked ~ div label[for="tab3"] { background: var(--accent); color: #000; }
-
-                    /* コンテンツの出し分け（隣接セレクタの術） */
-                    #tab1:checked ~ .panel1 { display: block !important; }
-                    #tab2:checked ~ .panel2 { display: block !important; }
-                    #tab3:checked ~ .panel3 { display: block !important; }
-                </style>
+    <h3>■ 13. 静寂なる知識庫 (The Silent Library)</h3>
+    <div style="border: 1px solid var(--accent); border-radius: 8px; overflow: hidden; background: var(--box-bg);">
+        
+        <details style="border-bottom: 1px solid rgba(88, 166, 255, 0.2);">
+            <summary style="padding: 15px; cursor: pointer; color: var(--accent); font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <span>▶ 第1層：城の防衛プロトコル</span>
+                <span style="font-size: 0.7rem; opacity: 0.5;">[CLICK TO OPEN]</span>
+            </summary>
+            <div style="padding: 15px; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(88, 166, 255, 0.1); font-size: 0.9rem;">
+                本サイトの不正アクセスやハッキング試行はおやめください。
+                すべての通信は、なおまによって検閲されています。
+                エスカレートすれば、報告させて頂く可能性があります。
             </div>
-            <p class="memo">※解説：JSを完全に排除し、HTMLの「チェックボックス」の性質を利用して表示を切り替える高等技術。複雑な状態遷移をCSSだけで完結させている。</p>
-        </section>
+        </details>
+
+        <details style="border-bottom: 1px solid rgba(88, 166, 255, 0.2);">
+            <summary style="padding: 15px; cursor: pointer; color: var(--accent); font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <span>▶ 第2層：禁忌のコード体系</span>
+                <span style="font-size: 0.7rem; opacity: 0.5;">[CLICK TO OPEN]</span>
+            </summary>
+            <div style="padding: 15px; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(88, 166, 255, 0.1); font-size: 0.9rem;">
+                JavaScriptを排し、純粋なHTML/CSSのみで構築されたこの空間は、
+                魔法の枯渇した世界でも永久に稼働し続けるように設計されている。
+            </div>
+        </details>
+
+        <details>
+            <summary style="padding: 15px; cursor: pointer; color: var(--accent); font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <span>▶ 第3層：お問い合わせ</span>
+                <span style="font-size: 0.7rem; opacity: 0.5;">[CLICK TO OPEN]</span>
+            </summary>
+            <div style="padding: 15px; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(88, 166, 255, 0.1); font-size: 0.9rem;">
+                なおまにメッセージを送りたい方は、下部のお問い合わせフォームをクリックしてください。
+            </div>
+        </details>
+
+    </div>
+    <style>
+        /* デフォルトの三角マークを消す（Chrome/Safari用） */
+        summary::-webkit-details-marker { display: none; }
+        /* 開いている時のスタイル変化 */
+        details[open] summary { background: rgba(88, 166, 255, 0.1); border-bottom: 1px solid var(--accent); }
+    </style>
+    <p class="memo">※解説：JSを一切使わず、HTML標準の「details」と「summary」タグのみで構築。情報のカプセル化（必要な時だけ見せる）を究極のシンプルさで実現している。</p>
+</section>
 
         <footer style="margin-top: 80px; padding: 40px 20px; border-top: 1px solid #30363d; text-align: center;">
             <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 20px;">© 2026 Naoma Strategic Lab.</p>
