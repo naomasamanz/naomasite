@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>404 - LOST IN THE ABYSS</title>
+    <style>
+        body { background: #000; color: #f85149; font-family: 'Consolas', monospace; text-align: center; padding-top: 100px; overflow: hidden; }
+        .glitch { font-size: 5rem; font-weight: bold; animation: glitch 1s linear infinite; }
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(-5px, -5px); }
+            60% { transform: translate(5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
+        }
+        .msg { font-size: 1.2rem; margin: 20px; }
+        a { color: #58a6ff; text-decoration: none; border: 1px solid #58a6ff; padding: 10px 20px; border-radius: 4px; transition: 0.3s; }
+        a:hover { background: #58a6ff; color: #000; }
+    </style>
+</head>
+<body>
+    <div class="glitch">404</div>
+    <div class="msg">ERROR:お探しのページは存在しないようです。</div>
+    <br><br>
+    <a href="index.html">メインへ帰還する</a>
+</body>
+</html>
