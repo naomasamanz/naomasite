@@ -284,6 +284,26 @@
             </div>
             <p class="memo">※解説：上下に動く光のラインが、常になおまの存在をスキャンし続けている演出。視覚的威嚇。</p>
         </section>
+
+        <section style="margin-top:40px;">
+            <h3>■ 14. 偽装認証隔壁 (Dummy Logic Gate)</h3>
+            <div style="background: var(--box-bg); padding: 20px; border-radius: 8px; border: 1px solid #f85149; text-align: center;">
+                <p style="font-size: 0.7rem; color: #f85149; margin-bottom: 10px;">⚠ RESTRICTED AREA: AUTHORIZATION REQUIRED</p>
+                <input type="password" id="dummy-pass" placeholder="Enter Secret Code..." style="background: #000; color: #f85149; border: 1px solid #f85149; padding: 10px; border-radius: 4px; width: 80%; font-family: inherit; margin-bottom: 10px;">
+                <br>
+                <button onclick="accessDenied()" style="background: #f85149; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">EXECUTE</button>
+                <p id="access-msg" style="height: 20px; font-size: 0.8rem; margin-top: 10px; color: #f85149; font-weight: bold;"></p>
+            </div>
+            <script>
+                function accessDenied() {
+                    const msg = document.getElementById('access-msg');
+                    msg.innerText = "ACCESS DENIED: INVALID AUTHORITY";
+                    setTimeout(() => { msg.innerText = ""; }, 2000);
+                    document.getElementById('dummy-pass').value = "";
+                }
+            </script>
+            <p class="memo">※解説：侵入者に対し「何か重大な秘密がある」と思わせ、無駄な試行錯誤を強いる精神的防衛設備。どんな入力をしても、返ってくるのは冷徹な拒絶のみである。</p>
+        </section>
         
         <div class="footer">© 2026 Naoma Strategic Lab.</div>
     </div>
