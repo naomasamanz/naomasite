@@ -50,52 +50,55 @@
 </nav>
 
 <style>
-    /* 1. 全体の枠組み：背景を【透明】にして、黒背景に溶け込ませる */
+    /* 1. ナビゲーションの「器」：周囲の黒（#0d1117）で強制的に塗りつぶし！ */
     .research-nav {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 10px;
-        padding: 20px 0;
-        background: transparent !important; /* ★強制的に透明化★ */
+        /* ここを周囲の背景色と1ミリの狂いもなく合わせる */
+        background-color: #0d1117 !important; 
+        padding: 20px 0 !important;
+        margin: 0 !important;
         position: sticky;
         top: 0;
         z-index: 1000;
-        /* 下の境界線も、ほんのり青白く光る程度に */
+        /* 白い霧を消し去るためにボックスシャドウも封印 */
+        box-shadow: none !important;
         border-bottom: 1px solid rgba(88, 166, 255, 0.2);
     }
 
-    /* 2. ボタンのデザイン：下線なし、落ち着いたグレー */
+    /* 2. ボタンのデザイン：下線を消し、透過させる */
     .research-nav a {
         color: #c9d1d9;
-        text-decoration: none;
+        text-decoration: none !important;
         font-size: 0.85rem;
         padding: 8px 15px;
-        background: rgba(255, 255, 255, 0.05); /* ボタン自体の色は薄く */
+        background: rgba(255, 255, 255, 0.05); 
         border-radius: 4px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         transition: 0.3s;
         white-space: nowrap;
     }
 
-    /* 3. マウスを乗せた時の演出：ここでお馴染みの「青」を出す */
-    .research-nav a:hover {
-        background: var(--accent, #58a6ff);
-        color: #0d1117 !important;
-        box-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
-    }
-
-    /* 4. ライトモード時のみ、白くするように限定する */
+    /* 3. ライトモード時のみ、白くなるように【隔離】する */
     @media (prefers-color-scheme: light) {
         .research-nav {
-            background: rgba(255, 255, 255, 0.9) !important;
+            background-color: #ffffff !important;
             border-bottom: 1px solid #ddd;
         }
         .research-nav a {
             color: #333;
-            background: #f0f0f0;
+            background: #f5f5f5;
             border: 1px solid #ccc;
         }
+    }
+
+    /* 4. マウスを乗せた時の発光 */
+    .research-nav a:hover {
+        background: var(--accent, #58a6ff);
+        color: #0d1117 !important;
+        box-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
     }
 </style>
     <div class="container">
