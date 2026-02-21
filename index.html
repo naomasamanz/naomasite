@@ -404,22 +404,24 @@
             <p class="memo">※解説：JS不使用。CSSのホバーアクションとtranslateXのみで「開門」を表現。</p>
         </section>
         
-        <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+<div style="display: flex; align-items: center; justify-content: center; gap: 30px;">
 
-    <a href="..." style="...">CONTACT / お問い合わせフォーム</a>
+    <a href="（お問い合わせのURL）" style="color: #999; text-decoration: underline; font-family: sans-serif; letter-spacing: 1px;">
+        CONTACT / お問い合わせフォーム
+    </a>
 
-    <a href="privacy.html" style="font-size: 0.75rem; color: #888; text-decoration: none; border: 1px solid #444; padding: 2px 8px; border-radius: 4px; transition: 0.3s;">
+    <a href="privacy.html" style="color: #999; text-decoration: none; font-size: 0.85rem; font-family: sans-serif; letter-spacing: 1px; border: 1px solid #444; padding: 4px 12px; border-radius: 2px; transition: 0.3s;">
         PRIVACY POLICY
     </a>
 
 </div>
 
 <style>
-    /* 控えめに光らせる演出 */
+    /* ホバーした時だけ、CONTACTと同じように反応させる */
     a[href="privacy.html"]:hover {
-        color: var(--accent);
-        border-color: var(--accent);
-        box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+        color: #fff; /* 少し明るく */
+        border-color: #888;
+        background: rgba(255,255,255,0.05);
     }
 </style>
 
