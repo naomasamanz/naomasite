@@ -363,6 +363,46 @@
     </div>
     <p class="memo">※解説：最新のCSS「:has()」セレクタを使用。JS不使用ながら、子要素のチェック状態を親が検知してゲージを伸ばす。まさに次世代の建築術。</p>
 </section>
+
+        <section style="margin-top:40px;">
+            <h3>■ 15. 栄光の凱旋門 (The Glorious Arch)</h3>
+            <div class="gate-wrapper" style="position: relative; height: 250px; background: #000; border: 3px double var(--accent); border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                
+                <div class="inner-treasure" style="text-align: center; z-index: 1;">
+                    <p style="font-size: 1.5rem; color: #fff; text-shadow: 0 0 20px #fff, 0 0 30px var(--accent); font-weight: bold; letter-spacing: 5px;">
+                        MASTER OF CODE
+                    </p>
+                    <p style="font-size: 0.8rem; color: var(--accent); opacity: 0.8;">Section 15: The Great Milestone</p>
+                </div>
+
+                <div class="door door-left" style="position: absolute; top: 0; left: 0; width: 50%; height: 100%; background: linear-gradient(135deg, #161b22, #30363d); border-right: 2px solid var(--accent); z-index: 2; transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1); display: flex; align-items: center; justify-content: flex-end;">
+                    <span style="font-size: 2rem; margin-right: 10px; opacity: 0.3;">◪</span>
+                </div>
+
+                <div class="door door-right" style="position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(-135deg, #161b22, #30363d); border-left: 2px solid var(--accent); z-index: 2; transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1); display: flex; align-items: center; justify-content: flex-start;">
+                    <span style="font-size: 2rem; margin-left: 10px; opacity: 0.3;">◩</span>
+                </div>
+
+                <style>
+                    /* ホバー（またはタップ）で扉が開く！ */
+                    .gate-wrapper:hover .door-left {
+                        transform: translateX(-100%);
+                    }
+                    .gate-wrapper:hover .door-right {
+                        transform: translateX(100%);
+                    }
+                    /* 奥の文字を拍動させる */
+                    .gate-wrapper:hover .inner-treasure {
+                        animation: gloryPulse 2s infinite;
+                    }
+                    @keyframes gloryPulse {
+                        0%, 100% { transform: scale(1); filter: brightness(1); }
+                        50% { transform: scale(1.05); filter: brightness(1.5); }
+                    }
+                </style>
+            </div>
+            <p class="memo">※解説：JS不使用。CSSのホバーアクションとtranslateXのみで「開門」を表現。</p>
+        </section>
         
         <footer style="margin-top: 80px; padding: 40px 20px; border-top: 1px solid #30363d; text-align: center;">
             <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 20px;">© 2026 Naoma Strategic Lab.</p>
