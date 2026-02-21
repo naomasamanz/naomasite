@@ -50,13 +50,13 @@
 </nav>
 
 <style>
-    /* 1. ナビ全体の背景：白を完全に消し去り、背後の闇と一体化 */
+    /* 1. 【基本：ダークモード】（夜の姿） */
     .research-nav {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
-        gap: 15px !important;
-        background-color: #0d1117 !important; /* 背景は絶対黒！ */
+        gap: 12px !important;
+        background-color: #0d1117 !important; /* 深い闇 */
         padding: 15px 0 !important;
         position: sticky;
         top: 0;
@@ -64,27 +64,37 @@
         border-bottom: 1px solid rgba(88, 166, 255, 0.2);
     }
 
-    /* 2. ボタンの【平時】の色（ここが重要！） */
     .research-nav a {
-        /* 何もしていない時、ハッキリ見える白銀色に強制指定 */
-        color: #e6edf3 !important; 
+        color: #ffffff !important;           /* 闇に映える白文字 */
+        background: #1c2128 !important;      /* ボタンらしい暗色 */
+        border: 1px solid #444c56 !important;
         text-decoration: none !important;
-        font-size: 0.9rem !important;
+        font-size: 0.85rem !important;
         font-weight: bold !important;
         padding: 8px 16px !important;
-        background: rgba(255, 255, 255, 0.05) !important; /* ボタンの枠をほんのり出す */
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        border-radius: 4px !important;
-        transition: all 0.2s ease !important;
-        display: inline-block !important;
+        border-radius: 6px !important;
+        transition: 0.3s !important;
     }
 
-    /* 3. 【ホバー時】の変異（城主の魂：青） */
+    /* 2. 【自動転換：ライトモード】（昼の姿） */
+    @media (prefers-color-scheme: light) {
+        .research-nav {
+            background-color: #ffffff !important; /* 昼は白背景！ */
+            border-bottom: 1px solid #d0d7de;
+        }
+        .research-nav a {
+            color: #24292f !important;           /* 昼は黒文字！ */
+            background: #f6f8fa !important;      /* 清潔感のある薄灰 */
+            border: 1px solid #d0d7de !important;
+        }
+    }
+
+    /* 3. 【共通：ホバー時】（城主の青い炎） */
     .research-nav a:hover {
-        background-color: #58a6ff !important; /* 背景を青く！ */
-        color: #0d1117 !important;          /* 文字を黒くして反転！ */
+        background-color: #58a6ff !important;
+        color: #ffffff !important; /* ホバー時はどちらのモードでも白抜き文字に */
         border-color: #58a6ff !important;
-        box-shadow: 0 0 15px rgba(88, 166, 255, 0.6) !important;
+        box-shadow: 0 0 15px rgba(88, 166, 255, 0.5) !important;
     }
 </style>
     <div class="container">
