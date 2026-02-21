@@ -50,55 +50,41 @@
 </nav>
 
 <style>
-    /* 1. ナビゲーションの「器」：周囲の黒（#0d1117）で強制的に塗りつぶし！ */
+    /* 1. ナビ全体の背景：白を完全に消し去り、背後の闇と一体化 */
     .research-nav {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        /* ここを周囲の背景色と1ミリの狂いもなく合わせる */
-        background-color: #0d1117 !important; 
-        padding: 20px 0 !important;
-        margin: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 15px !important;
+        background-color: #0d1117 !important; /* 背景は絶対黒！ */
+        padding: 15px 0 !important;
         position: sticky;
         top: 0;
         z-index: 1000;
-        /* 白い霧を消し去るためにボックスシャドウも封印 */
-        box-shadow: none !important;
         border-bottom: 1px solid rgba(88, 166, 255, 0.2);
     }
 
-    /* 2. ボタンのデザイン：下線を消し、透過させる */
+    /* 2. ボタンの【平時】の色（ここが重要！） */
     .research-nav a {
-        color: #c9d1d9;
+        /* 何もしていない時、ハッキリ見える白銀色に強制指定 */
+        color: #e6edf3 !important; 
         text-decoration: none !important;
-        font-size: 0.85rem;
-        padding: 8px 15px;
-        background: rgba(255, 255, 255, 0.05); 
-        border-radius: 4px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: 0.3s;
-        white-space: nowrap;
+        font-size: 0.9rem !important;
+        font-weight: bold !important;
+        padding: 8px 16px !important;
+        background: rgba(255, 255, 255, 0.05) !important; /* ボタンの枠をほんのり出す */
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border-radius: 4px !important;
+        transition: all 0.2s ease !important;
+        display: inline-block !important;
     }
 
-    /* 3. ライトモード時のみ、白くなるように【隔離】する */
-    @media (prefers-color-scheme: light) {
-        .research-nav {
-            background-color: #ffffff !important;
-            border-bottom: 1px solid #ddd;
-        }
-        .research-nav a {
-            color: #333;
-            background: #f5f5f5;
-            border: 1px solid #ccc;
-        }
-    }
-
-    /* 4. マウスを乗せた時の発光 */
+    /* 3. 【ホバー時】の変異（城主の魂：青） */
     .research-nav a:hover {
-        background: var(--accent, #58a6ff);
-        color: #0d1117 !important;
-        box-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+        background-color: #58a6ff !important; /* 背景を青く！ */
+        color: #0d1117 !important;          /* 文字を黒くして反転！ */
+        border-color: #58a6ff !important;
+        box-shadow: 0 0 15px rgba(88, 166, 255, 0.6) !important;
     }
 </style>
     <div class="container">
