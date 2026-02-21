@@ -406,22 +406,21 @@
         
 <div style="display: flex; align-items: center; justify-content: center; gap: 30px;">
 
-    <a href="（お問い合わせのURL）" style="color: #999; text-decoration: underline; font-family: sans-serif; letter-spacing: 1px;">
+    <a href="（お問い合わせのURL）" style="color: #999; text-decoration: none; font-family: sans-serif; letter-spacing: 1px; transition: 0.3s;">
         CONTACT / お問い合わせフォーム
     </a>
 
-    <a href="privacy.html" style="color: #999; text-decoration: none; font-size: 0.85rem; font-family: sans-serif; letter-spacing: 1px; border: 1px solid #444; padding: 4px 12px; border-radius: 2px; transition: 0.3s;">
-        プライバシーポリシー
+    <a href="privacy.html" style="color: #999; text-decoration: none; font-size: 0.85rem; font-family: sans-serif; letter-spacing: 1px; transition: 0.3s;">
+        PRIVACY POLICY
     </a>
 
 </div>
 
 <style>
-    /* ホバーした時だけ、CONTACTと同じように反応させる */
-    a[href="privacy.html"]:hover {
-        color: #fff; /* 少し明るく */
-        border-color: #888;
-        background: rgba(255,255,255,0.05);
+    /* マウスを乗せた時だけ、静かに浮き上がる演出 */
+    a[href]:hover {
+        color: #fff;
+        text-shadow: 0 0 5px rgba(255,255,255,0.5);
     }
 </style>
 
