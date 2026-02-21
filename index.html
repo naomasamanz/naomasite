@@ -50,44 +50,45 @@
 </nav>
 
 <style>
-    /* 1. ナビ全体の枠組み：背景色を現在の背景に完全同調 */
+    /* 1. 全体の枠組み：背景を【透明】にして、黒背景に溶け込ませる */
     .research-nav {
         display: flex;
-        justify-content: center; /* 中央に整列 */
+        justify-content: center;
         align-items: center;
-        gap: 10px;               /* ボタン同士の隙間 */
-        padding: 15px 0;
-        background: #0d1117;     /* ★重要：城主の背景色と同じにする */
+        gap: 10px;
+        padding: 20px 0;
+        background: transparent !important; /* ★強制的に透明化★ */
         position: sticky;
         top: 0;
         z-index: 1000;
+        /* 下の境界線も、ほんのり青白く光る程度に */
         border-bottom: 1px solid rgba(88, 166, 255, 0.2);
     }
 
-    /* 2. ボタン自体の装飾：下線を消し、スッキリさせる */
+    /* 2. ボタンのデザイン：下線なし、落ち着いたグレー */
     .research-nav a {
         color: #c9d1d9;
-        text-decoration: none;   /* 下線なし */
+        text-decoration: none;
         font-size: 0.85rem;
         padding: 8px 15px;
-        background: rgba(255, 255, 255, 0.05); /* ほんのり浮かせる */
+        background: rgba(255, 255, 255, 0.05); /* ボタン自体の色は薄く */
         border-radius: 4px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         transition: 0.3s;
-        white-space: nowrap;     /* 文字の折り返しを禁止！ */
+        white-space: nowrap;
     }
 
-    /* 3. マウスを乗せた時の演出 */
+    /* 3. マウスを乗せた時の演出：ここでお馴染みの「青」を出す */
     .research-nav a:hover {
         background: var(--accent, #58a6ff);
         color: #0d1117 !important;
         box-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
     }
 
-    /* 4. ライトモードへの自動対応（反乱防止） */
+    /* 4. ライトモード時のみ、白くするように限定する */
     @media (prefers-color-scheme: light) {
         .research-nav {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.9) !important;
             border-bottom: 1px solid #ddd;
         }
         .research-nav a {
