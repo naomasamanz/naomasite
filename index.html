@@ -193,6 +193,32 @@
             <p class="memo">※解説：JSを一切使わず、二重線（double）と余白だけで威厳を表現。</p>
         </section>
 
+        <section style="margin-top:40px;">
+            <h3>■ 11. 深淵の覗き窓 (Parallax Void)</h3>
+            <div style="height: 200px; overflow: hidden; border: 1px solid var(--accent); border-radius: 8px; position: relative; background: #000;">
+                
+                <div style="position: absolute; width: 100%; height: 300%; top: -100%; left: 0;
+                            background-image: radial-gradient(var(--accent) 1px, transparent 1px);
+                            background-size: 30px 30px;
+                            animation: moveVoid 20s linear infinite;">
+                </div>
+
+                <div style="position: relative; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(13, 17, 23, 0.7); backdrop-filter: blur(2px);">
+                    <p style="font-weight: bold; color: var(--accent); letter-spacing: 10px; text-transform: uppercase;">
+                        Beyond the Code
+                    </p>
+                </div>
+
+                <style>
+                    @keyframes moveVoid {
+                        0% { transform: translateY(0); }
+                        100% { transform: translateY(30px); }
+                    }
+                </style>
+            </div>
+            <p class="memo">※解説：JS不使用。CSSアニメーションと背景パターンのリピートのみで、無限に広がる深淵を表現。静止画に見えて、実は常に微細な振動を続けている。</p>
+        </section>
+
         <footer style="margin-top: 80px; padding: 40px 20px; border-top: 1px solid #30363d; text-align: center;">
             <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 20px;">© 2026 Naoma Strategic Lab.</p>
             <div style="margin-top: 10px;">
