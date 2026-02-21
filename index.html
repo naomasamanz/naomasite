@@ -249,6 +249,40 @@
             </div>
             <p class="memo">※解説：主要拠点へのダイレクトアクセス・パネル。グリッドレイアウトにより、デバイスの幅に合わせて自動で整列する。</p>
         </section>
+
+        <section style="margin-top:40px;">
+            <h3>■ 13. 居住者生体スキャン (Bio-Metric Scan)</h3>
+            <div style="background: var(--box-bg); padding: 20px; border-radius: 8px; border: 1px solid #30363d; position: relative; overflow: hidden;">
+                <style>
+                    .scan-line {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 2px;
+                        background: var(--accent);
+                        box-shadow: 0 0 15px var(--accent);
+                        animation: scanMove 4s ease-in-out infinite;
+                    }
+                    @keyframes scanMove {
+                        0% { top: 0%; }
+                        50% { top: 100%; }
+                        100% { top: 0%; }
+                    }
+                    .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.8rem; }
+                    .status-item { color: #8b949e; }
+                    .status-value { color: var(--accent); font-weight: bold; }
+                </style>
+                <div class="scan-line"></div>
+                <div class="status-grid">
+                    <div class="status-item">ID: <span class="status-value">NAOMA_01</span></div>
+                    <div class="status-item">RANK: <span class="status-value">OVERLORD</span></div>
+                    <div class="status-item">PULSE: <span class="status-value">STABLE</span></div>
+                    <div class="status-item">AUTH: <span class="status-value">GRANTED</span></div>
+                </div>
+            </div>
+            <p class="memo">※解説：上下に動く光のラインが、常になおまの存在をスキャンし続けている演出。視覚的威嚇。</p>
+        </section>
         
         <div class="footer">© 2026 Naoma Strategic Lab.</div>
     </div>
