@@ -52,42 +52,61 @@
 </nav>
 
 <style>
+    /* --- 基本設定（ダークモード基準） --- */
     .top-nav {
-        background: rgba(22, 27, 34, 0.8); /* 少し透ける黒 */
-        backdrop-filter: blur(5px); /* 背景をボカす高等魔法 */
-        padding: 10px 0;
-        position: sticky; /* スクロールしても上についてくる！ */
+        background: rgba(22, 27, 34, 0.9);
+        backdrop-filter: blur(5px);
+        padding: 12px 0;
+        position: sticky;
         top: 0;
         z-index: 1000;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .top-nav ul {
         list-style: none;
         display: flex;
-        justify-content: center; /* 中央に並べる */
-        gap: 15px; /* リンク同士の間隔 */
+        justify-content: center;
+        gap: 15px;
         margin: 0;
         padding: 0;
-        flex-wrap: wrap; /* スマホで入り切らない時は折り返す */
+        flex-wrap: wrap;
     }
 
     .top-nav a {
-        color: var(--text);
+        color: #c9d1d9; /* ダーク時の文字色 */
         text-decoration: none;
         font-size: 0.9rem;
         font-weight: bold;
-        padding: 8px 15px;
-        border-radius: 4px;
+        padding: 8px 16px;
+        border-radius: 6px;
         transition: 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.1);
         background: rgba(255, 255, 255, 0.05);
     }
 
-    /* マウスを乗せた時（ホバー）の反応 */
+    /* --- 【重要】ライトモード（光の世界）での上書き設定 --- */
+    @media (prefers-color-scheme: light) {
+        .top-nav {
+            background: rgba(255, 255, 255, 0.9); /* 背景を白く */
+            border-bottom: 1px solid #ddd;
+        }
+        .top-nav a {
+            color: #333; /* 文字を黒く */
+            background: #f0f0f0; /* ボタンを薄灰色に */
+            border: 1px solid #ccc;
+        }
+        .top-nav a:hover {
+            background: #005cc5; /* ホバー時は濃い青 */
+            color: #fff;
+        }
+    }
+
+    /* ホバー時の共通エフェクト */
     .top-nav a:hover {
-        background: var(--accent);
-        color: var(--bg);
-        box-shadow: 0 0 15px var(--accent);
+        background: var(--accent, #58a6ff);
+        color: #0d1117;
+        box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
     }
 </style>
     <div class="container">
