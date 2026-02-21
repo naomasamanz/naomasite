@@ -79,6 +79,40 @@
             </details>
             <p class="memo">※解説：スクリプトを介さずブラウザ標準機能のみで動作。</p>
         </section>
+
+        <section style="margin-top:40px;">
+            <h3>■ 04. CSSレイヤー切り替え (Radio Tab)</h3>
+            <div class="tab-container" style="background: var(--box-bg); padding: 15px; border-radius: 6px; border: 1px solid var(--accent);">
+                <style>
+                    .tab-content { display: none; padding-top: 10px; border-top: 1px solid #30363d; margin-top: 10px; }
+                    #tab1:checked ~ .content1, #tab2:checked ~ .content2 { display: block; }
+                    .tab-label { cursor: pointer; padding: 5px 10px; background: #21262d; border-radius: 4px; font-size: 0.8rem; }
+                    input[name="tab-choice"] { display: none; }
+                    input[name="tab-choice"]:checked + .tab-label { background: var(--accent); color: white; }
+                </style>
+                
+                <input type="radio" name="tab-choice" id="tab1" checked>
+                <label for="tab1" class="tab-label">公開メモ</label>
+                
+                <input type="radio" name="tab-choice" id="tab2">
+                <label for="tab2" class="tab-label">極秘作戦</label>
+
+                <div class="tab-content content1">これは外部向けのダミーデータである。</div>
+                <div class="tab-content content2" style="color: #ff7b72;">刺客をコードの濁流に沈める計画。</div>
+            </div>
+            <p class="memo">※解説：チェックボックスの仕組みを利用し、JSなしで表示内容をスイッチする高等戦術。</p>
+        </section>
+
+        <section style="margin-top:40px;">
+            <h3>■ 05. 野望の達成率 (CSS Progress)</h3>
+            <div style="background: var(--box-bg); padding: 15px; border-radius: 6px; border: 1px solid var(--accent);">
+                <p style="font-size: 0.8rem; margin-bottom: 5px;">サーバー掌握率：</p>
+                <div style="width: 100%; background: #30363d; height: 10px; border-radius: 5px; overflow: hidden;">
+                    <div style="width: 75%; background: var(--accent); height: 100%; transition: 1s;"></div>
+                </div>
+            </div>
+            <p class="memo">※解説：スタイル指定のみで進捗を視覚化。</p>
+        </section>
         
         <div class="footer">© 2026 Naoma Strategic Lab.</div>
     </div>
