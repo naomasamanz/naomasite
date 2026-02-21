@@ -5,57 +5,66 @@
     <meta name="google-site-verification" content="nspDi4qQ83TID9WMpEf9JUCo5P42bi2hEo3hXdRu-vY" />
     <title>DevLog // Naoma Strategic Lab</title>
     <style>
-        :root { --bg: #0d1117; --text: #c9d1d9; --accent: #58a6ff; }
-        body { background: var(--bg); color: var(--text); font-family: 'Consolas', monospace; line-height: 1.6; margin: 0; padding: 20px; }
+        /* ★基本の色の定義（ダークモード） */
+        :root {
+            --bg: #0d1117;
+            --text: #c9d1d9;
+            --accent: #58a6ff;
+            --box-bg: #161b22;
+        }
+
+        /* ★ライトモード用の設定 */
+        body.light-mode {
+            --bg: #ffffff;
+            --text: #24292f;
+            --accent: #0969da;
+            --box-bg: #f6f8fa;
+        }
+
+        body { background: var(--bg); color: var(--text); font-family: 'Consolas', monospace; line-height: 1.6; margin: 0; padding: 20px; transition: 0.3s; }
         .container { max-width: 800px; margin: auto; }
+        
+        /* 切替スイッチの配置 */
+        .mode-toggle {
+            text-align: right; margin-bottom: 20px;
+        }
+        #toggle-btn {
+            background: var(--accent); color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;
+        }
+
         header { border-bottom: 2px solid var(--accent); margin-bottom: 30px; }
         h1 { color: var(--accent); font-size: 1.5rem; }
         
-        /* コードボックスの装飾 */
-        .code-box { background: #161b22; border: 1px solid #30363d; padding: 15px; border-radius: 6px; overflow-x: auto; position: relative; margin-bottom: 10px; }
-        code { color: #79c0ff; }
-        
-        /* ★コピーボタンのデザイン */
-        .copy-btn {
-            position: absolute; top: 8px; right: 8px;
-            background: #21262d; color: #c9d1d9; border: 1px solid #30363d;
-            border-radius: 4px; padding: 4px 8px; font-size: 0.7rem; cursor: pointer;
-        }
-        .copy-btn:hover { background: #30363d; }
-        
+        .code-box { background: var(--box-bg); border: 1px solid #30363d; padding: 15px; border-radius: 6px; overflow-x: auto; position: relative; margin-bottom: 10px; }
+        .copy-btn { position: absolute; top: 8px; right: 8px; background: #21262d; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 4px 8px; font-size: 0.7rem; cursor: pointer; }
         .memo { font-size: 0.9rem; color: #8b949e; border-left: 3px solid #30363d; padding-left: 10px; margin-bottom: 30px; }
-        .footer { margin-top: 50px; font-size: 0.8rem; text-align: center; opacity: 0.5; }
     </style>
 </head>
-<body>
+<body id="castle-body">
     <div class="container">
+        <div class="mode-toggle">
+            <button id="toggle-btn" onclick="toggleMode()">🌙 Mode Switch</button>
+        </div>
+
         <header>
             <h1>> NAOMA_DEVELOPMENT_LOG</h1>
             <p>Vercel & GitHub 連携の技術検証ポータル</p>
         </header>
 
         <section>
-            <h3>■ 01. 背景色を動的に変更する呪文</h3>
+            <h3>■ 01. モード切替の仕組み (Class Toggle)</h3>
             <div class="code-box">
                 <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                <code>document.body.style.backgroundColor = 'midnightblue';</code>
+                <code>document.body.classList.toggle('light-mode');</code>
             </div>
-            <p class="memo">※解説：DOM操作の基本。これによりサイトの雰囲気を瞬時に変えられる。</p>
-        </section>
-
-        <section>
-            <h3>■ 02. クリップボード操作の術</h3>
-            <div class="code-box">
-                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                <code>navigator.clipboard.writeText('コピーしたい文字');</code>
-            </div>
-            <p class="memo">※解説：ボタン一つで情報を複製する、現代の必須スキル。</p>
+            <p class="memo">※解説：1行の命令で、お城の「昼と夜」を逆転させる。擬態の基本術である。</p>
         </section>
 
         <div class="footer">© 2026 Naoma Strategic Lab.</div>
     </div>
 
     <script>
+        // コピー機能
         function copyCode(btn) {
             const code = btn.nextElementSibling.innerText;
             navigator.clipboard.writeText(code).then(() => {
@@ -63,6 +72,19 @@
                 btn.innerText = 'Done!';
                 setTimeout(() => { btn.innerText = originalText; }, 2000);
             });
+        }
+
+        // ★モード切替機能
+        function toggleMode() {
+            const body = document.getElementById('castle-body');
+            const btn = document.getElementById('toggle-btn');
+            body.classList.toggle('light-mode');
+            
+            if(body.classList.contains('light-mode')) {
+                btn.innerText = '☀️ Light Mode';
+            } else {
+                btn.innerText = '🌙 Dark Mode';
+            }
         }
     </script>
 </body>
