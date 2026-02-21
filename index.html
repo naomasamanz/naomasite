@@ -71,6 +71,15 @@
     </div>
 
     <script>
+
+        // ★文字数カウントの仕組み
+        const memoArea = document.getElementById('memo-area');
+        const charCount = document.getElementById('char-count');
+
+        memoArea.addEventListener('input', () => {
+            charCount.innerText = `文字数: ${memoArea.value.length}`;
+        });
+        
         // コピー機能
         function copyCode(btn) {
             const code = btn.nextElementSibling.innerText;
