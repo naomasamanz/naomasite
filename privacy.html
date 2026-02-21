@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>なおまの研究所 - プライバシーポリシー</title>
+    <title>なおまの研究所 - 利用規約・プライバシーポリシー</title>
     <style>
         :root {
             --bg: #0d1117;
             --surface: #161b22;
-            --accent: #58a6ff; /* 研究所のシンボルカラー */
+            --accent: #58a6ff; 
             --text: #c9d1d9;
+            --border: rgba(88, 166, 255, 0.2);
         }
 
         body {
@@ -23,78 +24,124 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 850px;
             width: 100%;
             background: var(--surface);
             padding: 40px;
             border-radius: 12px;
-            border: 1px solid rgba(88, 166, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid var(--border);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
 
         h1 {
             color: var(--accent);
             border-bottom: 2px solid var(--accent);
-            padding-bottom: 10px;
+            padding-bottom: 15px;
             text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .section-box {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
         }
 
         h2 {
             color: var(--accent);
-            font-size: 1.2rem;
-            margin-top: 30px;
+            font-size: 1.3rem;
+            margin-top: 0;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
         }
 
-        p {
+        h3 {
+            font-size: 1rem;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        p, li {
             line-height: 1.8;
             opacity: 0.9;
+            font-size: 0.95rem;
         }
+
+        ul { padding-left: 20px; }
 
         .back-link {
             display: inline-block;
-            margin-top: 40px;
+            margin-top: 20px;
             color: var(--accent);
             text-decoration: none;
             border: 1px solid var(--accent);
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 10px 25px;
+            border-radius: 30px;
             transition: all 0.3s;
+            font-weight: bold;
         }
 
         .back-link:hover {
             background: var(--accent);
             color: var(--bg);
-            box-shadow: 0 0 15px var(--accent);
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.8rem;
+            margin-top: 50px;
+            color: #666;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>プライバシーポリシー</h1>
-    <p style="text-align: center; font-size: 0.8rem;">制定日：2026年2月21日</p>
+    <h1>Legal Information</h1>
 
-    <section>
-        <p>なおまの研究所（以下、「当研究所」）は、本ウェブサイト上で提供するサービスにおける、ユーザーの個人情報の取扱いについて、以下の通りプライバシーポリシーを定めます。</p>
-    </section>
+    <div class="section-box">
+        <h2>利用規約 (Terms of Service)</h2>
+        <p>本規約は、なおまの研究所（以下、「当研究所」）が提供するコンテンツの利用条件を定めるものです。</p>
+        
+        <h3>第1条（著作権）</h3>
+        <p>当研究所に掲載されている全ての情報（文章、画像、コード等）の著作権は、所長（なおま）に帰属します。私的使用の範囲を超えて、無断で転載、複製、配布することを禁じます。</p>
 
-    <h2>第1条（個人情報の収集方法）</h2>
-    <p>当研究所は、ユーザーが利用したサービスや閲覧したページ、検索キーワード、利用日時、利用方法、利用環境（端末情報、通信状態、IPアドレス、クッキー情報、位置情報など）の履歴情報を、ユーザーが当研究所や提携先のページを閲覧する際に収集します。</p>
+        <h3>第2条（禁止事項）</h3>
+        <p>ユーザーは、以下の行為を行ってはなりません。</p>
+        <ul>
+            <li>当研究所の運営を妨害する行為</li>
+            <li>他のユーザーまたは第三者に不利益、損害を与える行為</li>
+            <li>公序良俗に反する行為、またはその恐れがある行為</li>
+            <li>その他、所長が不適切と判断する行為</li>
+        </ul>
 
-    <h2>第2条（個人情報を収集・利用する目的）</h2>
-    <p>当研究所が個人情報を収集・利用する目的は、以下の通りです。<br>
-    （1）当研究所のサービスの維持・改善のため<br>
-    （2）不正アクセスの防止およびセキュリティ向上のため<br>
-    （3）ユーザーからのお問い合わせに対応するため</p>
+        <h3>第3条（免責事項）</h3>
+        <p>当研究所の利用により生じたトラブルや損害（ソフトウェア・ハードウェア上の事故等）について、所長は一切の責任を負いません。研究内容の実装は自己責任で行ってください。</p>
+    </div>
 
-    <h2>第3条（個人情報の第三者提供）</h2>
-    <p>当研究所は、法令に基づく場合を除き、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。</p>
-
-    <h2>第4条（免責事項）</h2>
-    <p>当研究所のコンテンツ・情報について、可能な限り正確な情報を掲載するよう努めておりますが、正確性や安全性を保証するものではありません。当サイトに掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。</p>
+    <div class="section-box">
+        <h2>プライバシーポリシー (Privacy Policy)</h2>
+        
+        <h3>第1条（アクセス解析について）</h3>
+        <p>当研究所では、Googleによるアクセス解析（Cookie）を利用してトラフィックデータを収集しています。このデータは匿名で収集されており、個人を特定するものではありません。</p>
+        
+        <h3>第2条（情報の利用目的）</h3>
+        <p>収集した情報は、研究所の利便性向上、およびコンテンツの質の改善のためにのみ使用されます。法的な要請がある場合を除き、第三者に開示することはありません。</p>
+        
+        <h3>第3条（お問い合わせ）</h3>
+        <p>お問い合わせフォームより送信された御名およびメッセージ等の情報は、回答および本人確認のためにのみ利用し、適切に管理いたします。</p>
+    </div>
 
     <div style="text-align: center;">
-        <a href="/" class="back-link">研究所メインページへ戻る</a>
+        <a href="index.html" class="back-link">研究所メインページへ戻る</a>
+    </div>
+
+    <div class="footer-note">
+        制定日：2026年2月21日<br>
+        &copy; 2026 なおまの研究所
     </div>
 </div>
 
