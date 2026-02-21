@@ -219,6 +219,47 @@
             <p class="memo">※解説：JS不使用。CSSアニメーションと背景パターンのリピートのみで、無限に広がる深淵を表現。静止画に見えて、実は常に微細な振動を続けている。</p>
         </section>
 
+        <section style="margin-top:40px;">
+            <h3>■ 12. 共鳴するネオン外壁 (Resonating Neon)</h3>
+            <div class="neon-container" style="padding: 40px; background: #000; border-radius: 8px; text-align: center;">
+                <style>
+                    .neon-text {
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                        color: #fff;
+                        text-transform: uppercase;
+                        letter-spacing: 5px;
+                        /* 複数の影を重ねて光の広がりを作る */
+                        text-shadow: 
+                            0 0 5px #fff,
+                            0 0 10px #fff,
+                            0 0 20px var(--accent),
+                            0 0 40px var(--accent),
+                            0 0 80px var(--accent);
+                        animation: neonPulse 1.5s ease-in-out infinite alternate;
+                    }
+
+                    @keyframes neonPulse {
+                        from {
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                        to {
+                            opacity: 0.7;
+                            transform: scale(0.98);
+                            text-shadow: 
+                                0 0 2px #fff,
+                                0 0 5px #fff,
+                                0 0 10px var(--accent),
+                                0 0 20px var(--accent);
+                        }
+                    }
+                </style>
+                <div class="neon-text">System Active</div>
+            </div>
+            <p class="memo">※解説：JS不使用。多重text-shadowとanimationの組み合わせにより、真空管やネオンサインが瞬くような有機的な光を演出。城の「生存」を視覚的に主張する。</p>
+        </section>
+
         <footer style="margin-top: 80px; padding: 40px 20px; border-top: 1px solid #30363d; text-align: center;">
             <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 20px;">© 2026 Naoma Strategic Lab.</p>
             <div style="margin-top: 10px;">
