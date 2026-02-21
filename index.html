@@ -166,6 +166,23 @@
             </div>
             <p class="memo">※解説：色と枠線だけで情報の緊急性を表現。一目で状況を把握するための視覚言語。</p>
         </section>
+
+        <section style="margin-top:40px;">
+            <h3>■ 10. 空間の流転 (Animated Border)</h3>
+            <div class="magic-box" style="padding: 2px; border-radius: 8px; background: linear-gradient(45deg, #58a6ff, #d2a8ff, #58a6ff); background-size: 200% 200%; animation: moveGradient 3s linear infinite;">
+                <style>
+                    @keyframes moveGradient {
+                        0% { background-position: 0% 50%; }
+                        100% { background-position: 200% 50%; }
+                    }
+                    .magic-inner { background: var(--bg); padding: 20px; border-radius: 6px; }
+                </style>
+                <div class="magic-inner">
+                    <p style="margin: 0; text-align: center; font-weight: bold; letter-spacing: 2px;">STATUS: RESONATING</p>
+                </div>
+            </div>
+            <p class="memo">※解説：アニメーション（@keyframes）による視覚的躍動。JSを1行も使わず、サイトのシステムが稼働中であることを示す。</p>
+        </section>
         
         <div class="footer">© 2026 Naoma Strategic Lab.</div>
     </div>
