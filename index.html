@@ -37,7 +37,8 @@
         h1 { color: var(--accent); font-size: 1.5rem; }
         
         .code-box { background: var(--box-bg); border: 1px solid #30363d; padding: 15px; border-radius: 6px; overflow-x: auto; position: relative; margin-bottom: 10px; }
-        .copy-btn { position: absolute; top: 8px; right: 8px; background: #21262d; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 4px 8px; font-size: 0.7rem; cursor: pointer; }
+       .copy-btn { position: absolute; top: 8px; right: 8px; background: var(--box-bg); color: var(--text); border: 1px solid var(--accent); border-radius: 4px; padding: 4px 8px; font-size: 0.7rem; cursor: pointer; transition: 0.2s; }
+.copy-btn:hover { background: var(--accent); color: white; }
         .memo { font-size: 0.9rem; color: #8b949e; border-left: 3px solid #30363d; padding-left: 10px; margin-bottom: 30px; }
     </style>
 </head>
