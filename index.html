@@ -380,7 +380,7 @@
             const code = btn.nextElementSibling.innerText;
             navigator.clipboard.writeText(code).then(() => {
                 const originalText = btn.innerText;
-                btn.innerText = 'Done!';
+                btn.innerText = 'copy';
                 setTimeout(() => { btn.innerText = originalText; }, 2000);
             });
         }
