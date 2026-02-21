@@ -41,6 +41,55 @@
     </style>
 </head>
 <body id="castle-body">
+    <nav class="top-nav">
+    <ul>
+        <li><a href="index.html">トップページ</a></li>
+        <li><a href="#section-news">お知らせ</a></li>
+        <li><a href="kenkyu-2.html">第2研究所</a></li>
+        <li><a href="privacy.html">規約・ポリシー</a></li>
+        <li><a href="#section-contact">お問い合わせ</a></li>
+    </ul>
+</nav>
+
+<style>
+    .top-nav {
+        background: rgba(22, 27, 34, 0.8); /* 少し透ける黒 */
+        backdrop-filter: blur(5px); /* 背景をボカす高等魔法 */
+        padding: 10px 0;
+        position: sticky; /* スクロールしても上についてくる！ */
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .top-nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center; /* 中央に並べる */
+        gap: 15px; /* リンク同士の間隔 */
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap; /* スマホで入り切らない時は折り返す */
+    }
+
+    .top-nav a {
+        color: var(--text);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: bold;
+        padding: 8px 15px;
+        border-radius: 4px;
+        transition: 0.3s;
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* マウスを乗せた時（ホバー）の反応 */
+    .top-nav a:hover {
+        background: var(--accent);
+        color: var(--bg);
+        box-shadow: 0 0 15px var(--accent);
+    }
+</style>
     <div class="container">
         <div class="mode-toggle">
             <button id="toggle-btn" onclick="toggleMode()">🌙 Mode Switch</button>
