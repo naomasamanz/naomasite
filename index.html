@@ -41,63 +41,60 @@
     </style>
 </head>
 <body id="castle-body">
-    <nav class="top-nav">
-    <ul>
-        <li><a href="index.html">トップページ</a></li>
-        <li><a href="#section-news">お知らせ</a></li>
-        <li><a href="kenkyu-2.html">第2研究所</a></li>
-        <li><a href="privacy.html">規約・ポリシー</a></li>
-        <li><a href="#section-contact">お問い合わせ</a></li>
-    </ul>
+   <nav class="research-nav">
+    <a href="index.html">トップページ</a>
+    <a href="#section-news">お知らせ</a>
+    <a href="kenkyu-2.html">第2研究所</a>
+    <a href="privacy.html">規約・ポリシー</a>
+    <a href="#section-contact">お問い合わせ</a>
 </nav>
 
 <style>
-    /* --- ナビゲーション全体の基本（ダークモード優先） --- */
-    .top-nav {
-        /* ダーク時は背景を深く、少し透かす */
-        background: rgba(13, 17, 23, 0.9); 
-        backdrop-filter: blur(8px);
+    /* 1. ナビ全体の枠組み：背景色を現在の背景に完全同調 */
+    .research-nav {
+        display: flex;
+        justify-content: center; /* 中央に整列 */
+        align-items: center;
+        gap: 10px;               /* ボタン同士の隙間 */
         padding: 15px 0;
+        background: #0d1117;     /* ★重要：城主の背景色と同じにする */
         position: sticky;
         top: 0;
         z-index: 1000;
         border-bottom: 1px solid rgba(88, 166, 255, 0.2);
-        display: flex;
-        justify-content: center;
-        transition: background 0.3s; /* 切り替えを滑らかに */
     }
 
-    /* リンクボタンの基本 */
-    .top-nav a {
+    /* 2. ボタン自体の装飾：下線を消し、スッキリさせる */
+    .research-nav a {
         color: #c9d1d9;
-        text-decoration: none;
+        text-decoration: none;   /* 下線なし */
         font-size: 0.85rem;
-        font-weight: bold;
-        padding: 8px 18px;
+        padding: 8px 15px;
+        background: rgba(255, 255, 255, 0.05); /* ほんのり浮かせる */
         border-radius: 4px;
-        background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.1);
         transition: 0.3s;
+        white-space: nowrap;     /* 文字の折り返しを禁止！ */
     }
 
-    /* --- 【重要】ライトモード（光の世界）での自動転換 --- */
-    @media (prefers-color-scheme: light) {
-        .top-nav {
-            background: rgba(246, 248, 250, 0.9); /* ライト時は薄いグレー白 */
-            border-bottom: 1px solid #d0d7de;
-        }
-        .top-nav a {
-            color: #24292f; /* 文字を濃く */
-            background: #ffffff;
-            border: 1px solid #d0d7de;
-        }
-    }
-
-    /* ホバー時の挙動（研究所のアクセントカラー） */
-    .top-nav a:hover {
+    /* 3. マウスを乗せた時の演出 */
+    .research-nav a:hover {
         background: var(--accent, #58a6ff);
-        color: #fff !important;
-        box-shadow: 0 0 15px rgba(88, 166, 255, 0.5);
+        color: #0d1117 !important;
+        box-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
+    }
+
+    /* 4. ライトモードへの自動対応（反乱防止） */
+    @media (prefers-color-scheme: light) {
+        .research-nav {
+            background: #ffffff;
+            border-bottom: 1px solid #ddd;
+        }
+        .research-nav a {
+            color: #333;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+        }
     }
 </style>
     <div class="container">
