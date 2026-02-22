@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin
+Disallow: /test
+Disallow: /naoma
+Disallow: /403.html
+Disallow: /404.html
+
+Sitemap: https://naomasite.vercel.app/sitemap.xml
