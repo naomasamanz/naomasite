@@ -7,3 +7,9 @@
     { "source": "/naoma", "destination": "/403", "permanent": false }
   ]
 }
+{
+  "i18n": {
+    "locales": ["ja", "en"],
+    "defaultLocale": "ja"
+  }
+}
