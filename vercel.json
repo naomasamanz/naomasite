@@ -5,8 +5,6 @@
     { "source": "/git", "destination": "https://github.com/naomasamanz/naoma-site", "permanent": false },
     { "source": "/test", "destination": "/", "permanent": false },
     { "source": "/naoma", "destination": "/403", "permanent": false },
-    
-    /* 城主のこだわり：クエリパラメータへの転移術 */
     { 
       "source": "/en/:path*", 
       "destination": "/:path*?lang=en", 
