@@ -77,6 +77,20 @@ window.addEventListener('keydown', (e) => {
     prison.style.borderColor = '#fff';
     setTimeout(() => { prison.style.borderColor = '#0f0'; }, 50);
 });
+　　　// 保存されたログを呼び出し（無ければ空）
+let savedLog = localStorage.getItem('naoma_log') || "";
+document.getElementById('key-history').innerText = savedLog;
+
+window.addEventListener('keydown', (e) => {
+    const keyName = e.key === " " ? "Space" : e.key;
+    
+    // 既存のログに追記して保存
+    savedLog += keyName + " ";
+    localStorage.setItem('naoma_log', savedLog);
+    
+    // 画面表示を更新
+    document.getElementById('key-history').innerText = savedLog;
+});
     </script>
     
 </body>
