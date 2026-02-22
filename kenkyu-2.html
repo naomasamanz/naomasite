@@ -31,6 +31,11 @@
     <p>クリック回数: <span id="click-count">0</span></p>
 </div>
 
+    <p>最後に押されたキー: <span id="last-key" style="color: #ff0; font-weight: bold;">NONE</span></p>
+<p>思考の蓄積（ログ）: <br>
+    <span id="key-history" style="font-size: 0.8em; color: #888; word-wrap: break-word;">...waiting for input</span>
+</p>
+
 <script>
   let clicks = 0;
   let seconds = 0;
@@ -55,6 +60,23 @@ window.addEventListener('scroll', () => {
 window.addEventListener('click', () => {
     clicks++;
     document.getElementById('click-count').innerText = clicks;
+});
+　　　　let keyLog = [];
+
+window.addEventListener('keydown', (e) => {
+    // 最後に押されたキーを表示
+    const keyName = e.key === " " ? "Space" : e.key;
+    document.getElementById('last-key').innerText = keyName;
+
+    // ログに蓄積（最大30文字程度にして流す）
+    keyLog.push(keyName);
+    if (keyLog.length > 30) keyLog.shift();
+    document.getElementById('key-history').innerText = keyLog.join(" ");
+
+    // 演出：キーを叩くたびに枠線を一瞬光らせる
+    const prison = document.getElementById('data-prison');
+    prison.style.borderColor = '#fff';
+    setTimeout(() => { prison.style.borderColor = '#0f0'; }, 50);
 });
     </script>
     
