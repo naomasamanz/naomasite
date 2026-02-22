@@ -2,80 +2,77 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>なおまの研究所 - お知らせ</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --text: #ffffff;
+            --border: #30363d;
+        }
+        [data-theme="light"] {
+            --bg: #f6f8fa;
+            --text: #24292f;
+            --border: #d0d7de;
+        }
 
-   <style>
-    /* --- 漆黒の基本定義 --- */
-    :root {
-        --bg: #0d1117;
-        --text: #ffffff;
-        --border: #30363d;
-    }
-    [data-theme="light"] {
-        --bg: #f6f8fa;
-        --text: #24292f;
-        --border: #d0d7de;
-    }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            font-family: sans-serif;
+            transition: background-color 0.3s;
+        }
 
-    body {
-        background-color: var(--bg);
-        color: var(--text);
-        margin: 0;
-        padding: 50px;
-        font-family: sans-serif;
-    }
+        /* ⚔️ 画面最上部に横一列で並べる結界 */
+        .top-nav {
+            display: flex;
+            justify-content: center; /* 中央寄せ（トップページと同じ） */
+            gap: 10px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border); /* 下線を入れて区切りを明確に */
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
 
-    /* 🛡 全体を包む強固な結界（メイン配置） */
-    .container-fixed {
-        display: flex;
-        align-items: flex-start; /* 縦伸びを物理的に封じる */
-        gap: 50px;
-    }
+        .nav-btn {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            height: 38px;
+            box-sizing: border-box;
+        }
 
-    /* 🛡 ボタン群：勝手に伸びないよう設定 */
-    .nav-wrap {
-        display: flex;
-        flex-wrap: wrap; /* 横に並ばなくなったら折り返す */
-        gap: 12px;
-        max-width: 600px; /* ここを調整して横幅を固定 */
-    }
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: #8b949e;
+        }
 
-    /* 🛡 呪われたボタンの浄化（スタイル固定） */
-    .nav-btn {
-        /* 高さを明示的に固定し、縦伸びを根絶 */
-        height: 42px; 
-        padding: 0 18px;
-        
-        background: transparent;
-        color: var(--text);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        font-size: 14px;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        white-space: nowrap;
-        transition: 0.2s;
-        box-sizing: border-box; /* 枠線を計算に含める */
-    }
+        /* ⚔️ お知らせエリアはボタンの下に配置 */
+        .content-area {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .nav-btn:hover {
-        background: rgba(255,255,255,0.1);
-        border-color: #8b949e;
-    }
+        .news-box {
+            border-left: 3px solid #f39c12; /* 鍵の色に合わせたアクセント */
+            padding-left: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
 
-    /* 🛡 お知らせエリアの整地 */
-    .news-area {
-        border-left: 2px solid var(--border);
-        padding-left: 25px;
-        min-width: 300px;
-    }
-</style>
-
-<div class="container-fixed">
-    <div class="nav-wrap">
+    <nav class="top-nav">
         <a href="https://naomasite.vercel.app/" class="nav-btn">トップページ</a>
         <a href="info.html" class="nav-btn">お知らせ</a>
         <a href="kenkyu-2.html" class="nav-btn">第2研究所</a>
@@ -85,44 +82,34 @@
         <button class="nav-btn" id="theme-toggle">
             <span style="margin-right:8px">🌙</span>常闇モード
         </button>
+    </nav>
+
+    <div class="content-area">
+        <div class="news-box">
+            <h3 style="margin: 0 0 15px 0;">🔐 研究所通達</h3>
+            <ul style="list-style: none; padding: 0; line-height: 2; font-size: 15px;">
+                <li>・2026-02-22：googleへsitemapを提出</li>
+                <li>・2026-02-22：プロトコルV3の最適化完了</li>
+                <li>・2026-02-22：なおまによるデザイン統一</li>
+            </ul>
+        </div>
     </div>
 
-    <div class="news-area">
-        <h3 style="margin-top:0">🔐 研究所通達</h3>
-        <ul style="list-style:none; padding:0; font-size:14px; line-height:2;">
-            <li>・2026-02-22：googleへsitemapを提出</li>
-            <li>・2026-02-22：プロトコルV3の最適化完了</li>
-            <li>・2026-02-22：なおまによるデザイン統一</li>
-        </ul>
-    </div>
-</div>
     <script>
-        const toggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const themeText = document.getElementById('theme-text');
-        const htmlElement = document.documentElement;
+        const btn = document.getElementById('theme-toggle');
+        const html = document.documentElement;
 
-        // ボタンがクリックされた時の処理
-        toggleBtn.addEventListener('click', () => {
-            // 現在のモードを判定して切り替え
-            if (htmlElement.getAttribute('data-theme') === 'light') {
-                // ダークモードへ
-                htmlElement.removeAttribute('data-theme');
-                themeIcon.textContent = '🌙';
-                themeText.textContent = 'ダークモード';
-            } else {
-                // ライトモードへ
-                htmlElement.setAttribute('data-theme', 'light');
-                themeIcon.textContent = '☀️';
-                themeText.textContent = 'ライトモード';
-            }
+        // 初期設定：常闇（ダーク）
+        if (localStorage.getItem('theme') === 'light') {
+            html.setAttribute('data-theme', 'light');
+        }
+
+        btn.addEventListener('click', () => {
+            const isLight = html.getAttribute('data-theme') === 'light';
+            const newTheme = isLight ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
         });
-
-        /* 補足：
-           もし、ユーザーのブラウザ設定（OSのダークモード設定）を
-           自動で反映させたい場合は、ここにその判定を追加することも可能です。
-        */
     </script>
-
 </body>
 </html>
