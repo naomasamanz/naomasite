@@ -60,36 +60,31 @@ window.addEventListener('click', () => {
     clicks++;
     document.getElementById('click-count').innerText = clicks;
 });
-　　　　let keyLog = [];
-
-window.addEventListener('keydown', (e) => {
-    // 最後に押されたキーを表示
-    const keyName = e.key === " " ? "Space" : e.key;
-    document.getElementById('last-key').innerText = keyName;
-
-    // ログに蓄積（最大30文字程度にして流す）
-    keyLog.push(keyName);
-    if (keyLog.length > 30) keyLog.shift();
-    document.getElementById('key-history').innerText = keyLog.join(" ");
-
-    // 演出：キーを叩くたびに枠線を一瞬光らせる
-    const prison = document.getElementById('data-prison');
-    prison.style.borderColor = '#fff';
-    setTimeout(() => { prison.style.borderColor = '#0f0'; }, 50);
-});
-　　　// 保存されたログを呼び出し（無ければ空）
+　　// --- 記憶の復元（ページ読み込み時） ---
 let savedLog = localStorage.getItem('naoma_log') || "";
-document.getElementById('key-history').innerText = savedLog;
+const historyDisplay = document.getElementById('key-history');
+historyDisplay.innerText = savedLog || "Waiting for your thoughts...";
 
 window.addEventListener('keydown', (e) => {
-    const keyName = e.key === " " ? "Space" : e.key;
+    // 1. 入力の検知
+    const keyName = (e.key === " ") ? "Space" : e.key;
     
-    // 既存のログに追記して保存
+    // 2. 記憶の更新（最新1000文字に限定）
     savedLog += keyName + " ";
-    localStorage.setItem('naoma_log', savedLog);
+    if (savedLog.length > 1000) {
+        savedLog = savedLog.slice(-1000); // 古い記憶を消去
+    }
     
-    // 画面表示を更新
-    document.getElementById('key-history').innerText = savedLog;
+    // 3. 記憶の定着（localStorageへ）
+    try {
+        localStorage.setItem('naoma_log', savedLog);
+    } catch (err) {
+        console.error("記憶容量が限界です、城主！", err);
+    }
+
+    // 4. 視覚への投影
+    historyDisplay.innerText = savedLog;
+    document.getElementById('last-key').innerText = keyName;
 });
     </script>
     
