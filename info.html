@@ -4,155 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>なおまの研究所 - お知らせ</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* 共通の色彩魔導（CSS変数） */
+        /* --- 変数の定義（モード切替を楽にするため） --- */
         :root {
-            --bg: #ffffff;
-            --text: #1a1a1a;
-            --accent: #3498db;
-            --nav-bg: rgba(255, 255, 255, 0.8);
+            --bg-color: #0d1117;       /* ダーク背景 */
+            --text-color: #ffffff;    /* 白文字 */
+            --border-color: #30363d;  /* 1枚目画像の枠線色 */
+            --hover-bg: #1c2128;      /* ホバー時の微かな変化 */
+            --accent-blue: #58a6ff;   /* モード切替時のアクセント */
         }
 
-        [data-theme="dark"] {
-            --bg: #1a1a1a;
-            --text: #f4f4f4;
-            --nav-bg: rgba(26, 26, 26, 0.8);
+        /* ライトモード時の色定義 */
+        [data-theme="light"] {
+            --bg-color: #f6f8fa;
+            --text-color: #24292f;
+            --border-color: #d0d7de;
+            --hover-bg: #ebf0f4;
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
-            padding-top: 80px; /* ナビ用の余白 */
-            transition: background 0.3s, color 0.3s;
-        }
-
-        /* ナビゲーション（完璧バージョン） */
-        nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            padding: 10px 20px;
-            border-radius: 50px;
+            padding: 40px;
+            transition: background-color 0.3s ease; /* 切り替えをスムーズに */
             display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            z-index: 1000;
-            border: 1px solid rgba(128,128,128,0.2);
+            justify-content: center;
         }
 
+        /* --- ナビゲーション全体のレイアウト --- */
+        .nav-container {
+            display: flex;
+            gap: 10px; /* 画像のボタン間隔に合わせる */
+            flex-wrap: wrap;
+        }
+
+        /* --- 1枚目の画像に基づいた統一ボタンスタイル --- */
         .nav-button {
-            background: none;
-            border: none;
-            color: var(--text);
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color); /* 1枚目の細い枠線を再現 */
+            border-radius: 6px;                    /* 画像の角丸具合を再現 */
+            padding: 8px 16px;                     /* テキストの余白 */
+            font-size: 14px;                       /* 標準的なUIサイズ */
+            font-weight: 500;
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
-            padding: 5px 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            outline: none;
         }
 
+        /* ホバー（マウスを乗せた時）の挙動 */
         .nav-button:hover {
-            color: var(--accent);
+            background-color: var(--hover-bg);
+            border-color: #8b949e; /* 少し明るいグレーに */
         }
 
-        /* Mode Switch スタイル */
-        .mode-switch {
-            cursor: pointer;
-            font-size: 1.2rem;
-            color: var(--text);
-            margin-left: 10px;
+        /* アクティブ（クリック中）の挙動 */
+        .nav-button:active {
+            transform: scale(0.98);
         }
 
-        /* お知らせページ専用デザイン */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .info-card {
-            background: rgba(128, 128, 128, 0.05);
-            border-left: 5px solid var(--accent);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 0 10px 10px 0;
-        }
-
-        .info-date {
-            font-family: monospace;
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        .info-title {
-            margin: 10px 0;
-            color: var(--accent);
+        /* アイコンの調整 */
+        .icon {
+            margin-right: 6px;
+            font-size: 1.1em;
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="nav-button">トップ</a>
+    <nav class="nav-container">
+        <a href="https://naomasite.vercel.app/" class="nav-button">トップページ</a>
+        <a href="info.html" class="nav-button">お知らせ</a>
         <a href="kenkyu-2.html" class="nav-button">第2研究所</a>
-        <a href="info.html" class="nav-button" style="color: var(--accent);">お知らせ</a>
-        <a href="privacy.html" class="nav-button">規約</a>
-        <div class="mode-switch" id="modeToggle">
-            <i class="fas fa-moon"></i>
-        </div>
+        <a href="privacy.html" class="nav-button">規約・ポリシー</a>
+        <a href="https://forms.gle/4i39ygSnqyKsJmr78" class="nav-button">お問い合わせ</a>
+
+        <button class="nav-button" id="theme-toggle" aria-label="表示モードの切替">
+            <span id="theme-icon" class="icon">🌙</span>
+            <span id="theme-text">モード切替</span>
+        </button>
     </nav>
 
-    <div class="container">
-        <h1><i class="fas fa-bullhorn"></i> 研究所・更新履歴</h1>
-        
-        <div class="info-card">
-            <div class="info-date">2026.02.22</div>
-            <h3 class="info-title">「お知らせ」ページの独立稼働</h3>
-            <p>情報の集約を目的とし、info.htmlを設立。デザインを本体と完全に同期させました。</p>
-        </div>
-
-        <div class="info-card">
-            <div class="info-date">2026.02.22</div>
-            <h3 class="info-title">Google検索への地図提出</h3>
-            <p>sitemap.xmlを配備。Google Search Consoleにて、世界への公開準備を完了しました。</p>
-        </div>
-    </div>
-
     <script>
-        // Mode Switch の魔導回路（LocalStorage対応）
-        const modeToggle = document.getElementById('modeToggle');
-        const body = document.body;
-        const icon = modeToggle.querySelector('i');
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+        const htmlElement = document.documentElement;
 
-        // 保存されたテーマを適用
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        body.setAttribute('data-theme', savedTheme);
-        updateIcon(savedTheme);
-
-        modeToggle.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateIcon(newTheme);
+        // ボタンがクリックされた時の処理
+        toggleBtn.addEventListener('click', () => {
+            // 現在のモードを判定して切り替え
+            if (htmlElement.getAttribute('data-theme') === 'light') {
+                // ダークモードへ
+                htmlElement.removeAttribute('data-theme');
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'ダークモード';
+            } else {
+                // ライトモードへ
+                htmlElement.setAttribute('data-theme', 'light');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'ライトモード';
+            }
         });
 
-        function updateIcon(theme) {
-            if (theme === 'dark') {
-                icon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-            }
-        }
+        /* 補足：
+           もし、ユーザーのブラウザ設定（OSのダークモード設定）を
+           自動で反映させたい場合は、ここにその判定を追加することも可能です。
+        */
     </script>
+
 </body>
 </html>
