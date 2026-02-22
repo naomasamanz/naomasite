@@ -4,100 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>なおまの研究所 - お知らせ</title>
+
     <style>
-        /* --- 変数の定義（モード切替を楽にするため） --- */
-        :root {
-            --bg-color: #0d1117;       /* ダーク背景 */
-            --text-color: #ffffff;    /* 白文字 */
-            --border-color: #30363d;  /* 1枚目画像の枠線色 */
-            --hover-bg: #1c2128;      /* ホバー時の微かな変化 */
-            --accent-blue: #58a6ff;   /* モード切替時のアクセント */
-        }
+    /* 漆黒の領域設定 */
+    :root {
+        --bg-color: #0d1117;
+        --text-color: #ffffff;
+        --border-color: #30363d;
+        --hover-bg: #1c2128;
+    }
 
-        /* ライトモード時の色定義 */
-        [data-theme="light"] {
-            --bg-color: #f6f8fa;
-            --text-color: #24292f;
-            --border-color: #d0d7de;
-            --hover-bg: #ebf0f4;
-        }
+    [data-theme="light"] {
+        --bg-color: #f6f8fa;
+        --text-color: #24292f;
+        --border-color: #d0d7de;
+        --hover-bg: #ebf0f4;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            margin: 0;
-            padding: 40px;
-            transition: background-color 0.3s ease; /* 切り替えをスムーズに */
-            display: flex;
-            justify-content: center;
-        }
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin: 0;
+        padding: 40px;
+        transition: background-color 0.4s ease;
+        font-family: sans-serif;
+    }
 
-        /* --- ナビゲーション全体のレイアウト --- */
-        .nav-container {
-            display: flex;
-            gap: 10px; /* 画像のボタン間隔に合わせる */
-            flex-wrap: wrap;
-        }
+    /* メインコンテナ：ボタンとお知らせを分離 */
+    .main-wrapper {
+        display: flex;
+        gap: 40px; /* ボタン群とお知らせの距離 */
+        align-items: flex-start; /* これで縦伸びを阻止！ */
+    }
 
-        /* --- 1枚目の画像に基づいた統一ボタンスタイル --- */
-        .nav-button {
-            background-color: transparent;
-            color: var(--text-color);
-            border: 1px solid var(--border-color); /* 1枚目の細い枠線を再現 */
-            border-radius: 6px;                    /* 画像の角丸具合を再現 */
-            padding: 8px 16px;                     /* テキストの余白 */
-            font-size: 14px;                       /* 標準的なUIサイズ */
-            font-weight: 500;
-            text-decoration: none;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-            outline: none;
-        }
+    /* ナビゲーションの陣形 */
+    .nav-container {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 700px; /* ボタンが並ぶ最大幅 */
+    }
 
-        /* ホバー（マウスを乗せた時）の挙動 */
-        .nav-button:hover {
-            background-color: var(--hover-bg);
-            border-color: #8b949e; /* 少し明るいグレーに */
-        }
+    /* 統一された装甲（ボタン） */
+    .nav-button {
+        background-color: transparent;
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 0 16px; /* 左右の余白 */
+        height: 44px;    /* 高さを固定して暴走を止める */
+        font-size: 14px;
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        transition: all 0.2s;
+        white-space: nowrap; /* 文字の改行を防ぐ */
+    }
 
-        /* アクティブ（クリック中）の挙動 */
-        .nav-button:active {
-            transform: scale(0.98);
-        }
+    .nav-button:hover {
+        background-color: var(--hover-bg);
+        border-color: #8b949e;
+    }
 
-        /* アイコンの調整 */
-        .icon {
-            margin-right: 6px;
-            font-size: 1.1em;
-        }
-    </style>
-</head>
-<body>
+    /* 研究所通達（お知らせ）の装飾 */
+    .news-section {
+        min-width: 250px;
+        border-left: 2px solid var(--border-color);
+        padding-left: 20px;
+    }
+</style>
 
+<div class="main-wrapper">
     <nav class="nav-container">
         <a href="https://naomasite.vercel.app/" class="nav-button">トップページ</a>
         <a href="info.html" class="nav-button">お知らせ</a>
         <a href="kenkyu-2.html" class="nav-button">第2研究所</a>
         <a href="privacy.html" class="nav-button">規約・ポリシー</a>
-        <a href="https://forms.gle/4i39ygSnqyKsJmr78" class="nav-button">お問い合わせ</a>
-
-        <button class="nav-button" id="theme-toggle" aria-label="表示モードの切替">
-            <span id="theme-icon" class="icon">🌙</span>
-            <span id="theme-text">モード切替</span>
+        <a href="https://forms.gle/7pj1QSx88db1fuba8" class="nav-button" target="_blank" rel="noopener">お問い合わせ</a>
+        
+        <button class="nav-button" id="theme-toggle">
+            <span id="theme-icon" style="margin-right: 8px;">🌙</span>
+            <span id="theme-text">常闇モード</span>
         </button>
     </nav>
 
-    <div style="margin-top: 30px; border-left: 4px solid var(--border-color); padding-left: 20px;">
-    <h3>🔏 研究所通達</h3>
-    <ul>
-        <li>2026-02-22：googleへsitemapを提出</li>
-        <li>2026-02-22：プロトコルV3の最適化完了</li>
-        <li>2026-02-22：なおまによるデザイン統一</li>
-    </ul>
+    <div class="news-section">
+        <h3 style="margin-top: 0;">🔐 研究所通達</h3>
+        <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 1.8;">
+            <li>• 2026-02-22：googleへsitemapを提出</li>
+            <li>• 2026-02-22：プロトコルV3の最適化完了</li>
+            <li>• 2026-02-22：なおまによるデザイン統一</li>
+        </ul>
+    </div>
 </div>
 
     <script>
