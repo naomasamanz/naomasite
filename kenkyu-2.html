@@ -29,7 +29,7 @@
     <p>スクロール量: <span id="scroll-val">0</span> px</p>
     <p>滞在秒数: <span id="timer-val">0</span> sec</p>
     <p>クリック回数: <span id="click-count">0</span></p>
-    <p>アクセス端末: <span id="user-device" style="color: #0ff; font-weight: bold;">鑑定中...</span></p>
+    <p>アクセス端末: <span id="user-device" style="color: #0ff; font-weight: bold;"></span></p>
          <p>最後に押されたキー: <span id="last-key" style="color: #ff0; font-weight: bold;">NONE</span></p>
 <p>思考の蓄積（ログ）: <br>
     <span id="key-history" style="font-size: 0.8em; color: #888; word-wrap: break-word;">...waiting for input</span>
@@ -123,32 +123,30 @@ window.addEventListener('keydown', (e) => {
         console.warn("RESTRICTED ACCESS: Secret command 'naomanaoma' executed.");
     }
 });
-  // 関数として定義
-function identifyDevice() {
+// 要素が見つかるまで執拗に鑑定を試みる術式
+const observer = setInterval(() => {
     const deviceDisp = document.getElementById('user-device');
-    if (!deviceDisp) return; // 要素がなければ終了
+    
+    if (deviceDisp) {
+        const ua = navigator.userAgent;
+        let deviceType = "UNKNOWN";
 
-    const ua = navigator.userAgent;
-    let deviceType = "UNKNOWN";
+        if (ua.includes('Windows')) {
+            deviceType = "Windows PC (正統なる適合者)";
+        } else if (/Android|iPhone|iPad|iPod/i.test(ua)) {
+            deviceType = "Mobile / Tablet (非推奨環境)";
+        } else if (ua.includes('Macintosh')) {
+            deviceType = "Mac PC (異界の端末)";
+        } else {
+            deviceType = "External Device";
+        }
 
-    if (ua.includes('Windows')) {
-        deviceType = "Windows";
-    } else if (/Android|iPhone|iPad|iPod/i.test(ua)) {
-        deviceType = "Mobile / Tablet";
-    } else if (ua.includes('Macintosh')) {
-        deviceType = "Mac";
-    } else {
-        deviceType = "Unknown Device";
+        deviceDisp.innerText = deviceType;
+
+        // 鑑定が完了したので監視を終了する
+        clearInterval(observer);
     }
-
-    deviceDisp.innerText = deviceType;
-
-// ページ読み込み完了時に実行
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', identifyDevice);
-} else {
-    identifyDevice(); // すでに読み込まれていれば即実行
-}
+}, 100); // 0.1秒ごとにチェック
     </script>
     
 </body>
