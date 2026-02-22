@@ -90,6 +90,38 @@ window.addEventListener('keydown', (e) => {
     historyDisplay.innerText = savedLog;
     document.getElementById('last-key').innerText = keyName;
 });
+    let secretBuffer = ""; // 呪文を一時的に蓄える器
+
+window.addEventListener('keydown', (e) => {
+    // 1. 入力された文字をバッファに蓄積（小文字で統一）
+    secretBuffer += e.key.toLowerCase();
+    
+    // 2. バッファが長くなりすぎないよう、呪文の長さ（10文字）に制限
+    if (secretBuffer.length > 10) {
+        secretBuffer = secretBuffer.slice(-10);
+    }
+
+    // 3. 呪文「naomanaoma」の判定
+    if (secretBuffer === "naomanaoma") {
+        // --- 浄化の術式発動 ---
+        localStorage.removeItem('naoma_log');
+        savedLog = ""; // 既存のログ変数もリセット
+        secretBuffer = ""; // バッファも浄化
+        
+        // 4. 視覚的フィードバック（虚無への帰還）
+        document.getElementById('key-history').innerText = "SYSTEM REBOOTED: All memories have been purged.";
+        document.getElementById('last-key').innerText = "PURGED";
+        
+        // 5. 支配者の演出：画面を一瞬「闇より深い漆黒」へ
+        document.body.style.transition = "background 0.1s";
+        document.body.style.backgroundColor = "#ffffff"; // 一瞬閃光
+        setTimeout(() => {
+            document.body.style.backgroundColor = "#0d1117";
+        }, 100);
+
+        console.warn("RESTRICTED ACCESS: Secret command 'naomanaoma' executed.");
+    }
+});
     </script>
     
 </body>
