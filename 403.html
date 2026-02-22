@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403 - 閲覧禁止 | なおまの研究所</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HN6YC5TWWS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HN6YC5TWWS');
+    </script>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #e6edf3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* 研究所共通の操作盤スタイル */
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px 0;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .nav-btn {
+            background-color: #21262d;
+            color: #58a6ff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            font-size: 0.9em;
+            transition: 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: #30363d;
+            border-color: #8b949e;
+        }
+
+        /* 403専用：拒絶の演出 */
+        .forbidden-container {
+            text-align: center;
+            margin-top: auto;
+            margin-bottom: auto;
+            padding: 40px;
+            border: 2px double #f85149; /* 警告の赤 */
+            border-radius: 12px;
+            background: rgba(248, 81, 73, 0.05);
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 4em;
+            color: #f85149;
+            margin: 0;
+            letter-spacing: 0.1em;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #8b949e;
+        }
+
+        .warning-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="nav-btn">トップページa>
+        <a href="/info" class="nav-btn">お知らせ</a>
+        <a href="/privacy" class="nav-btn">規約・ポリシー</a>
+        <a href="/kenkyu-2" class="nav-btn">第2研究所</a>
+    </nav>
+
+    <div class="forbidden-container">
+        <div class="warning-icon">🚫</div>
+        <h1>403</h1>
+        <p><strong>Forbidden</strong></p>
+        <p>
+            許可されていません！<br>
+            ここはなおまの秘密が隠れている...<br>
+            のかもしれません...
+        </p>
+        <a href="/" class="nav-btn" style="margin-top: 20px; display: inline-block;">正門へ戻る</a>
+    </div>
+
+</body>
+</html>
