@@ -41,33 +41,34 @@
     </style>
 </head>
 <body id="castle-body">
-   <nav class="research-nav">
+  <nav class="research-nav">
     <a href="index.html">トップページ</a>
     <a href="#section-news">お知らせ</a>
     <a href="kenkyu-2.html">第2研究所</a>
     <a href="privacy.html">規約・ポリシー</a>
-    <a href="#section-contact">お問い合わせ</a>
+    <a href="https://forms.gle/7Xu1ifoCHk3qoMfx5">お問い合わせ</a>
 </nav>
 
 <style>
-    /* 1. 【基本：ダークモード】（夜の姿） */
+    /* 1. 【基本：ダークモード】（Mode Switchが🌙の時） */
     .research-nav {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
         gap: 12px !important;
-        background-color: #0d1117 !important; /* 深い闇 */
+        background-color: var(--bg) !important; /* ★rootで定義した色を使う */
         padding: 15px 0 !important;
         position: sticky;
         top: 0;
         z-index: 1000;
         border-bottom: 1px solid rgba(88, 166, 255, 0.2);
+        transition: background-color 0.3s !important;
     }
 
     .research-nav a {
-        color: #ffffff !important;           /* 闇に映える白文字 */
-        background: #1c2128 !important;      /* ボタンらしい暗色 */
-        border: 1px solid #444c56 !important;
+        color: var(--text) !important;        /* ★rootの文字色を使う */
+        background: var(--box-bg) !important; /* ★rootのボックス色を使う */
+        border: 1px solid rgba(88, 166, 255, 0.2) !important;
         text-decoration: none !important;
         font-size: 0.85rem !important;
         font-weight: bold !important;
@@ -76,25 +77,18 @@
         transition: 0.3s !important;
     }
 
-    /* 2. 【自動転換：ライトモード】（昼の姿） */
-    @media (prefers-color-scheme: light) {
-        .research-nav {
-            background-color: #ffffff !important; /* 昼は白背景！ */
-            border-bottom: 1px solid #d0d7de;
-        }
-        .research-nav a {
-            color: #24292f !important;           /* 昼は黒文字！ */
-            background: #f6f8fa !important;      /* 清潔感のある薄灰 */
-            border: 1px solid #d0d7de !important;
-        }
+    /* 2. 【ホバー時】（城主の青い炎：共通） */
+    .research-nav a:hover {
+        background-color: var(--accent) !important;
+        color: #ffffff !important; 
+        border-color: var(--accent) !important;
+        box-shadow: 0 0 15px var(--accent) !important;
     }
 
-    /* 3. 【共通：ホバー時】（城主の青い炎） */
-    .research-nav a:hover {
-        background-color: #58a6ff !important;
-        color: #ffffff !important; /* ホバー時はどちらのモードでも白抜き文字に */
-        border-color: #58a6ff !important;
-        box-shadow: 0 0 15px rgba(88, 166, 255, 0.5) !important;
+    /* 3. 【ライトモード補正】（bodyにlight-modeがある時） */
+    /* 文字が見えにくくなるのを防ぐための微調整 */
+    body.light-mode .research-nav a {
+        border: 1px solid #d0d7de !important;
     }
 </style>
     <div class="container">
