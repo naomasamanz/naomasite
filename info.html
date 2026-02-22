@@ -5,103 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>なおまの研究所 - お知らせ</title>
 
-    <style>
-    /* 漆黒の領域設定 */
+   <style>
+    /* --- 漆黒の基本定義 --- */
     :root {
-        --bg-color: #0d1117;
-        --text-color: #ffffff;
-        --border-color: #30363d;
-        --hover-bg: #1c2128;
+        --bg: #0d1117;
+        --text: #ffffff;
+        --border: #30363d;
     }
-
     [data-theme="light"] {
-        --bg-color: #f6f8fa;
-        --text-color: #24292f;
-        --border-color: #d0d7de;
-        --hover-bg: #ebf0f4;
+        --bg: #f6f8fa;
+        --text: #24292f;
+        --border: #d0d7de;
     }
 
     body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
+        background-color: var(--bg);
+        color: var(--text);
         margin: 0;
-        padding: 40px;
-        transition: background-color 0.4s ease;
+        padding: 50px;
         font-family: sans-serif;
     }
 
-    /* メインコンテナ：ボタンとお知らせを分離 */
-    .main-wrapper {
+    /* 🛡 全体を包む強固な結界（メイン配置） */
+    .container-fixed {
         display: flex;
-        gap: 40px; /* ボタン群とお知らせの距離 */
-        align-items: flex-start; /* これで縦伸びを阻止！ */
+        align-items: flex-start; /* 縦伸びを物理的に封じる */
+        gap: 50px;
     }
 
-    /* ナビゲーションの陣形 */
-    .nav-container {
+    /* 🛡 ボタン群：勝手に伸びないよう設定 */
+    .nav-wrap {
         display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        width: 100%;
-        max-width: 700px; /* ボタンが並ぶ最大幅 */
+        flex-wrap: wrap; /* 横に並ばなくなったら折り返す */
+        gap: 12px;
+        max-width: 600px; /* ここを調整して横幅を固定 */
     }
 
-    /* 統一された装甲（ボタン） */
-    .nav-button {
-        background-color: transparent;
-        color: var(--text-color);
-        border: 1px solid var(--border-color);
+    /* 🛡 呪われたボタンの浄化（スタイル固定） */
+    .nav-btn {
+        /* 高さを明示的に固定し、縦伸びを根絶 */
+        height: 42px; 
+        padding: 0 18px;
+        
+        background: transparent;
+        color: var(--text);
+        border: 1px solid var(--border);
         border-radius: 8px;
-        padding: 0 16px; /* 左右の余白 */
-        height: 44px;    /* 高さを固定して暴走を止める */
         font-size: 14px;
         text-decoration: none;
-        cursor: pointer;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        box-sizing: border-box;
-        transition: all 0.2s;
-        white-space: nowrap; /* 文字の改行を防ぐ */
+        white-space: nowrap;
+        transition: 0.2s;
+        box-sizing: border-box; /* 枠線を計算に含める */
     }
 
-    .nav-button:hover {
-        background-color: var(--hover-bg);
+    .nav-btn:hover {
+        background: rgba(255,255,255,0.1);
         border-color: #8b949e;
     }
 
-    /* 研究所通達（お知らせ）の装飾 */
-    .news-section {
-        min-width: 250px;
-        border-left: 2px solid var(--border-color);
-        padding-left: 20px;
+    /* 🛡 お知らせエリアの整地 */
+    .news-area {
+        border-left: 2px solid var(--border);
+        padding-left: 25px;
+        min-width: 300px;
     }
 </style>
 
-<div class="main-wrapper">
-    <nav class="nav-container">
-        <a href="https://naomasite.vercel.app/" class="nav-button">トップページ</a>
-        <a href="info.html" class="nav-button">お知らせ</a>
-        <a href="kenkyu-2.html" class="nav-button">第2研究所</a>
-        <a href="privacy.html" class="nav-button">規約・ポリシー</a>
-        <a href="https://forms.gle/7pj1QSx88db1fuba8" class="nav-button" target="_blank" rel="noopener">お問い合わせ</a>
+<div class="container-fixed">
+    <div class="nav-wrap">
+        <a href="https://naomasite.vercel.app/" class="nav-btn">トップページ</a>
+        <a href="info.html" class="nav-btn">お知らせ</a>
+        <a href="kenkyu-2.html" class="nav-btn">第2研究所</a>
+        <a href="privacy.html" class="nav-btn">規約・ポリシー</a>
+        <a href="https://forms.gle/7pj1QSx88db1fuba8" class="nav-btn" target="_blank">お問い合わせ</a>
         
-        <button class="nav-button" id="theme-toggle">
-            <span id="theme-icon" style="margin-right: 8px;">🌙</span>
-            <span id="theme-text">常闇モード</span>
+        <button class="nav-btn" id="theme-toggle">
+            <span style="margin-right:8px">🌙</span>常闇モード
         </button>
-    </nav>
+    </div>
 
-    <div class="news-section">
-        <h3 style="margin-top: 0;">🔐 研究所通達</h3>
-        <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 1.8;">
-            <li>• 2026-02-22：googleへsitemapを提出</li>
-            <li>• 2026-02-22：プロトコルV3の最適化完了</li>
-            <li>• 2026-02-22：なおまによるデザイン統一</li>
+    <div class="news-area">
+        <h3 style="margin-top:0">🔐 研究所通達</h3>
+        <ul style="list-style:none; padding:0; font-size:14px; line-height:2;">
+            <li>・2026-02-22：googleへsitemapを提出</li>
+            <li>・2026-02-22：プロトコルV3の最適化完了</li>
+            <li>・2026-02-22：なおまによるデザイン統一</li>
         </ul>
     </div>
 </div>
-
     <script>
         const toggleBtn = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
