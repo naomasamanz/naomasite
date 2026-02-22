@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "redirects": [
     { "source": "/admin", "destination": "/", "permanent": true },
-    { "source": "/git", "destination": "https://github.com/naomasamanz/naoma-site/edit", "permanent": false },
+    { "source": "/git", "destination": "https://github.com/naomasamanz/naoma-site", "permanent": false },
     { "source": "/test", "destination": "/", "permanent": false }
   ]
 }
