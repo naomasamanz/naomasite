@@ -123,25 +123,32 @@ window.addEventListener('keydown', (e) => {
         console.warn("RESTRICTED ACCESS: Secret command 'naomanaoma' executed.");
     }
 });
-    window.addEventListener('load', () => {
+  // 関数として定義
+function identifyDevice() {
     const deviceDisp = document.getElementById('user-device');
-    const ua = navigator.userAgent;
+    if (!deviceDisp) return; // 要素がなければ終了
 
+    const ua = navigator.userAgent;
     let deviceType = "UNKNOWN";
 
-    // 鑑定の儀
     if (ua.includes('Windows')) {
-        deviceType = "Windows PC";
-    } else if (ua.includes('iPhone') || ua.includes('iPad') || ua.includes('Android')) {
+        deviceType = "Windows";
+    } else if (/Android|iPhone|iPad|iPod/i.test(ua)) {
         deviceType = "Mobile / Tablet";
     } else if (ua.includes('Macintosh')) {
-        deviceType = "Mac PC";
+        deviceType = "Mac";
     } else {
         deviceType = "Unknown Device";
     }
 
     deviceDisp.innerText = deviceType;
-        
+
+// ページ読み込み完了時に実行
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', identifyDevice);
+} else {
+    identifyDevice(); // すでに読み込まれていれば即実行
+}
     </script>
     
 </body>
