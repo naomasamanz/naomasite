@@ -29,4 +29,33 @@
     <p>滞在秒数: <span id="timer-val">0</span> sec</p>
     <p>クリック回数: <span id="click-count">0</span></p>
 </div>
-</html>
+
+<script>
+  let clicks = 0;
+  let seconds = 0;
+
+// タイマー起動
+setInterval(() => {
+    seconds++;
+    document.getElementById('timer-val').innerText = seconds;
+}, 1000);
+
+// マウス追跡
+window.addEventListener('mousemove', (e) => {
+    document.getElementById('mouse-pos').innerText = `X: ${e.clientX}, Y: ${e.clientY}`;
+});
+
+// スクロール監視
+window.addEventListener('scroll', () => {
+    document.getElementById('scroll-val').innerText = window.scrollY;
+});
+
+// 執念のクリックカウント
+window.addEventListener('click', () => {
+    clicks++;
+    document.getElementById('click-count').innerText = clicks;
+});
+    </script>
+    
+</body>
+ </html>
