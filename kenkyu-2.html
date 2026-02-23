@@ -38,36 +38,25 @@
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } }
         a { color: #fff; text-decoration: none; border: 1px solid #fff; padding: 5px 10px; margin-top: 20px; display: inline-block; }
 
-        /* 研究所共通ナビゲーション・スタイル */
-.research-nav {
+       .research-nav {
+    /* --- 1. 背景を漆黒（または背景色）で塗りつぶし、透過を禁ずる！ --- */
+    background-color: #000000 !important; /* または var(--bg) */
+    
+    /* --- 2. 他のあらゆる要素よりも「上」に君臨させる --- */
+    z-index: 9999 !important;
+
+    /* --- 3. 下のコンテンツとの間に「不可侵領域（余白）」を作る --- */
+    margin-bottom: 40px !important;
+
+    /* --- 4. 既存の配置設定（重要） --- */
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     gap: 12px !important;
-    background-color: var(--bg) !important;
     padding: 15px 0 !important;
     position: sticky;
     top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(88, 166, 255, 0.2);
-    transition: background-color 0.3s !important;
-    margin-bottom: 50px !important; 
-}
-background-color: var(--bg) !important;
-    opacity: 1 !important;
-
-    /* 2. 【空間確保】下のコンテンツを強制的に押し下げろ！ */
-    margin-bottom: 60px !important;
-
-    /* 3. 【既存の設定】ここも忘れずに */
-    display: flex !important;
-    justify-content: center !important;
-    gap: 12px !important;
-    padding: 15px 0 !important;
-    position: sticky;
-    top: 0;
-    z-index: 9999 !important; /* 他の全てを圧倒する高さへ */
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 1px solid #58a6ff; /* 下線を入れて境界を明確に */
 }
 
 .research-nav a:hover {
