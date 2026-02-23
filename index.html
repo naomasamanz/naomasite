@@ -472,6 +472,64 @@
             </div>
             <p class="memo">※解説：JS不使用。CSSのホバーアクションとtranslateXのみで「開門」を表現。</p>
         </section>
+
+        <div id="bbs-area" style="border: 2px solid #333; padding: 20px; margin-top: 50px; background: #f9f9f9;">
+    <h3>📜 研究所・自由に書ける掲示板</h3>
+    <input type="text" id="username" placeholder="名前" style="width: 100px;">
+    <input type="text" id="message" placeholder="メッセージを書く..." style="width: 250px;">
+    <button id="send-btn">送信</button>
+    <hr>
+    <div id="output" style="max-height: 300px; overflow-y: auto;">読み込み中...</div>
+</div>
+
+<script type="module">
+  // Firebase SDKの読み込み
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    
+  const firebaseConfig = {
+    apiKey: "AIzaSyCga8FPt2H_oUO6ZrHFrV-DXJfIhslEg0A",
+    authDomain: "naoma-lab.firebaseapp.com",
+    projectId: "naoma-lab",
+    storageBucket: "naoma-lab.firebasestorage.app",
+    messagingSenderId: "901572701169",
+    appId: "1:901572701169:web:4f9d019af31f9e7dc4b250",
+    measurementId: "G-VBTG2MXGGX"
+  };
+
+  // Firebaseの初期化
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const postsRef = collection(db, "posts");
+
+  // 1. 送信の術式
+  document.getElementById('send-btn').addEventListener('click', async () => {
+    const name = document.getElementById('username').value || "名無しの研究員";
+    const msg = document.getElementById('message').value;
+    if (!msg) return;
+
+    await addDoc(postsRef, {
+      name: name,
+      text: msg,
+      timestamp: serverTimestamp()
+    });
+    document.getElementById('message').value = "";
+  });
+
+  // 2. 読み込みの術式（リアルタイム反映！）
+  const q = query(postsRef, orderBy("timestamp", "desc"));
+  onSnapshot(q, (snapshot) => {
+    const output = document.getElementById('output');
+    output.innerHTML = "";
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      const p = document.createElement('p');
+      p.innerHTML = `<strong>${data.name}</strong>: ${data.text}`;
+      output.appendChild(p);
+    });
+    if (snapshot.empty) output.innerHTML = "まだ書き込みはありません";
+  });
+</script>
         
 <div style="display: flex; align-items: center; justify-content: center; gap: 30px;">
 
