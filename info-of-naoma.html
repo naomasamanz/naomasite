@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Naoma Lab news</title>
+    <meta name="robots" content="noindex, nofollow"> <style>
+        :root { --bg: #0d1117; --text: #c9d1d9; --accent: #58a6ff; --box-bg: #161b22; }
+        body { background: var(--bg); color: var(--text); font-family: monospace; padding: 50px; text-align: center; }
+        .post-box { max-width: 500px; margin: auto; background: var(--box-bg); padding: 30px; border-radius: 12px; border: 2px solid var(--accent); box-shadow: 0 0 20px rgba(88, 166, 255, 0.2); }
+        input, textarea { width: 100%; background: #000; color: var(--accent); border: 1px solid #333; padding: 10px; margin-bottom: 20px; border-radius: 4px; box-sizing: border-box; }
+        button { background: var(--accent); color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
+        button:disabled { background: #333; cursor: not-allowed; }
+        .status { margin-top: 15px; font-size: 0.8rem; color: #8b949e; }
+    </style>
+</head>
+<body>
+
+<div class="post-box">
+    <h2>📜 ニュース書き込み</h2>
+    <input type="password" id="pass" placeholder="合言葉を入力してください...">
+    <textarea id="news-text" rows="5" placeholder="ここに記入..."></textarea>
+    <button id="broadcast-btn">決定する</button>
+    <div id="status" class="status">待機中...</div>
+</div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCga8FPt2H_oUO6ZrHFrV-DXJfIhslEg0A",
+        authDomain: "naoma-lab.firebaseapp.com",
+        projectId: "naoma-lab",
+        storageBucket: "naoma-lab.firebasestorage.app",
+        messagingSenderId: "901572701169",
+        appId: "1:901572701169:web:4f9d019af31f9e7dc4b250"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const btn = document.getElementById('broadcast-btn');
+    const status = document.getElementById('status');
+
+    btn.addEventListener('click', async () => {
+        const pass = document.getElementById('pass').value;
+        const text = document.getElementById('news-text').value;
+
+        // ★【合言葉の設定】ここを城主の好きな言葉に変えるのです！
+        if (pass === "naoma2026") { 
+            if (!text) return alert("内容が空では書き込めません。");
+            
+            btn.disabled = true;
+            status.innerText = "送信中...";
+
+            try {
+                await addDoc(collection(db, "news"), {
+                    text: text,
+                    timestamp: serverTimestamp()
+                });
+                status.innerText = "完了しました。";
+                document.getElementById('news-text').value = "";
+            } catch (e) {
+                status.innerText = "エラー発生： " + e;
+            } finally {
+                btn.disabled = false;
+            }
+        } else {
+            alert("合言葉が違います");
+        }
+    });
+</script>
+
+</body>
+</html>
