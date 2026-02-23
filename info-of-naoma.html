@@ -24,21 +24,6 @@
 </div>
 
 <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyCga8FPt2H_oUO6ZrHFrV-DXJfIhslEg0A",
-        authDomain: "naoma-lab.firebaseapp.com",
-        projectId: "naoma-lab",
-        storageBucket: "naoma-lab.firebasestorage.app",
-        messagingSenderId: "901572701169",
-        appId: "1:901572701169:web:4f9d019af31f9e7dc4b250"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
     const btn = document.getElementById('broadcast-btn');
     const status = document.getElementById('status');
 
@@ -46,27 +31,31 @@
         const pass = document.getElementById('pass').value;
         const text = document.getElementById('news-text').value;
 
-        // ★【合言葉の設定】ここを城主の好きな言葉に変えるのです！
-        if (pass === "naoma2026") { 
-            if (!text) return alert("内容が空では書き込めません。");
-            
-            btn.disabled = true;
-            status.innerText = "送信中...";
+        if (!text) return alert("内容が空では民が困惑いたしますぞ！");
+        
+        btn.disabled = true;
+        status.innerText = "API経由で魔力を送信中...";
 
-            try {
-                await addDoc(collection(db, "news"), {
-                    text: text,
-                    timestamp: serverTimestamp()
-                });
-                status.innerText = "完了しました。";
+        try {
+            // ここが重要！自作した /api/post-news.js に問い合わせる
+            const response = await fetch('/api/post-news', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ pass, text })
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                status.innerText = "布告は完了いたしました、城主！！";
                 document.getElementById('news-text').value = "";
-            } catch (e) {
-                status.innerText = "エラー発生： " + e;
-            } finally {
-                btn.disabled = false;
+            } else {
+                status.innerText = "失敗： " + result.message;
             }
-        } else {
-            alert("合言葉が違います");
+        } catch (e) {
+            status.innerText = "通信エラーが発生： " + e;
+        } finally {
+            btn.disabled = false;
         }
     });
 </script>
