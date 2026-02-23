@@ -138,5 +138,49 @@
             localStorage.setItem('theme', newTheme);
         });
     </script>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getFirestore, collection, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+  // ※Firebaseの設定（第1研究所の掲示板と同じものをお使いくだされ！）
+  const firebaseConfig = {
+    apiKey: "AIzaSyCga8FPt2H_oUO6ZrHFrV-DXJfIhslEg0A",
+    authDomain: "naoma-lab.firebaseapp.com",
+    projectId: "naoma-lab",
+    storageBucket: "naoma-lab.firebasestorage.app",
+    messagingSenderId: "901572701169",
+    appId: "1:901572701169:web:4f9d019af31f9e7dc4b250"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  
+  // 「news」という新しいコレクションから読み込む設定（掲示板とは別管理！）
+  const newsRef = collection(db, "news");
+  const q = query(newsRef, orderBy("timestamp", "desc"), limit(10));
+
+  onSnapshot(q, (snapshot) => {
+    const list = document.getElementById('announcement-list');
+    list.innerHTML = ""; // 読み込み中を消去
+
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      const date = data.timestamp ? data.timestamp.toDate().toLocaleDateString() : "お待ちください...";
+      
+      // 布告のデザイン（城主の好みに合わせて調整可能！）
+      const item = document.createElement('div');
+      item.style.cssText = "border-left: 4px solid var(--accent); background: var(--box-bg); padding: 15px; margin-bottom: 20px; border-radius: 0 8px 8px 0;";
+      item.innerHTML = `
+        <div style="font-size: 0.8rem; color: var(--accent); font-weight: bold;">[ ${date} ]</div>
+        <div style="margin-top: 5px; line-height: 1.6;">${data.text}</div>
+      `;
+      list.appendChild(item);
+    });
+
+    if (snapshot.empty) {
+      list.innerHTML = "<p style='color: #8b949e;'>現在、新しいニュースはありません。</p>";
+    }
+  });
+</script>
 </body>
 </html>
