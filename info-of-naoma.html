@@ -47,13 +47,13 @@
             const result = await response.json();
 
             if (result.success) {
-                status.innerText = "布告は完了いたしました、城主！！";
+                status.innerText = "完了しました。";
                 document.getElementById('news-text').value = "";
             } else {
                 status.innerText = "失敗： " + result.message;
             }
         } catch (e) {
-            status.innerText = "通信エラーが発生： " + e;
+            status.innerText = "通信エラー： " + e;
         } finally {
             btn.disabled = false;
         }
