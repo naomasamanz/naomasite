@@ -476,7 +476,7 @@
         <div id="bbs-area" style="border: 2px solid #333; padding: 20px; margin-top: 50px; background: #f9f9f9;">
     <h3>📜 研究所・自由に書ける掲示板</h3>
     <input type="text" id="username" placeholder="名前" style="width: 100px;">
-    <input type="text" id="message" placeholder="メッセージを書く..." style="width: 250px;">
+    <input type="text" id="message" placeholder="メッセージを書く" style="width: 250px;">
     <button id="send-btn">送信</button>
     <hr>
     <div id="output" style="max-height: 300px; overflow-y: auto;">読み込み中...</div>
@@ -524,6 +524,9 @@
     snapshot.forEach((doc) => {
       const data = doc.data();
       const p = document.createElement('p');
+      p.style.color = "#000000"; 
+      p.style.margin = "10px 0";
+      p.style.borderBottom = "1px solid #ddd";
       p.innerHTML = `<strong>${data.name}</strong>: ${data.text}`;
       output.appendChild(p);
     });
