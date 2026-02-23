@@ -53,17 +53,21 @@
     transition: background-color 0.3s !important;
     margin-bottom: 50px !important; 
 }
+background-color: var(--bg) !important;
+    opacity: 1 !important;
 
-.research-nav a {
-    color: var(--text) !important;
-    background: var(--box-bg) !important;
-    border: 1px solid rgba(88, 166, 255, 0.2) !important;
-    text-decoration: none !important;
-    font-size: 0.85rem !important;
-    font-weight: bold !important;
-    padding: 8px 16px !important;
-    border-radius: 6px !important;
-    transition: 0.3s !important;
+    /* 2. 【空間確保】下のコンテンツを強制的に押し下げろ！ */
+    margin-bottom: 60px !important;
+
+    /* 3. 【既存の設定】ここも忘れずに */
+    display: flex !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    padding: 15px 0 !important;
+    position: sticky;
+    top: 0;
+    z-index: 9999 !important; /* 他の全てを圧倒する高さへ */
+    border-bottom: 2px solid var(--accent);
 }
 
 .research-nav a:hover {
