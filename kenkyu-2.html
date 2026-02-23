@@ -37,9 +37,58 @@
         .warning { border: 2px solid #0f0; padding: 20px; display: inline-block; animation: blink 1s infinite; }
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } }
         a { color: #fff; text-decoration: none; border: 1px solid #fff; padding: 5px 10px; margin-top: 20px; display: inline-block; }
+
+        /* 研究所共通ナビゲーション・スタイル */
+.research-nav {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 12px !important;
+    background-color: var(--bg) !important;
+    padding: 15px 0 !important;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(88, 166, 255, 0.2);
+    transition: background-color 0.3s !important;
+}
+
+.research-nav a {
+    color: var(--text) !important;
+    background: var(--box-bg) !important;
+    border: 1px solid rgba(88, 166, 255, 0.2) !important;
+    text-decoration: none !important;
+    font-size: 0.85rem !important;
+    font-weight: bold !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    transition: 0.3s !important;
+}
+
+.research-nav a:hover {
+    background-color: var(--accent) !important;
+    color: #ffffff !important; 
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 15px var(--accent) !important;
+}
+
+/* ライトモード時の補正 */
+body.light-mode .research-nav a {
+    border: 1px solid #d0d7de !important;
+}
     </style>
+    
 </head>
 <body>
+    
+    <nav class="research-nav">
+    <a href="index.html">トップページ</a>
+    <a href="info.html">お知らせ</a>
+    <a href="kenkyu-2.html">第２研究所</a>
+    <a href="privacy.html">規約・ポリシー</a>
+    <a href="https://forms.gle/7Xu1ifoCHk3qoMfx5">お問い合わせ</a>
+</nav>
+    
     <h1>ここは第２研究所です。</h1>
     <div id="data-prison" style="font-family: 'Consolas', monospace; color: #0f0; background: #000; padding: 20px; border: 1px solid #0f0;">
     <h2>リアルタイムモニター</h2>
