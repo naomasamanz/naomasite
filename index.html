@@ -624,6 +624,13 @@
         .catch(err => console.log('門番、登録失敗……', err));
     });
   }
+　　　// 通知許可の儀式
+Notification.requestPermission().then(permission => {
+  if (permission === 'granted') {
+    console.log('通知を許可（１）');
+    // ここで、実際の通知を送る準備（トークン取得）に入ります
+  }
+});
 </script>
 </body>
 </html>
