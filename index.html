@@ -627,11 +627,9 @@
 　　　
 </script>
         <script type="module">
-  // 1. まずは Firebase の高位魔導を召喚
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
   import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-messaging.js";
 
-  // 2. 帝国の秘鍵をセット
   const firebaseConfig = {
     apiKey: "AIzaSyCga8FPt2H_oUO6ZrHFrV-DXJfIhslEg0A",
     authDomain: "naoma-lab.firebaseapp.com",
@@ -642,20 +640,33 @@
     measurementId: "G-VBTG2MXGGX"
   };
 
-  // 3. 初期化
   const app = initializeApp(firebaseConfig);
   const messaging = getMessaging(app);
 
-  // 4. トークン（民の住所）を奪う術式
-  getToken(messaging, { 
-    vapidKey: "BKgjzdfZ5J1_MtnJ9LMz9V4Wk1LPqCKri6R7wiP3-o0bsZuu7MWJFDQrzUyGAYsxLuGIX-Th4n8yCnHk34_eEhs" 
-  }).then((currentToken) => {
-    if (currentToken) {
-      console.log("奪取成功！:", currentToken);
-      document.getElementById('key-history').innerText = "TOKEN ACQUIRED: " + currentToken;
-    }
-  }).catch((err) => {
-    console.error("術式失敗:", err);
+  // 門番（firebase-messaging-sw.js）を叩き起こしてトークンを奪う
+  navigator.serviceWorker.register('/firebase-messaging-sw.js').then((registration) => {
+    getToken(messaging, { 
+      vapidKey: "BKgjzdfZ5J1_MtnJ9LMz9V4Wk1LPqCKri6R7wiP3-o0bsZuu7MWJFDQrzUyGAYsxLuGIX-Th4n8yCnHk34_eEhs",
+      serviceWorkerRegistration: registration 
+    }).then((currentToken) => {
+      if (currentToken) {
+        console.log("奪取成功！:", currentToken);
+        // 掲示板の「読み込み中...」の部分に無理やり表示させるか、
+        // あるいはコンソールをチェックしてください！
+        const target = document.getElementById('output');
+        if(target) {
+            const tokenDiv = document.createElement('div');
+            tokenDiv.style.background = "#000";
+            tokenDiv.style.color = "#0f0";
+            tokenDiv.style.padding = "10px";
+            tokenDiv.style.wordBreak = "break-all";
+            tokenDiv.innerText = "【取得した魂（TOKEN）】\n" + currentToken;
+            target.prepend(tokenDiv); // 掲示板の一番上に表示
+        }
+      }
+    }).catch((err) => {
+      console.error("術式失敗:", err);
+    });
   });
 </script>
 　</body>
