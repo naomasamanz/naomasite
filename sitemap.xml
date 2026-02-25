@@ -2,22 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://naomasite.vercel.app/</loc>
-    <priority>1.0</priority>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://naomasite.vercel.app/info</loc>
+    <lastmod>2026-02-25</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
   </url>
+
   <url>
-    <loc>https://naomasite.vercel.app/lab2</loc>
-    <priority>0.8</priority>
+    <loc>https://naomasite.vercel.app/kenkyu-2</loc>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://naomasite.vercel.app/privacy</loc>
-    <priority>0.5</priority>
+    <loc>https://naomasite.vercel.app/privacy.html</loc>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
