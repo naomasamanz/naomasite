@@ -73,6 +73,33 @@
 body.light-mode .research-nav a {
     border: 1px solid #d0d7de !important;
 }
+        .research-nav {
+    display: flex !important;
+    /* ★PCでは中央、スマホでは左詰めに自動で切り替える魔導 */
+    justify-content: center !important; 
+    align-items: center !important;
+    gap: 12px !important;
+    background-color: var(--bg) !important;
+    padding: 15px !important;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(88, 166, 255, 0.2);
+
+    /* ↓ここが肝にございますぞ↓ */
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+}
+
+/* スマホの狭い時だけ、中央寄せを解除してスクロールさせる特殊命令 */
+@media (max-width: 600px) {
+    .research-nav {
+        justify-content: flex-start !important; 
+    }
+}
+
+/* スクロールバー消去の術（継続） */
+.research-nav::-webkit-scrollbar { display: none; }
     </style>
     
 </head>
