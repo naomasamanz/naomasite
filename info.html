@@ -11,61 +11,81 @@
 
     <script type="application/ld+json">
     {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "name": "なおまの研究所",
-    "item": "https://naomasite.vercel.app/"
-  },{
-    "@type": "ListItem",
-    "position": 2,
-    "name": "なおまの研究所 - お知らせ",
-    "item": "https://naomasite.vercel.app/info"
-  }]
-}
-</script>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBTG2MXGGX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "なおまの研究所",
+        "item": "https://naomasite.vercel.app/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "なおまの研究所 - お知らせ",
+        "item": "https://naomasite.vercel.app/info"
+      }]
+    }
+    </script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBTG2MXGGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VBTG2MXGGX');
+    </script>
 
-  gtag('config', 'G-VBTG2MXGGX');
-</script>
     <style>
         :root {
             --bg: #0d1117;
             --text: #ffffff;
             --border: #30363d;
+            --nav-bg: #0d1117; /* ナビ用の背景色 */
         }
         [data-theme="light"] {
             --bg: #f6f8fa;
             --text: #24292f;
             --border: #d0d7de;
+            --nav-bg: #f6f8fa; /* ライトモード時は白く */
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
             margin: 0;
-            padding: 20px;
+            padding: 0; /* ナビを密着させるため0に */
             font-family: sans-serif;
             transition: background-color 0.3s;
         }
 
-        /* ⚔️ 画面最上部に横一列で並べる結界 */
+        /* ⚔️ 統合された鉄壁のナビゲーション術式 ⚔️ */
         .top-nav {
-            display: flex;
-            justify-content: center; /* 中央寄せ（トップページと同じ） */
-            gap: 10px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border); /* 下線を入れて区切りを明確に */
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+            display: flex !important;
+            justify-content: center !important; /* PCでは中央 */
+            align-items: center !important;
+            gap: 10px !important;
+            background-color: var(--nav-bg) !important; /* 透過禁止 */
+            padding: 15px !important;
+            position: sticky;
+            top: 0;
+            z-index: 10000 !important;
+            border-bottom: 1px solid var(--border) !important;
+            overflow-x: auto !important; /* スマホで横スクロール */
+            white-space: nowrap !important; /* 改行拒否 */
+            margin-bottom: 30px !important;
+            -webkit-overflow-scrolling: touch;
         }
+
+        /* スマホの時だけ左寄せに切り替え */
+        @media (max-width: 600px) {
+            .top-nav {
+                justify-content: flex-start !important;
+                padding-left: 10px !important;
+            }
+        }
+
+        /* スクロールバー隠蔽 */
+        .top-nav::-webkit-scrollbar { display: none; }
 
         .nav-btn {
             background: transparent;
@@ -81,22 +101,23 @@
             align-items: center;
             height: 38px;
             box-sizing: border-box;
+            flex-shrink: 0 !important; /* 潰れ防止 */
         }
 
         .nav-btn:hover {
-            background: rgba(255,255,255,0.05);
+            background: rgba(128,128,128,0.1);
             border-color: #8b949e;
         }
 
-        /* ⚔️ お知らせエリアはボタンの下に配置 */
+        /* ⚔️ コンテンツエリア ⚔️ */
         .content-area {
             max-width: 800px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
 
         .news-box {
-            border-left: 3px solid #f39c12; /* 鍵の色に合わせたアクセント */
+            border-left: 3px solid #f39c12;
             padding-left: 20px;
             margin-top: 20px;
         }
@@ -119,9 +140,9 @@
     <div class="content-area">
         <div class="news-box">
             <h3 style="margin: 0 0 15px 0;">🔐 研究所通達</h3>
-           <div id="announcement-list">
-    <p>読み込み中...</p>
-　　　　　　</div>
+            <div id="announcement-list">
+                <p>読み込み中...</p>
+            </div>
         </div>
     </div>
 
@@ -129,7 +150,6 @@
         const btn = document.getElementById('theme-toggle');
         const html = document.documentElement;
 
-        // 初期設定：常闇（ダーク）
         if (localStorage.getItem('theme') === 'light') {
             html.setAttribute('data-theme', 'light');
         }
@@ -142,48 +162,45 @@
         });
     </script>
     <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getFirestore, collection, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-  // ※Firebaseの設定（第1研究所の掲示板と同じものをお使いくだされ！）
-  const firebaseConfig = {
-    apiKey: "AIzaSyCga8FPt2H_oUO6ZrHFrV-DXJfIhslEg0A",
-    authDomain: "naoma-lab.firebaseapp.com",
-    projectId: "naoma-lab",
-    storageBucket: "naoma-lab.firebasestorage.app",
-    messagingSenderId: "901572701169",
-    appId: "1:901572701169:web:4f9d019af31f9e7dc4b250"
-  };
+        const firebaseConfig = {
+            apiKey: "AIzaSyCga8FPt2H_oUO6ZrHFrV-DXJfIhslEg0A",
+            authDomain: "naoma-lab.firebaseapp.com",
+            projectId: "naoma-lab",
+            storageBucket: "naoma-lab.firebasestorage.app",
+            messagingSenderId: "901572701169",
+            appId: "1:901572701169:web:4f9d019af31f9e7dc4b250"
+        };
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  
-  // 「news」という新しいコレクションから読み込む設定（掲示板とは別管理！）
-  const newsRef = collection(db, "news");
-  const q = query(newsRef, orderBy("timestamp", "desc"), limit(10));
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        
+        const newsRef = collection(db, "news");
+        const q = query(newsRef, orderBy("timestamp", "desc"), limit(10));
 
-  onSnapshot(q, (snapshot) => {
-    const list = document.getElementById('announcement-list');
-    list.innerHTML = ""; // 読み込み中を消去
+        onSnapshot(q, (snapshot) => {
+            const list = document.getElementById('announcement-list');
+            list.innerHTML = ""; 
 
-    snapshot.forEach((doc) => {
-      const data = doc.data();
-      const date = data.timestamp ? data.timestamp.toDate().toLocaleDateString() : "お待ちください...";
-      
-      // 布告のデザイン（城主の好みに合わせて調整可能！）
-      const item = document.createElement('div');
-      item.style.cssText = "border-left: 4px solid var(--accent); background: var(--box-bg); padding: 15px; margin-bottom: 20px; border-radius: 0 8px 8px 0;";
-      item.innerHTML = `
-        <div style="font-size: 0.8rem; color: var(--accent); font-weight: bold;">[ ${date} ]</div>
-        <div style="margin-top: 5px; line-height: 1.6;">${data.text}</div>
-      `;
-      list.appendChild(item);
-    });
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                const date = data.timestamp ? data.timestamp.toDate().toLocaleDateString() : "お待ちください...";
+                
+                const item = document.createElement('div');
+                item.style.cssText = "border-left: 4px solid #f39c12; background: rgba(128,128,128,0.05); padding: 15px; margin-bottom: 20px; border-radius: 0 8px 8px 0;";
+                item.innerHTML = `
+                    <div style="font-size: 0.8rem; color: #f39c12; font-weight: bold;">[ ${date} ]</div>
+                    <div style="margin-top: 5px; line-height: 1.6;">${data.text}</div>
+                `;
+                list.appendChild(item);
+            });
 
-    if (snapshot.empty) {
-      list.innerHTML = "<p style='color: #8b949e;'>現在、新しいニュースはありません。</p>";
-    }
-  });
-</script>
+            if (snapshot.empty) {
+                list.innerHTML = "<p style='color: #8b949e;'>現在、新しいニュースはありません。</p>";
+            }
+        });
+    </script>
 </body>
 </html>
