@@ -624,36 +624,39 @@
         .catch(err => console.log('門番、登録失敗……', err));
     });
   }
-　　　// 通知許可の儀式
-Notification.requestPermission().then(permission => {
-  if (permission === 'granted') {
-    console.log('通知を許可（１）');
-    // ここで、実際の通知を送る準備（トークン取得）に入ります
-  }
-});
-            
-// Firebase Messaging の召喚
-import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-messaging.js";
+　　　
+</script>
+        <script type="module">
+  // 1. まずは Firebase の高位魔導を召喚
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+  import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-messaging.js";
 
-const messaging = getMessaging();
+  // 2. 帝国の秘鍵をセット
+  const firebaseConfig = {
+    apiKey: "AIzaSyCga8FPt2H_oUO6ZrHFrV-DXJfIhslEg0A",
+    authDomain: "naoma-lab.firebaseapp.com",
+    projectId: "naoma-lab",
+    storageBucket: "naoma-lab.firebasestorage.app",
+    messagingSenderId: "901572701169",
+    appId: "1:901572701169:web:4f9d019af31f9e7dc4b250",
+    measurementId: "G-VBTG2MXGGX"
+  };
 
-// 民のトークン（住所）を奪取し、画面のログに表示させる術式
-getToken(messaging, { 
-  vapidKey: "BKgjzdfZ5J1_MtnJ9LMz9V4Wk1LPqCKri6R7wiP3-o0bsZuu7MWJFDQrzUyGAYsxLuGIX-Th4n8yCnHk34_eEhs" 
-}).then((currentToken) => {
-  if (currentToken) {
-    console.log("トークンの奪取に成功！:", currentToken);
-    
-    // 画面上の「思考の蓄積（ログ）」に無理やり書き込む
-    const logArea = document.getElementById('key-history');
-    logArea.innerText = "TOKEN ACQUIRED: " + currentToken + "\n" + logArea.innerText;
-  } else {
-    console.warn("通知が許可されていないか、トークンが生成されません。");
-  }
-}).catch((err) => {
-  console.error("トークン取得中にエラー発生、術式が乱れています！", err);
-});
-            
+  // 3. 初期化
+  const app = initializeApp(firebaseConfig);
+  const messaging = getMessaging(app);
+
+  // 4. トークン（民の住所）を奪う術式
+  getToken(messaging, { 
+    vapidKey: "BKgjzdfZ5J1_MtnJ9LMz9V4Wk1LPqCKri6R7wiP3-o0bsZuu7MWJFDQrzUyGAYsxLuGIX-Th4n8yCnHk34_eEhs" 
+  }).then((currentToken) => {
+    if (currentToken) {
+      console.log("奪取成功！:", currentToken);
+      document.getElementById('key-history').innerText = "TOKEN ACQUIRED: " + currentToken;
+    }
+  }).catch((err) => {
+    console.error("術式失敗:", err);
+  });
 </script>
 　</body>
 　　</html>
