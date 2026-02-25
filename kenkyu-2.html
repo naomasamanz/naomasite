@@ -9,237 +9,214 @@
     <meta name="robots" content="index, follow">
     <meta name="description" content="JavaScriptによるマウス追跡やキーログ保存、アクセス端末の解析などを行う『なおまの第2研究所』。ブラウザの限界に挑む技術デモを公開中。">
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "name": "なおまの研究所",
-    "item": "https://naomasite.vercel.app/"
-  },{
-    "@type": "ListItem",
-    "position": 2,
-    "name": "なおまの第２研究所",
-    "item": "https://naomasite.vercel.app/kenkyu-2"
-  }]
-}
-</script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBTG2MXGGX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VBTG2MXGGX');
-</script>
-    <style>
-        body { background: #000; color: #0f0; font-family: 'Consolas', monospace; padding: 50px; text-align: center; }
-        .warning { border: 2px solid #0f0; padding: 20px; display: inline-block; animation: blink 1s infinite; }
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } }
-        a { color: #fff; text-decoration: none; border: 1px solid #fff; padding: 5px 10px; margin-top: 20px; display: inline-block; }
-
-       .research-nav {
-    /* --- 1. 背景を漆黒（または背景色）で塗りつぶし、透過を禁ずる！ --- */
-    background-color: #000000 !important; /* または var(--bg) */
-    
-    /* --- 2. 他のあらゆる要素よりも「上」に君臨させる --- */
-    z-index: 9999 !important;
-
-    /* --- 3. 下のコンテンツとの間に「不可侵領域（余白）」を作る --- */
-    margin-bottom: 40px !important;
-
-    /* --- 4. 既存の配置設定（重要） --- */
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 12px !important;
-    padding: 15px 0 !important;
-    position: sticky;
-    top: 0;
-    border-bottom: 1px solid #58a6ff; /* 下線を入れて境界を明確に */
-}
-
-.research-nav a:hover {
-    background-color: var(--accent) !important;
-    color: #ffffff !important; 
-    border-color: var(--accent) !important;
-    box-shadow: 0 0 15px var(--accent) !important;
-}
-
-/* ライトモード時の補正 */
-body.light-mode .research-nav a {
-    border: 1px solid #d0d7de !important;
-}
-        .research-nav {
-    display: flex !important;
-    /* ★PCでは中央、スマホでは左詰めに自動で切り替える魔導 */
-    justify-content: center !important; 
-    align-items: center !important;
-    gap: 12px !important;
-    background-color: var(--bg) !important;
-    padding: 15px !important;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(88, 166, 255, 0.2);
-
-    /* ↓ここが肝にございますぞ↓ */
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-}
-
-/* スマホの狭い時だけ、中央寄せを解除してスクロールさせる特殊命令 */
-@media (max-width: 600px) {
-    .research-nav {
-        justify-content: flex-start !important; 
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "なおまの研究所",
+        "item": "https://naomasite.vercel.app/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "なおまの第２研究所",
+        "item": "https://naomasite.vercel.app/kenkyu-2"
+      }]
     }
-}
-
-/* スクロールバー消去の術（継続） */
-.research-nav::-webkit-scrollbar { display: none; }
-    </style>
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBTG2MXGGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VBTG2MXGGX');
+    </script>
+
+    <style>
+        /* --- 基礎設定 --- */
+        body { 
+            background: #000; 
+            color: #0f0; 
+            font-family: 'Consolas', monospace; 
+            padding: 0; /* ナビを上部に密着させるため修正 */
+            margin: 0;
+            text-align: center; 
+        }
+
+        /* --- ナビゲーション（統合防衛術式） --- */
+        .research-nav {
+            display: flex !important;
+            justify-content: center !important; /* PCでは中央 */
+            align-items: center !important;
+            gap: 12px !important;
+            background-color: #000000 !important; /* 漆黒（透過禁止） */
+            padding: 15px !important;
+            position: sticky;
+            top: 0;
+            z-index: 10000 !important;
+            border-bottom: 1px solid #00ff00 !important; /* 緑の境界線 */
+            overflow-x: auto !important; /* スマホスクロール */
+            white-space: nowrap !important; /* 改行拒否 */
+            margin-bottom: 30px !important;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* スマホの時だけ左寄せ */
+        @media (max-width: 600px) {
+            .research-nav {
+                justify-content: flex-start !important;
+                padding-left: 10px !important;
+            }
+        }
+
+        /* スクロールバー隠蔽 */
+        .research-nav::-webkit-scrollbar { display: none; }
+
+        /* ナビ内ボタンの装飾 */
+        .research-nav a {
+            background-color: #111111 !important;
+            color: #ffffff !important;
+            border: 1px solid #ffffff !important;
+            padding: 8px 16px !important;
+            border-radius: 6px !important;
+            text-decoration: none !important;
+            font-size: 0.85rem !important;
+            font-weight: bold !important;
+            flex-shrink: 0 !important;
+            margin: 0 !important;
+            display: inline-block !important;
+            transition: 0.3s !important;
+        }
+
+        .research-nav a:hover {
+            background-color: #00ff00 !important;
+            color: #000000 !important;
+            box-shadow: 0 0 15px #00ff00 !important;
+        }
+
+        /* --- コンテンツ装飾 --- */
+        .main-content { padding: 20px; }
+        .warning { border: 2px solid #0f0; padding: 20px; display: inline-block; animation: blink 1s infinite; margin-top: 20px; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } }
+        
+        /* 戻るボタンなど（ナビ以外）のリンク */
+        footer a { color: #fff; text-decoration: none; border: 1px solid #fff; padding: 5px 10px; margin-top: 40px; display: inline-block; }
+    </style>
 </head>
 <body>
     
     <nav class="research-nav">
-    <a href="index.html">トップページ</a>
-    <a href="info.html">お知らせ</a>
-    <a href="kenkyu-2.html">第２研究所</a>
-    <a href="privacy.html">規約・ポリシー</a>
-    <a href="https://forms.gle/7Xu1ifoCHk3qoMfx5">お問い合わせ</a>
-</nav>
+        <a href="index.html">トップページ</a>
+        <a href="info.html">お知らせ</a>
+        <a href="kenkyu-2.html">第２研究所</a>
+        <a href="privacy.html">規約・ポリシー</a>
+        <a href="https://forms.gle/7Xu1ifoCHk3qoMfx5">お問い合わせ</a>
+    </nav>
     
-    <h1>ここは第２研究所です。</h1>
-    <div id="data-prison" style="font-family: 'Consolas', monospace; color: #0f0; background: #000; padding: 20px; border: 1px solid #0f0;">
-    <h2>リアルタイムモニター</h2>
-    <p>マウス座標: <span id="mouse-pos">X: 0, Y: 0</span></p>
-    <p>スクロール量: <span id="scroll-val">0</span> px</p>
-    <p>滞在秒数: <span id="timer-val">0</span> sec</p>
-    <p>クリック回数: <span id="click-count">0</span></p>
-    <p>アクセス端末: <span id="user-device" style="color: #0f0; font-weight: bold;"></span></p>
-         <p>最後に押されたキー: <span id="last-key" style="color: #ff0; font-weight: bold;">NONE</span></p>
-<p>思考の蓄積（ログ）: <br>
-    <span id="key-history" style="font-size: 0.8em; color: #888; word-wrap: break-word;">...waiting for input</span>
-</p>
-</div>
-
-    <footer>
-        <a href="https://naomasite.vercel.app/">研究所トップページへ戻る</a>
-    </footer>
-
-<script>
-  let clicks = 0;
-  let seconds = 0;
-
-// タイマー起動
-setInterval(() => {
-    seconds++;
-    document.getElementById('timer-val').innerText = seconds;
-}, 1000);
-
-// マウス追跡
-window.addEventListener('mousemove', (e) => {
-    document.getElementById('mouse-pos').innerText = `X: ${e.clientX}, Y: ${e.clientY}`;
-});
-
-// スクロール監視
-window.addEventListener('scroll', () => {
-    document.getElementById('scroll-val').innerText = window.scrollY;
-});
-
-// 執念のクリックカウント
-window.addEventListener('click', () => {
-    clicks++;
-    document.getElementById('click-count').innerText = clicks;
-});
-　　// --- 記憶の復元（ページ読み込み時） ---
-let savedLog = localStorage.getItem('naoma_log') || "";
-const historyDisplay = document.getElementById('key-history');
-historyDisplay.innerText = savedLog || "Waiting for your thoughts...";
-
-window.addEventListener('keydown', (e) => {
-    // 1. 入力の検知
-    const keyName = (e.key === " ") ? "Space" : e.key;
-    
-    // 2. 記憶の更新（最新1000文字に限定）
-    savedLog += keyName + " ";
-    if (savedLog.length > 1000) {
-        savedLog = savedLog.slice(-1000); // 古い記憶を消去
-    }
-    
-    // 3. 記憶の定着（localStorageへ）
-    try {
-        localStorage.setItem('naoma_log', savedLog);
-    } catch (err) {
-        console.error("記憶容量が限界です。", err);
-    }
-
-    // 4. 視覚への投影
-    historyDisplay.innerText = savedLog;
-    document.getElementById('last-key').innerText = keyName;
-});
-    let secretBuffer = ""; // 呪文を一時的に蓄える器
-
-window.addEventListener('keydown', (e) => {
-    // 1. 入力された文字をバッファに蓄積（小文字で統一）
-    secretBuffer += e.key.toLowerCase();
-    
-    // 2. バッファが長くなりすぎないよう、呪文の長さ（10文字）に制限
-    if (secretBuffer.length > 10) {
-        secretBuffer = secretBuffer.slice(-10);
-    }
-
-    // 3. 呪文「naomanaoma」の判定
-    if (secretBuffer === "naomanaoma") {
-        // --- 浄化の術式発動 ---
-        localStorage.removeItem('naoma_log');
-        savedLog = ""; // 既存のログ変数もリセット
-        secretBuffer = ""; // バッファも浄化
+    <div class="main-content">
+        <h1>ここは第２研究所です。</h1>
         
-        // 4. 視覚的フィードバック（虚無への帰還）
-        document.getElementById('key-history').innerText = "SYSTEM REBOOTED: All memories have been purged.";
-        document.getElementById('last-key').innerText = "PURGED";
-        
-        // 5. 支配者の演出：画面を一瞬「闇より深い漆黒」へ
-        document.body.style.transition = "background 0.1s";
-        document.body.style.backgroundColor = "#ffffff"; // 一瞬閃光
-        setTimeout(() => {
-            document.body.style.backgroundColor = "#0d1117";
+        <div id="data-prison" style="font-family: 'Consolas', monospace; color: #0f0; background: #000; padding: 20px; border: 1px solid #0f0;">
+            <h2>リアルタイムモニター</h2>
+            <p>マウス座標: <span id="mouse-pos">X: 0, Y: 0</span></p>
+            <p>スクロール量: <span id="scroll-val">0</span> px</p>
+            <p>滞在秒数: <span id="timer-val">0</span> sec</p>
+            <p>クリック回数: <span id="click-count">0</span></p>
+            <p>アクセス端末: <span id="user-device" style="color: #0f0; font-weight: bold;"></span></p>
+            <p>最後に押されたキー: <span id="last-key" style="color: #ff0; font-weight: bold;">NONE</span></p>
+            <p>思考の蓄積（ログ）: <br>
+                <span id="key-history" style="font-size: 0.8em; color: #888; word-wrap: break-word;">...waiting for input</span>
+            </p>
+        </div>
+
+        <footer>
+            <a href="https://naomasite.vercel.app/">研究所トップページへ戻る</a>
+        </footer>
+    </div>
+
+    <script>
+        let clicks = 0;
+        let seconds = 0;
+
+        // タイマー
+        setInterval(() => {
+            seconds++;
+            document.getElementById('timer-val').innerText = seconds;
+        }, 1000);
+
+        // マウス追跡
+        window.addEventListener('mousemove', (e) => {
+            document.getElementById('mouse-pos').innerText = `X: ${e.clientX}, Y: ${e.clientY}`;
+        });
+
+        // スクロール監視
+        window.addEventListener('scroll', () => {
+            document.getElementById('scroll-val').innerText = window.scrollY;
+        });
+
+        // クリックカウント
+        window.addEventListener('click', () => {
+            clicks++;
+            document.getElementById('click-count').innerText = clicks;
+        });
+
+        // --- 記憶の復元 ---
+        let savedLog = localStorage.getItem('naoma_log') || "";
+        const historyDisplay = document.getElementById('key-history');
+        historyDisplay.innerText = savedLog || "Waiting for your thoughts...";
+
+        window.addEventListener('keydown', (e) => {
+            const keyName = (e.key === " ") ? "Space" : e.key;
+            savedLog += keyName + " ";
+            if (savedLog.length > 1000) savedLog = savedLog.slice(-1000);
+            
+            try {
+                localStorage.setItem('naoma_log', savedLog);
+            } catch (err) {
+                console.error("記憶容量が限界です。", err);
+            }
+
+            historyDisplay.innerText = savedLog;
+            document.getElementById('last-key').innerText = keyName;
+        });
+
+        // 呪文「naomanaoma」
+        let secretBuffer = "";
+        window.addEventListener('keydown', (e) => {
+            secretBuffer += e.key.toLowerCase();
+            if (secretBuffer.length > 10) secretBuffer = secretBuffer.slice(-10);
+
+            if (secretBuffer === "naomanaoma") {
+                localStorage.removeItem('naoma_log');
+                savedLog = "";
+                secretBuffer = "";
+                document.getElementById('key-history').innerText = "SYSTEM REBOOTED: All memories have been purged.";
+                document.getElementById('last-key').innerText = "PURGED";
+                
+                document.body.style.transition = "background 0.1s";
+                document.body.style.backgroundColor = "#ffffff";
+                setTimeout(() => { document.body.style.backgroundColor = "#000000"; }, 100);
+            }
+        });
+
+        // 端末鑑定
+        const observer = setInterval(() => {
+            const deviceDisp = document.getElementById('user-device');
+            if (deviceDisp) {
+                const ua = navigator.userAgent;
+                let deviceType = "UNKNOWN";
+                if (ua.includes('Windows')) deviceType = "Windows";
+                else if (/Android|iPhone|iPad|iPod/i.test(ua)) deviceType = "Mobile / Tablet";
+                else if (ua.includes('Macintosh')) deviceType = "Mac";
+                else deviceType = "External Device";
+                
+                deviceDisp.innerText = deviceType;
+                clearInterval(observer);
+            }
         }, 100);
-
-        console.warn("RESTRICTED ACCESS: Secret command 'naomanaoma' executed.");
-    }
-});
-    
-// 要素が見つかるまで執拗に鑑定を試みる術式
-const observer = setInterval(() => {
-    const deviceDisp = document.getElementById('user-device');
-    
-    if (deviceDisp) {
-        const ua = navigator.userAgent;
-        let deviceType = "UNKNOWN";
-
-        if (ua.includes('Windows')) {
-            deviceType = "Windows";
-        } else if (/Android|iPhone|iPad|iPod/i.test(ua)) {
-            deviceType = "Mobile / Tablet";
-        } else if (ua.includes('Macintosh')) {
-            deviceType = "Mac";
-        } else {
-            deviceType = "External Device";
-        }
-
-        deviceDisp.innerText = deviceType;
-
-        // 鑑定が完了したので監視を終了する
-        clearInterval(observer);
-    }
-}, 100); // 0.1秒ごとにチェック
     </script>
-    
 </body>
- </html>
+</html>
