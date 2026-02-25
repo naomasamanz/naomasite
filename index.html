@@ -112,16 +112,32 @@
     body.light-mode .research-nav a {
         border: 1px solid #d0d7de !important;
     }
-    .research-nav {
+   .research-nav {
     display: flex !important;
-    overflow-x: auto !important; /* ★横にはみ出してもスクロール可能に */
-    white-space: nowrap !important; /* ★勝手に改行させない */
-    justify-content: flex-start !important; /* ★左詰めに変更 */
-    padding: 10px 15px !important;
-    -webkit-overflow-scrolling: touch; /* ★スマホでの操作を滑らかに */
+    /* ★PCでは中央、スマホでは左詰めに自動で切り替える魔導 */
+    justify-content: center !important; 
+    align-items: center !important;
+    gap: 12px !important;
+    background-color: var(--bg) !important;
+    padding: 15px !important;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(88, 166, 255, 0.2);
+
+    /* ↓ここが肝にございますぞ↓ */
+    overflow-x: auto !important;
+    white-space: nowrap !important;
 }
 
-/* スクロールバーを隠す隠蔽工作 */
+/* スマホの狭い時だけ、中央寄せを解除してスクロールさせる特殊命令 */
+@media (max-width: 600px) {
+    .research-nav {
+        justify-content: flex-start !important; 
+    }
+}
+
+/* スクロールバー消去の術（継続） */
 .research-nav::-webkit-scrollbar { display: none; }
     
 </style>
