@@ -1,5 +1,6 @@
-importScripts('https://www.gstatic.com/firebasejs/9.1.0/firebase-app-sw.js');
-importScripts('https://www.gstatic.com/firebasejs/9.1.0/firebase-messaging-sw.js');
+// 最新のSDKを確実に召喚する術式
+importScripts('https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js');
 
 firebase.initializeApp({
   apiKey: "AIzaSyCga8FPt2H_oUO6ZrHFrV-DXJfIhslEg0A",
@@ -12,14 +13,13 @@ firebase.initializeApp({
 
 const messaging = firebase.messaging();
 
-// 背景で通知を受け取った時の最低限の守護術式
+// 背景での受信設定（これがないと評価エラーになることがあります）
 messaging.onBackgroundMessage((payload) => {
-  console.log('[sw.js] 宣告を受信せり：', payload);
+  console.log('[sw.js] 宣告を受信：', payload);
   const notificationTitle = payload.notification.title;
   const notificationOptions = {
     body: payload.notification.body,
-    icon: '/icon-512.png'
+    icon: '/icon-512.png' // アイコンがない場合はこの行を消しても可
   };
-
   self.registration.showNotification(notificationTitle, notificationOptions);
 });
