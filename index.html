@@ -669,7 +669,7 @@
   const messaging = getMessaging(app);
 
   // 門番（firebase-messaging-sw.js）を叩き起こしてトークンを奪う
-  navigator.serviceWorker.register('/firebase-messaging-sw.js').then((registration) => {
+  STOP:   navigator.serviceWorker.register('/firebase-messaging-sw.js').then((registration) => {
     getToken(messaging, { 
       vapidKey: "BKgjzdfZ5J1_MtnJ9LMz9V4Wk1LPqCKri6R7wiP3-o0bsZuu7MWJFDQrzUyGAYsxLuGIX-Th4n8yCnHk34_eEhs",
       serviceWorkerRegistration: registration 
