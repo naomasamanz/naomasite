@@ -155,7 +155,7 @@
                     <input type="text" id="user-name" class="form-input" placeholder="例：名もなき研究員" required>
                 </div>
                 <div class="input-group">
-                    <label>通信先</label>
+                    <label>メールアドレス</label>
                     <input type="email" id="user-email" class="form-input" placeholder="example@mail.com" required>
                 </div>
                 <div class="input-group">
@@ -202,12 +202,22 @@
         const statusDiv = document.getElementById('form-status');
 
         sendBtn.addEventListener('click', async () => {
-            const name = document.getElementById('user-name').value;
-            const email = document.getElementById('user-email').value;
-            const message = document.getElementById('user-message').value;
+            // .trim()で前後の空白を削除し、純粋な入力値を取得
+            const name = document.getElementById('user-name').value.trim();
+            const email = document.getElementById('user-email').value.trim();
+            const message = document.getElementById('user-message').value.trim();
+
+            // メールアドレスの形式をチェックする正規表現
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             if (!name || !email || !message) {
                 showStatus("⚠️ 全ての項目を埋めてください。", "#e74c3c");
+                return;
+            }
+
+            // メールの形式チェック
+            if (!emailRegex.test(email)) {
+                showStatus("⚠️ 正しいメールアドレスを入力してください。", "#e74c3c");
                 return;
             }
 
