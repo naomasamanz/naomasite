@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>なおまの研究所 - お問い合わせ</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="/icon-512.png" type="image/png" />
+    <link rel="canonical" href="https://naomasite.vercel.app/contact" />
+    <meta name="description" content="なおまの研究所へのお問い合わせを受け付けています。" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "なおまの研究所",
+        "item": "https://naomasite.vercel.app/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "なおまの研究所 - お問い合わせ",
+        "item": "https://naomasite.vercel.app/contact"
+      }]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #0d1117;
+            --text: #ffffff;
+            --border: #30363d;
+            --nav-bg: #0d1117;
+            --accent: #3498db;
+        }
+        [data-theme="light"] {
+            --bg: #f6f8fa;
+            --text: #24292f;
+            --border: #d0d7de;
+            --nav-bg: #f6f8fa;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            transition: background-color 0.3s;
+            line-height: 1.6;
+        }
+
+        /* 統合ナビゲーション */
+        .top-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--nav-bg);
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 10000;
+            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .top-nav::-webkit-scrollbar { display: none; }
+
+        .nav-btn {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            height: 38px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+        .nav-btn:hover { background: rgba(128,128,128,0.1); border-color: #8b949e; }
+
+        /* コンテンツエリア */
+        .content-area {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .form-box {
+            border-left: 4px solid var(--accent);
+            background: rgba(128,128,128,0.05);
+            padding: 30px;
+            border-radius: 0 12px 12px 0;
+        }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--accent); font-weight: bold; }
+        
+        .form-input {
+            width: 100%;
+            background: var(--bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .form-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); }
+
+        #send-btn {
+            width: 100%;
+            justify-content: center;
+            background: var(--accent);
+            color: white;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        @media (max-width: 600px) {
+            .top-nav { justify-content: flex-start; padding-left: 10px; }
+            .content-area { margin: 20px auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="/" class="nav-btn">トップページ</a>
+        <a href="/info" class="nav-btn">お知らせ</a>
+        <a href="/kenkyu-2" class="nav-btn">第2研究所</a>
+        <a href="/privacy" class="nav-btn">規約・ポリシー</a>
+        <button class="nav-btn" id="theme-toggle">🌙 モード切替</button>
+    </nav>
+
+    <div class="content-area">
+        <div class="form-box">
+            <h2 style="margin-top: 0;">🖋️ 研究所へのお問い合わせ</h2>
+            <p style="font-size: 0.85rem; color: #8b949e; margin-bottom: 25px;">
+                当研究所へのご意見はこちらから。
+            </p>
+
+            <div id="inquiry-form">
+                <div class="input-group">
+                    <label>名前</label>
+                    <input type="text" id="user-name" class="form-input" placeholder="例：名もなき研究員" required>
+                </div>
+                <div class="input-group">
+                    <label>通信先</label>
+                    <input type="email" id="user-email" class="form-input" placeholder="example@mail.com" required>
+                </div>
+                <div class="input-group">
+                    <label>お問い合わせ内容</label>
+                    <textarea id="user-message" class="form-input" style="height: 150px; resize: vertical;" placeholder="メッセージをどうぞ..." required></textarea>
+                </div>
+                <button id="send-btn" class="nav-btn">📩 送信</button>
+            </div>
+            
+            <div id="form-status" style="margin-top: 20px; text-align: center; font-weight: bold; display: none;"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Firebase設定
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCga8FPt2H_oUO6ZrHFrV-DXJfIhslEg0A",
+            authDomain: "naoma-lab.firebaseapp.com",
+            projectId: "naoma-lab",
+            storageBucket: "naoma-lab.firebasestorage.app",
+            messagingSenderId: "901572701169",
+            appId: "1:901572701169:web:4f9d019af31f9e7dc4b250"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // テーマ切替
+        const btn = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        if (localStorage.getItem('theme') === 'light') html.setAttribute('data-theme', 'light');
+        btn.addEventListener('click', () => {
+            const isLight = html.getAttribute('data-theme') === 'light';
+            const newTheme = isLight ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // 送信処理
+        const sendBtn = document.getElementById('send-btn');
+        const statusDiv = document.getElementById('form-status');
+
+        sendBtn.addEventListener('click', async () => {
+            const name = document.getElementById('user-name').value;
+            const email = document.getElementById('user-email').value;
+            const message = document.getElementById('user-message').value;
+
+            if (!name || !email || !message) {
+                showStatus("⚠️ 全ての項目を埋めてください。", "#e74c3c");
+                return;
+            }
+
+            sendBtn.disabled = true;
+            sendBtn.innerText = "⌛ 送信中...";
+
+            try {
+                await addDoc(collection(db, "inquiries"), {
+                    name: name,
+                    email: email,
+                    message: message,
+                    timestamp: serverTimestamp()
+                });
+                showStatus("✅ 成功。無事に処理されました。", "#2ecc71");
+                document.getElementById('user-name').value = "";
+                document.getElementById('user-email').value = "";
+                document.getElementById('user-message').value = "";
+            } catch (e) {
+                console.error(e);
+                showStatus("❌ 失敗。通信環境を確認してください。", "#e74c3c");
+            } finally {
+                sendBtn.disabled = false;
+                sendBtn.innerText = "📩 送信";
+            }
+        });
+
+        function showStatus(msg, color) {
+            statusDiv.style.display = "block";
+            statusDiv.style.color = color;
+            statusDiv.innerText = msg;
+        }
+    </script>
+</body>
+</html>
