@@ -648,51 +648,8 @@
         .then(reg => console.log('門番、登録完了！！', reg))
         .catch(err => console.log('門番、登録失敗……', err));
     });
-  }
-　　　
+  }　
 </script>
-        <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
-  import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-messaging.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyCga8FPt2H_oUO6ZrHFrV-DXJfIhslEg0A",
-    authDomain: "naoma-lab.firebaseapp.com",
-    projectId: "naoma-lab",
-    storageBucket: "naoma-lab.firebasestorage.app",
-    messagingSenderId: "901572701169",
-    appId: "1:901572701169:web:4f9d019af31f9e7dc4b250",
-    measurementId: "G-VBTG2MXGGX"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const messaging = getMessaging(app);
-
-  // 門番（firebase-messaging-sw.js）を叩き起こしてトークンを奪う
-  STOP:   navigator.serviceWorker.register('/firebase-messaging-sw.js').then((registration) => {
-    getToken(messaging, { 
-      vapidKey: "BKgjzdfZ5J1_MtnJ9LMz9V4Wk1LPqCKri6R7wiP3-o0bsZuu7MWJFDQrzUyGAYsxLuGIX-Th4n8yCnHk34_eEhs",
-      serviceWorkerRegistration: registration 
-    }).then((currentToken) => {
-      if (currentToken) {
-        console.log("奪取成功！:", currentToken);
-        // 掲示板の「読み込み中...」の部分に無理やり表示させるか、
-        // あるいはコンソールをチェックしてください！
-        const target = document.getElementById('output');
-        if(target) {
-            const tokenDiv = document.createElement('div');
-            tokenDiv.style.background = "#000";
-            tokenDiv.style.color = "#0f0";
-            tokenDiv.style.padding = "10px";
-            tokenDiv.style.wordBreak = "break-all";
-            tokenDiv.innerText = "【取得した魂（TOKEN）】\n" + currentToken;
-            target.prepend(tokenDiv); // 掲示板の一番上に表示
-        }
-      }
-    }).catch((err) => {
-      console.error("術式失敗:", err);
-    });
-  });
 </script>
 　</body>
 　　</html>
