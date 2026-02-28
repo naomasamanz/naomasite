@@ -10,8 +10,7 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon-512.png" type="image/png">
     <link rel="canonical" href="https://naomasite.vercel.app/">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBTG2MXGGX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBTG2MXGGX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -72,24 +71,24 @@
 </nav>
 
 <style>
-    /* 1. 【基本：ダークモード】（Mode Switchが🌙の時） */
     .research-nav {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
         gap: 12px !important;
-        background-color: var(--bg) !important; /* ★rootで定義した色を使う */
-        padding: 15px 0 !important;
+        background-color: var(--bg) !important;
+        padding: 15px !important;
         position: sticky;
         top: 0;
         z-index: 1000;
         border-bottom: 1px solid rgba(88, 166, 255, 0.2);
-        transition: background-color 0.3s !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
     }
 
     .research-nav a {
-        color: var(--text) !important;        /* ★rootの文字色を使う */
-        background: var(--box-bg) !important; /* ★rootのボックス色を使う */
+        color: var(--text) !important;
+        background: var(--box-bg) !important;
         border: 1px solid rgba(88, 166, 255, 0.2) !important;
         text-decoration: none !important;
         font-size: 0.85rem !important;
@@ -99,7 +98,6 @@
         transition: 0.3s !important;
     }
 
-    /* 2. 【ホバー時】（城主の青い炎：共通） */
     .research-nav a:hover {
         background-color: var(--accent) !important;
         color: #ffffff !important; 
@@ -107,40 +105,12 @@
         box-shadow: 0 0 15px var(--accent) !important;
     }
 
-    /* 3. 【ライトモード補正】（bodyにlight-modeがある時） */
-    /* 文字が見えにくくなるのを防ぐための微調整 */
-    body.light-mode .research-nav a {
-        border: 1px solid #d0d7de !important;
+    @media (max-width: 600px) {
+        .research-nav { justify-content: flex-start !important; }
     }
-   .research-nav {
-    display: flex !important;
-    /* ★PCでは中央、スマホでは左詰めに自動で切り替える魔導 */
-    justify-content: center !important; 
-    align-items: center !important;
-    gap: 12px !important;
-    background-color: var(--bg) !important;
-    padding: 15px !important;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(88, 166, 255, 0.2);
-
-    /* ↓ここが肝にございますぞ↓ */
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-}
-
-/* スマホの狭い時だけ、中央寄せを解除してスクロールさせる特殊命令 */
-@media (max-width: 600px) {
-    .research-nav {
-        justify-content: flex-start !important; 
-    }
-}
-
-/* スクロールバー消去の術（継続） */
-.research-nav::-webkit-scrollbar { display: none; }
-    
+    .research-nav::-webkit-scrollbar { display: none; }
 </style>
+
     <div class="container">
         <div class="mode-toggle">
             <button id="toggle-btn" onclick="toggleMode()">🌙 Mode Switch</button>
@@ -261,9 +231,7 @@
             <h3>■ 09. 言語境界の破壊 (Global Translator)</h3>
             <div style="background: var(--box-bg); padding: 20px; border-radius: 8px; border: 1px solid var(--accent); text-align: center;">
                 <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 15px;">異国の刺客よ、このボタンでサイトの言葉を塗り替えよ。</p>
-                
                 <div id="google_translate_element" style="display: inline-block; padding: 10px; background: #fff; border-radius: 4px;"></div>
-
                 <script type="text/javascript">
                     function googleTranslateElementInit() {
                         new google.translate.TranslateElement({
@@ -275,40 +243,35 @@
                 </script>
                 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             </div>
-            <p class="memo">※解説：Googleの翻訳エンジンをサイト内に召喚。JSにより瞬時にサイト全体の言語を書き換える。これぞグローバル拠点の証。</p>
+            <p class="memo">※解説：Googleの翻訳エンジンをサイト内に召喚。</p>
         </section>
 
         <section style="margin-top:40px;">
             <h3>■ 10. なおまの訓示 (Overlord's Creed)</h3>
             <div style="background: var(--box-bg); padding: 40px 20px; border: 2px double var(--accent); border-radius: 8px; text-align: center; position: relative;">
                 <span style="position: absolute; top: 10px; left: 10px; color: var(--accent); font-size: 1.2rem; opacity: 0.5;">『</span>
-                
                 <p style="font-size: 1.1rem; color: var(--text); font-style: italic; letter-spacing: 2px; line-height: 2;">
                     コードは祈りであり、<br>
                     バグは試練である。<br>
                 </p>
-
                 <span style="position: absolute; bottom: 10px; right: 10px; color: var(--accent); font-size: 1.2rem; opacity: 0.5;">』</span>
             </div>
-            <p class="memo">※解説：JSを一切使わず、二重線（double）と余白だけで威厳を表現。</p>
+            <p class="memo">※解説：二重線と余白だけで威厳を表現。</p>
         </section>
 
         <section style="margin-top:40px;">
             <h3>■ 11. 深淵の覗き窓 (Parallax Void)</h3>
             <div style="height: 200px; overflow: hidden; border: 1px solid var(--accent); border-radius: 8px; position: relative; background: #000;">
-                
                 <div style="position: absolute; width: 100%; height: 300%; top: -100%; left: 0;
                             background-image: radial-gradient(var(--accent) 1px, transparent 1px);
                             background-size: 30px 30px;
                             animation: moveVoid 20s linear infinite;">
                 </div>
-
                 <div style="position: relative; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(13, 17, 23, 0.7); backdrop-filter: blur(2px);">
                     <p style="font-weight: bold; color: var(--accent); letter-spacing: 10px; text-transform: uppercase;">
                         Beyond the Code
                     </p>
                 </div>
-
                 <style>
                     @keyframes moveVoid {
                         0% { transform: translateY(0); }
@@ -316,7 +279,7 @@
                     }
                 </style>
             </div>
-            <p class="memo">※解説：JS不使用。CSSアニメーションと背景パターンのリピートのみで、無限に広がる深淵を表現。静止画に見えて、実は常に微細な振動を続けている。</p>
+            <p class="memo">※解説：CSSアニメーションと背景パターンで深淵を表現。</p>
         </section>
 
         <section style="margin-top:40px;">
@@ -324,197 +287,115 @@
             <div class="neon-container" style="padding: 40px; background: #000; border-radius: 8px; text-align: center;">
                 <style>
                     .neon-text {
-                        font-size: 1.5rem;
-                        font-weight: bold;
-                        color: #fff;
-                        text-transform: uppercase;
-                        letter-spacing: 5px;
-                        /* 複数の影を重ねて光の広がりを作る */
-                        text-shadow: 
-                            0 0 5px #fff,
-                            0 0 10px #fff,
-                            0 0 20px var(--accent),
-                            0 0 40px var(--accent),
-                            0 0 80px var(--accent);
+                        font-size: 1.5rem; font-weight: bold; color: #fff; text-transform: uppercase; letter-spacing: 5px;
+                        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--accent), 0 0 40px var(--accent), 0 0 80px var(--accent);
                         animation: neonPulse 1.5s ease-in-out infinite alternate;
                     }
-
                     @keyframes neonPulse {
-                        from {
-                            opacity: 1;
-                            transform: scale(1);
-                        }
-                        to {
-                            opacity: 0.7;
-                            transform: scale(0.98);
-                            text-shadow: 
-                                0 0 2px #fff,
-                                0 0 5px #fff,
-                                0 0 10px var(--accent),
-                                0 0 20px var(--accent);
-                        }
+                        from { opacity: 1; transform: scale(1); }
+                        to { opacity: 0.7; transform: scale(0.98); text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 10px var(--accent), 0 0 20px var(--accent); }
                     }
                 </style>
                 <div class="neon-text">System Active</div>
             </div>
-            <p class="memo">※解説：JS不使用。多重text-shadowとanimationの組み合わせにより、真空管やネオンサインが瞬くような有機的な光を演出。システムの「生存」を視覚的に主張する。</p>
+            <p class="memo">※解説：多重text-shadowでネオンを演出。</p>
         </section>
 
         <section style="margin-top:40px;">
-    <h3>■ 13. 静寂なる知識庫 (The Silent Library)</h3>
-    <div style="border: 1px solid var(--accent); border-radius: 8px; overflow: hidden; background: var(--box-bg);">
-        
-        <details style="border-bottom: 1px solid rgba(88, 166, 255, 0.2);">
-            <summary style="padding: 15px; cursor: pointer; color: var(--accent); font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                <span>▶ 第1層：サイトの防衛プロトコル</span>
-                <span style="font-size: 0.7rem; opacity: 0.5;">[CLICK TO OPEN]</span>
-            </summary>
-            <div style="padding: 15px; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(88, 166, 255, 0.1); font-size: 0.9rem;">
-                本サイトの不正アクセスやハッキング試行はおやめください。
-                すべての通信は、なおまによって検閲されています。
-                エスカレートすれば、報告させて頂く可能性があります。
+            <h3>■ 13. 静寂なる知識庫 (The Silent Library)</h3>
+            <div style="border: 1px solid var(--accent); border-radius: 8px; overflow: hidden; background: var(--box-bg);">
+                <details style="border-bottom: 1px solid rgba(88, 166, 255, 0.2);">
+                    <summary style="padding: 15px; cursor: pointer; color: var(--accent); font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>▶ 第1層：サイトの防衛プロトコル</span>
+                        <span style="font-size: 0.7rem; opacity: 0.5;">[CLICK TO OPEN]</span>
+                    </summary>
+                    <div style="padding: 15px; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(88, 166, 255, 0.1); font-size: 0.9rem;">
+                        本サイトの不正アクセスはおやめください。すべて検閲されています。
+                    </div>
+                </details>
+                <details style="border-bottom: 1px solid rgba(88, 166, 255, 0.2);">
+                    <summary style="padding: 15px; cursor: pointer; color: var(--accent); font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>▶ 第2層：禁忌のコード体系</span>
+                        <span style="font-size: 0.7rem; opacity: 0.5;">[CLICK TO OPEN]</span>
+                    </summary>
+                    <div style="padding: 15px; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(88, 166, 255, 0.1); font-size: 0.9rem;">
+                        純粋なHTML/CSSのみで構築された不滅の空間。
+                    </div>
+                </details>
+                <details>
+                    <summary style="padding: 15px; cursor: pointer; color: var(--accent); font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>▶ 第3層：お問い合わせ</span>
+                        <span style="font-size: 0.7rem; opacity: 0.5;">[CLICK TO OPEN]</span>
+                    </summary>
+                    <div style="padding: 15px; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(88, 166, 255, 0.1); font-size: 0.9rem;">
+                        下部のお問い合わせフォームをご利用ください。
+                    </div>
+                </details>
             </div>
-        </details>
+            <style>
+                summary::-webkit-details-marker { display: none; }
+                details[open] summary { background: rgba(88, 166, 255, 0.1); border-bottom: 1px solid var(--accent); }
+            </style>
+            <p class="memo">※解説：情報のカプセル化をシンプルに実現。</p>
+        </section>
 
-        <details style="border-bottom: 1px solid rgba(88, 166, 255, 0.2);">
-            <summary style="padding: 15px; cursor: pointer; color: var(--accent); font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                <span>▶ 第2層：禁忌のコード体系</span>
-                <span style="font-size: 0.7rem; opacity: 0.5;">[CLICK TO OPEN]</span>
-            </summary>
-            <div style="padding: 15px; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(88, 166, 255, 0.1); font-size: 0.9rem;">
-                JavaScriptを排し、純粋なHTML/CSSのみで構築されたこの空間は、
-                魔法の枯渇した世界でも永久に稼働し続けるように設計されている。
+        <section style="margin-top:40px;">
+            <h3>■ 14. 魔力増幅炉 (Active Power Core)</h3>
+            <div class="power-core" style="background: #0d1117; padding: 30px; border: 2px solid #58a6ff; border-radius: 8px; text-align: center;">
+                <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 20px;">スイッチを起動してみてください。</p>
+                <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px;">
+                    <div class="btn-unit"><input type="checkbox" id="core1" class="hidden-check"><label for="core1" class="core-btn">出力 A</label></div>
+                    <div class="btn-unit"><input type="checkbox" id="core2" class="hidden-check"><label for="core2" class="core-btn">出力 B</label></div>
+                    <div class="btn-unit"><input type="checkbox" id="core3" class="hidden-check"><label for="core3" class="core-btn">出力 C</label></div>
+                </div>
+                <div class="gauge-container" style="width: 100%; height: 30px; background: #1a1b26; border-radius: 15px; border: 1px solid #30363d; overflow: hidden; display: flex;">
+                    <div class="energy-bar bar1"></div><div class="energy-bar bar2"></div><div class="energy-bar bar3"></div>
+                </div>
+                <style>
+                    .hidden-check { display: none; }
+                    .core-btn { display: inline-block; padding: 10px 20px; border: 1px solid #58a6ff; border-radius: 20px; cursor: pointer; color: #58a6ff; font-size: 0.8rem; transition: 0.3s; }
+                    #core1:checked + .core-btn { background: #50fa7b; color: #000; box-shadow: 0 0 15px #50fa7b; }
+                    #core2:checked + .core-btn { background: #8be9fd; color: #000; box-shadow: 0 0 15px #8be9fd; }
+                    #core3:checked + .core-btn { background: #ff79c6; color: #000; box-shadow: 0 0 15px #ff79c6; }
+                    .energy-bar { height: 100%; width: 0; transition: width 0.5s ease-out; }
+                    .bar1 { background: #50fa7b; } .bar2 { background: #8be9fd; } .bar3 { background: #ff79c6; }
+                    .power-core:has(#core1:checked) .bar1 { width: 33.3% !important; }
+                    .power-core:has(#core2:checked) .bar2 { width: 33.3% !important; }
+                    .power-core:has(#core3:checked) .bar3 { width: 33.4% !important; }
+                </style>
             </div>
-        </details>
-
-        <details>
-            <summary style="padding: 15px; cursor: pointer; color: var(--accent); font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                <span>▶ 第3層：お問い合わせ</span>
-                <span style="font-size: 0.7rem; opacity: 0.5;">[CLICK TO OPEN]</span>
-            </summary>
-            <div style="padding: 15px; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(88, 166, 255, 0.1); font-size: 0.9rem;">
-                なおまにメッセージを送りたい方は、下部のお問い合わせフォームをクリックしてください。
-            </div>
-        </details>
-
-    </div>
-    <style>
-        /* デフォルトの三角マークを消す（Chrome/Safari用） */
-        summary::-webkit-details-marker { display: none; }
-        /* 開いている時のスタイル変化 */
-        details[open] summary { background: rgba(88, 166, 255, 0.1); border-bottom: 1px solid var(--accent); }
-    </style>
-    <p class="memo">※解説：JSを一切使わず、HTML標準の「details」と「summary」タグのみで構築。情報のカプセル化（必要な時だけ見せる）を究極のシンプルさで実現している。</p>
-</section>
-
-     <section style="margin-top:40px;">
-    <h3>■ 14. 魔力増幅炉 (Active Power Core)</h3>
-    <div class="power-core" style="background: #0d1117; padding: 30px; border: 2px solid #58a6ff; border-radius: 8px; text-align: center;">
-        
-        <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 20px;">スイッチを起動してみてください。</p>
-
-        <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px;">
-            <div class="btn-unit">
-                <input type="checkbox" id="core1" class="hidden-check">
-                <label for="core1" class="core-btn">出力 A</label>
-            </div>
-            <div class="btn-unit">
-                <input type="checkbox" id="core2" class="hidden-check">
-                <label for="core2" class="core-btn">出力 B</label>
-            </div>
-            <div class="btn-unit">
-                <input type="checkbox" id="core3" class="hidden-check">
-                <label for="core3" class="core-btn">出力 C</label>
-            </div>
-        </div>
-
-        <div class="gauge-container" style="width: 100%; height: 30px; background: #1a1b26; border-radius: 15px; border: 1px solid #30363d; position: relative; overflow: hidden; display: flex;">
-            <div class="energy-bar bar1"></div>
-            <div class="energy-bar bar2"></div>
-            <div class="energy-bar bar3"></div>
-        </div>
-
-        <style>
-            /* 隠しチェックボックス */
-            .hidden-check { display: none; }
-
-            /* ボタンの基本装飾 */
-            .core-btn {
-                display: inline-block; padding: 10px 20px; border: 1px solid #58a6ff; border-radius: 20px;
-                cursor: pointer; color: #58a6ff; font-size: 0.8rem; transition: 0.3s;
-            }
-
-            /* ★魔法の核心：チェックされた時の変化 */
-            #core1:checked + .core-btn { background: #50fa7b; color: #000; border-color: #50fa7b; box-shadow: 0 0 15px #50fa7b; }
-            #core2:checked + .core-btn { background: #8be9fd; color: #000; border-color: #8be9fd; box-shadow: 0 0 15px #8be9fd; }
-            #core3:checked + .core-btn { background: #ff79c6; color: #000; border-color: #ff79c6; box-shadow: 0 0 15px #ff79c6; }
-
-            /* ゲージの基本設定 */
-            .energy-bar { height: 100%; width: 0; transition: width 0.5s ease-out; }
-            .bar1 { background: #50fa7b; }
-            .bar2 { background: #8be9fd; }
-            .bar3 { background: #ff79c6; }
-
-            /* ★ここが最重要：全体の親要素（.power-core）の中のチェック状態を監視 */
-            .power-core:has(#core1:checked) .bar1 { width: 33.3% !important; }
-            .power-core:has(#core2:checked) .bar2 { width: 33.3% !important; }
-            .power-core:has(#core3:checked) .bar3 { width: 33.4% !important; }
-        </style>
-    </div>
-    <p class="memo">※解説：最新のCSS「:has()」セレクタを使用。JS不使用ながら、子要素のチェック状態を親が検知してゲージを伸ばす。まさに次世代の建築術。</p>
-</section>
+            <p class="memo">※解説：最新のCSS「:has()」セレクタを使用。</p>
+        </section>
 
         <section style="margin-top:40px;">
             <h3>■ 15. 栄光の凱旋門 (The Glorious Arch)</h3>
             <div class="gate-wrapper" style="position: relative; height: 250px; background: #000; border: 3px double var(--accent); border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                
                 <div class="inner-treasure" style="text-align: center; z-index: 1;">
-                    <p style="font-size: 1.5rem; color: #fff; text-shadow: 0 0 20px #fff, 0 0 30px var(--accent); font-weight: bold; letter-spacing: 5px;">
-                        MASTER OF CODE
-                    </p>
+                    <p style="font-size: 1.5rem; color: #fff; text-shadow: 0 0 20px #fff, 0 0 30px var(--accent); font-weight: bold; letter-spacing: 5px;">MASTER OF CODE</p>
                     <p style="font-size: 0.8rem; color: var(--accent); opacity: 0.8;"><a href="https://naomasite.vercel.app/">OPEN!</a></p>
                 </div>
-
-                <div class="door door-left" style="position: absolute; top: 0; left: 0; width: 50%; height: 100%; background: linear-gradient(135deg, #161b22, #30363d); border-right: 2px solid var(--accent); z-index: 2; transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1); display: flex; align-items: center; justify-content: flex-end;">
-                    <span style="font-size: 2rem; margin-right: 10px; opacity: 0.3;">◪</span>
-                </div>
-
-                <div class="door door-right" style="position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(-135deg, #161b22, #30363d); border-left: 2px solid var(--accent); z-index: 2; transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1); display: flex; align-items: center; justify-content: flex-start;">
-                    <span style="font-size: 2rem; margin-left: 10px; opacity: 0.3;">◩</span>
-                </div>
-
+                <div class="door door-left" style="position: absolute; top: 0; left: 0; width: 50%; height: 100%; background: linear-gradient(135deg, #161b22, #30363d); border-right: 2px solid var(--accent); z-index: 2; transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1); display: flex; align-items: center; justify-content: flex-end;"><span style="font-size: 2rem; margin-right: 10px; opacity: 0.3;">◪</span></div>
+                <div class="door door-right" style="position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(-135deg, #161b22, #30363d); border-left: 2px solid var(--accent); z-index: 2; transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1); display: flex; align-items: center; justify-content: flex-start;"><span style="font-size: 2rem; margin-left: 10px; opacity: 0.3;">◩</span></div>
                 <style>
-                    /* ホバー（またはタップ）で扉が開く！ */
-                    .gate-wrapper:hover .door-left {
-                        transform: translateX(-100%);
-                    }
-                    .gate-wrapper:hover .door-right {
-                        transform: translateX(100%);
-                    }
-                    /* 奥の文字を拍動させる */
-                    .gate-wrapper:hover .inner-treasure {
-                        animation: gloryPulse 2s infinite;
-                    }
-                    @keyframes gloryPulse {
-                        0%, 100% { transform: scale(1); filter: brightness(1); }
-                        50% { transform: scale(1.05); filter: brightness(1.5); }
-                    }
+                    .gate-wrapper:hover .door-left { transform: translateX(-100%); }
+                    .gate-wrapper:hover .door-right { transform: translateX(100%); }
+                    .gate-wrapper:hover .inner-treasure { animation: gloryPulse 2s infinite; }
+                    @keyframes gloryPulse { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.05); filter: brightness(1.5); } }
                 </style>
             </div>
-            <p class="memo">※解説：JS不使用。CSSのホバーアクションとtranslateXのみで「開門」を表現。</p>
+            <p class="memo">※解説：CSSのホバーアクションで「開門」を表現。</p>
         </section>
 
-        <div id="bbs-area" style="border: 2px solid #333; padding: 20px; margin-top: 50px; background: #0ff;">
-    <h3 style="color: black;">📜 研究所・自由に書ける掲示板</h3>
-    <input type="text" id="username" placeholder="名前" style="width: 100px;">
-    <input type="text" id="message" placeholder="メッセージを書く" style="width: 250px;">
-    <button id="send-btn">送信</button>
-    <hr>
-    <div id="output" style="max-height: 300px; overflow-y: auto;">読み込み中...</div>
-</div>
+        <div id="bbs-area" style="border: 2px solid var(--accent); padding: 20px; margin-top: 50px; background: var(--box-bg); border-radius: 8px;">
+            <h3 style="color: var(--text);">📜 研究所・自由に書ける掲示板</h3>
+            <input type="text" id="username" placeholder="名前" style="width: 100px; background: var(--bg); color: var(--text); border: 1px solid var(--accent); padding: 5px; border-radius: 4px;">
+            <input type="text" id="message" placeholder="メッセージを書く" style="width: 250px; background: var(--bg); color: var(--text); border: 1px solid var(--accent); padding: 5px; border-radius: 4px;">
+            <button id="send-btn" style="background: var(--accent); color: white; border: none; padding: 6px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;">送信</button>
+            <hr style="border: 0; border-top: 1px solid rgba(88, 166, 255, 0.2); margin: 15px 0;">
+            <div id="output" style="max-height: 300px; overflow-y: auto; color: var(--text);">読み込み中...</div>
+        </div>
 
 <script type="module">
-  // Firebase SDKの読み込み
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
     
@@ -528,12 +409,10 @@
     measurementId: "G-VBTG2MXGGX"
   };
 
-  // Firebaseの初期化
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const postsRef = collection(db, "posts");
 
-  // 1. 送信の術式
   document.getElementById('send-btn').addEventListener('click', async () => {
     const name = document.getElementById('username').value || "名無しの研究員";
     const msg = document.getElementById('message').value;
@@ -547,7 +426,6 @@
     document.getElementById('message').value = "";
   });
 
-  // 2. 読み込みの術式（リアルタイム反映！）
   const q = query(postsRef, orderBy("timestamp", "desc"));
   onSnapshot(q, (snapshot) => {
     const output = document.getElementById('output');
@@ -555,51 +433,28 @@
     snapshot.forEach((doc) => {
       const data = doc.data();
       const p = document.createElement('p');
-      p.style.color = "#000000"; 
       p.style.margin = "10px 0";
-      p.style.borderBottom = "1px solid #ddd";
+      p.style.borderBottom = "1px solid rgba(88, 166, 255, 0.1)";
       p.innerHTML = `<strong>${data.name}</strong>: ${data.text}`;
       output.appendChild(p);
     });
     if (snapshot.empty) output.innerHTML = "まだ書き込みはありません";
   });
 </script>
-        
-<div style="display: flex; align-items: center; justify-content: center; gap: 30px;">
 
-    <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
-    
-    <a href="contact" style="color: #999; text-decoration: none; font-family: sans-serif; letter-spacing: 1px; transition: 0.3s;">
-        お問い合わせフォーム
-    </a>
-    
-    <a href="privacy" style="color: #999; text-decoration: none; font-size: 0.85rem; font-family: sans-serif; letter-spacing: 1px; transition: 0.3s;">
-        利用規約・プライバシーポリシー
-    </a>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 30px; margin-top: 30px; flex-wrap: wrap;">
+            <a href="contact" style="color: #999; text-decoration: none; font-family: sans-serif; letter-spacing: 1px; transition: 0.3s;">お問い合わせフォーム</a>
+            <a href="privacy" style="color: #999; text-decoration: none; font-size: 0.85rem; font-family: sans-serif; letter-spacing: 1px; transition: 0.3s;">利用規約・プライバシーポリシー</a>
+        </div>
 
-</div>
-
-</div>
-
-<style>
-    /* マウスを乗せた時だけ、静かに浮き上がる演出 */
-    a[href]:hover {
-        color: #0f0;
-        text-shadow: 0 0 5px rgba(255,255,255,0.5);
-    }
-</style>
+    </div>
 
     <script>
-        // 文字数カウント
         const memoArea = document.getElementById('memo-area');
         const charCount = document.getElementById('char-count');
         if(memoArea) {
-            memoArea.addEventListener('input', () => {
-                charCount.innerText = `文字数: ${memoArea.value.length}`;
-            });
+            memoArea.addEventListener('input', () => { charCount.innerText = `文字数: ${memoArea.value.length}`; });
         }
-        
-        // コピー機能
         function copyCode(btn) {
             const code = btn.nextElementSibling.innerText;
             navigator.clipboard.writeText(code).then(() => {
@@ -608,8 +463,6 @@
                 setTimeout(() => { btn.innerText = originalText; }, 2000);
             });
         }
-
-        // モード切替
         function toggleMode() {
             const body = document.getElementById('castle-body');
             const btn = document.getElementById('toggle-btn');
@@ -617,39 +470,26 @@
             btn.innerText = body.classList.contains('light-mode') ? '☀️ Light Mode' : '🌙 Mode Switch';
         }
 
-        // BGM制御
         const manaBtn = document.getElementById('mana-trigger');
         const castleAudio = document.getElementById('castle-bgm');
         const manaStatus = document.getElementById('mana-status');
-
         if(manaBtn && castleAudio) {
-            const startMagic = (e) => {
-                e.preventDefault();
-                castleAudio.play();
-                manaStatus.innerText = "STATUS: RESONATING";
-                manaStatus.style.color = "var(--accent)";
-            };
-            const stopMagic = () => {
-                castleAudio.pause();
-                manaStatus.innerText = "STATUS: IDLE";
-                manaStatus.style.color = "#8b949e";
-            };
+            const startMagic = (e) => { e.preventDefault(); castleAudio.play(); manaStatus.innerText = "STATUS: RESONATING"; manaStatus.style.color = "var(--accent)"; };
+            const stopMagic = () => { castleAudio.pause(); manaStatus.innerText = "STATUS: IDLE"; manaStatus.style.color = "#8b949e"; };
             manaBtn.addEventListener('mousedown', startMagic);
             manaBtn.addEventListener('mouseup', stopMagic);
             manaBtn.addEventListener('mouseleave', stopMagic);
             manaBtn.addEventListener('touchstart', startMagic);
             manaBtn.addEventListener('touchend', stopMagic);
         }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('門番、登録完了！！', reg))
+                    .catch(err => console.log('門番、登録失敗……', err));
+            });
+        }
     </script>
-        <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('門番、登録完了！！', reg))
-        .catch(err => console.log('門番、登録失敗……', err));
-    });
-  }　
-</script>
-</script>
-　</body>
-　　</html>
+</body>
+</html>
