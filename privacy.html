@@ -10,32 +10,30 @@
     <meta name="description" content="利用規約とプライバシーポリシーを掲載しています。">
 
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "name": "なおまの研究所",
-    "item": "https://naomasite.vercel.app/"
-  },{
-    "@type": "ListItem",
-    "position": 2,
-    "name": "なおまの研究所 - 規約・ポリシー",
-    "item": "https://naomasite.vercel.app/privacy"
-  }]
-}
-</script>
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "なおまの研究所",
+        "item": "https://naomasite.vercel.app/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "なおまの研究所 - 規約・ポリシー",
+        "item": "https://naomasite.vercel.app/privacy"
+      }]
+    }
+    </script>
     <meta name="robots" content="index, follow">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBTG2MXGGX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VBTG2MXGGX');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBTG2MXGGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VBTG2MXGGX');
+    </script>
     <style>
         :root {
             --bg: #0d1117;
@@ -50,19 +48,31 @@
             color: var(--text);
             font-family: 'Segoe UI', Meiryo, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 20px 10px; /* スマホ左右余白を確保 */
             display: flex;
             justify-content: center;
+            box-sizing: border-box;
         }
 
         .container {
             max-width: 850px;
             width: 100%;
             background: var(--surface);
-            padding: 40px;
+            padding: 40px 30px; /* PC用基本余白 */
             border-radius: 12px;
             border: 1px solid var(--border);
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            box-sizing: border-box;
+        }
+
+        /* スマホ用レスポンシブ調整 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 15px; /* スマホでは内側の余白を絞って文字幅を確保 */
+            }
+            h1 { font-size: 1.5rem !important; }
+            h2 { font-size: 1.15rem !important; }
+            p, li { font-size: 0.9rem !important; }
         }
 
         h1 {
@@ -164,7 +174,7 @@
         <p>収集した情報は、研究所の利便性向上、およびコンテンツの質の改善のためにのみ使用されます。法的な要請がある場合を除き、第三者に開示することはありません。</p>
         
         <h3>第3条（お問い合わせ）</h3>
-        <p>お問い合わせフォームより送信された御名およびメッセージ等の情報は、回答および本人確認のためにのみ利用し、適切に管理いたします。</p>
+        <p>お問い合わせフォームより送信されたメールアドレスおよびメッセージ等の情報は、回答および本人確認のためにのみ利用し、適切に管理いたします。</p>
 
         <h3>第4条（ブラウザへの記録について）</h3>
         <p>当研究所の特定の実験棟（第2研究所等）では、利便性向上および研究目的のため、ユーザーの入力情報や挙動をブラウザの「localStorage」に記録する場合があります。これらのデータはユーザーの端末内にみ保存され、所長が直接サーバー等へ収集することはありません。ユーザーはブラウザのキャッシュを消去することで、これらの記録をいつでも抹消することが可能です。</p>
