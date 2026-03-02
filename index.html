@@ -132,14 +132,14 @@
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 02. 動的な入力監視 (Input Monitor)</h3>
-            <textarea id="memo-area" placeholder="ここに極秘事項を入力せよ..." style="width: 100%; height: 100px; background: var(--box-bg); color: var(--text); border: 1px solid #30363d; border-radius: 6px; padding: 10px; font-family: inherit;"></textarea>
+            <h3>■ 02. 入力信号の整合性テスト (Input Monitor)</h3>
+            <textarea id="memo-area" placeholder="入力してください" style="width: 100%; height: 100px; background: var(--box-bg); color: var(--text); border: 1px solid #30363d; border-radius: 6px; padding: 10px; font-family: inherit;"></textarea>
             <p id="char-count" style="text-align: right; font-size: 0.8rem; color: var(--accent);">文字数: 0</p>
             <p class="memo">※解説：入力信号をリアルタイム解析。</p>
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 03. 純粋HTMLによる情報格納 (Details)</h3>
+            <h3>■ 03. ディレクトリ構造の詳細を表示 (Details)</h3>
             <details style="background: var(--box-bg); border: 1px solid var(--accent); border-radius: 6px; padding: 10px; cursor: pointer;">
                 <summary style="font-weight: bold; color: var(--accent);">[ クリックして極秘ファイルを開く ]</summary>
                 <div style="margin-top: 15px; padding: 10px; border-top: 1px dashed var(--accent);">
@@ -166,15 +166,15 @@
                 <input type="radio" name="tab-choice" id="tab2">
                 <label for="tab2" class="tab-label">極秘作戦</label>
                 <div class="tab-content content1">これは外部向けのダミーデータである。</div>
-                <div class="tab-content content2" style="color: #ff7b72;">刺客をコードの濁流に沈める計画。</div>
+                <div class="tab-content content2" style="color: #ff7b72;">非正規アクセスに対するトラップ・シグネチャの定義。</div>
             </div>
-            <p class="memo">※解説：JSなしで表示内容をスイッチする高等戦術。</p>
+            <p class="memo">※解説：JSなしで表示内容をスイッチ。</p>
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 05. 野望の達成率 (CSS Progress)</h3>
+            <h3>■ 05. パーセントバー (CSS Progress)</h3>
             <div style="background: var(--box-bg); padding: 15px; border-radius: 6px; border: 1px solid var(--accent);">
-                <p style="font-size: 0.8rem; margin-bottom: 5px;">サーバー掌握率：</p>
+                <p style="font-size: 0.8rem; margin-bottom: 5px;">IPアドレス透過率：</p>
                 <div style="width: 100%; background: #30363d; height: 10px; border-radius: 5px; overflow: hidden;">
                     <div style="width: 75%; background: var(--accent); height: 100%; transition: 1s;"></div>
                 </div>
@@ -183,7 +183,7 @@
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 6. 空間の流転 (Animated Border)</h3>
+            <h3>■ 6. アニメーションボーダー (Animated Border)</h3>
             <div class="magic-box" style="padding: 2px; border-radius: 8px; background: linear-gradient(45deg, #58a6ff, #d2a8ff, #58a6ff); background-size: 200% 200%; animation: moveGradient 3s linear infinite;">
                 <style>
                     @keyframes moveGradient { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
@@ -193,11 +193,11 @@
                     <p style="margin: 0; text-align: center; font-weight: bold; letter-spacing: 2px;">STATUS: RESONATING</p>
                 </div>
             </div>
-            <p class="memo">※解説：JSなしでシステムの稼働を表現。</p>
+            <p class="memo">※解説：JSなしでアニメーション表示。</p>
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 7. 居住者生体スキャン (Bio-Metric Scan)</h3>
+            <h3>■ 7. スキャナー (Bio-Metric Scan)</h3>
             <div style="background: var(--box-bg); padding: 20px; border-radius: 8px; border: 1px solid #30363d; position: relative; overflow: hidden;">
                 <style>
                     .scan-line { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--accent); box-shadow: 0 0 15px var(--accent); animation: scanMove 4s ease-in-out infinite; }
@@ -217,7 +217,7 @@
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 8. 魔力供給・共鳴鼓動 (Mana Channeling)</h3>
+            <h3>■ 8. 保持中のみの音楽 (Mana Channeling)</h3>
             <div style="text-align: center; background: var(--box-bg); padding: 30px; border-radius: 8px; border: 1px solid var(--accent);">
                 <button id="mana-trigger" style="width: 100px; height: 100px; background: none; border: 4px solid var(--accent); border-radius: 50%; color: var(--accent); font-weight: bold; cursor: pointer; transition: 0.1s; outline: none; box-shadow: 0 0 10px var(--accent);">PUSH<br>HOLD</button>
                 <p id="mana-status" style="margin-top: 15px; font-size: 0.8rem; color: #8b949e;">STATUS: IDLE</p>
@@ -227,9 +227,9 @@
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 09. 言語境界の破壊 (Global Translator)</h3>
+            <h3>■ 09. 翻訳機能 (Global Translator)</h3>
             <div style="background: var(--box-bg); padding: 20px; border-radius: 8px; border: 1px solid var(--accent); text-align: center;">
-                <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 15px;">異国の刺客よ、このボタンでサイトの言葉を塗り替えよ。</p>
+                <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 15px;">サイトの言語を塗り替える技術</p>
                 <div id="google_translate_element" style="display: inline-block; padding: 10px; background: #fff; border-radius: 4px;"></div>
                 <script type="text/javascript">
                     function googleTranslateElementInit() {
@@ -242,16 +242,16 @@
                 </script>
                 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             </div>
-            <p class="memo">※解説：Googleの翻訳エンジンをサイト内に召喚。</p>
+            <p class="memo">※解説：Googleの翻訳エンジンをサイト内に設置。</p>
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 10. なおまの訓示 (Overlord's Creed)</h3>
+            <h3>■ 10. 訓示 (Overlord's Creed)</h3>
             <div style="background: var(--box-bg); padding: 40px 20px; border: 2px double var(--accent); border-radius: 8px; text-align: center; position: relative;">
                 <span style="position: absolute; top: 10px; left: 10px; color: var(--accent); font-size: 1.2rem; opacity: 0.5;">『</span>
                 <p style="font-size: 1.1rem; color: var(--text); font-style: italic; letter-spacing: 2px; line-height: 2;">
-                    コードは祈りであり、<br>
-                    バグは試練である。<br>
+                    本システムは24時間体制で<br>
+                    パケットを監視しています。<br>
                 </p>
                 <span style="position: absolute; bottom: 10px; right: 10px; color: var(--accent); font-size: 1.2rem; opacity: 0.5;">』</span>
             </div>
@@ -259,7 +259,7 @@
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 11. 深淵の覗き窓 (Parallax Void)</h3>
+            <h3>■ 11. Data Flow Visualization</h3>
             <div style="height: 200px; overflow: hidden; border: 1px solid var(--accent); border-radius: 8px; position: relative; background: #000;">
                 <div style="position: absolute; width: 100%; height: 300%; top: -100%; left: 0;
                             background-image: radial-gradient(var(--accent) 1px, transparent 1px);
@@ -278,11 +278,11 @@
                     }
                 </style>
             </div>
-            <p class="memo">※解説：CSSアニメーションと背景パターンで深淵を表現。</p>
+            <p class="memo">※解説：CSSアニメーションと背景パターンで謎の感覚を引き起こす。</p>
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 12. 共鳴するネオン外壁 (Resonating Neon)</h3>
+            <h3>■ 12. 共鳴するネオン (Resonating Neon)</h3>
             <div class="neon-container" style="padding: 40px; background: #000; border-radius: 8px; text-align: center;">
                 <style>
                     .neon-text {
@@ -301,7 +301,7 @@
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 13. 静寂なる知識庫 (The Silent Library)</h3>
+            <h3>■ 13. CSSのみの知識庫 (CSS only Library)</h3>
             <div style="border: 1px solid var(--accent); border-radius: 8px; overflow: hidden; background: var(--box-bg);">
                 <details style="border-bottom: 1px solid rgba(88, 166, 255, 0.2);">
                     <summary style="padding: 15px; cursor: pointer; color: var(--accent); font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center;">
@@ -314,11 +314,11 @@
                 </details>
                 <details style="border-bottom: 1px solid rgba(88, 166, 255, 0.2);">
                     <summary style="padding: 15px; cursor: pointer; color: var(--accent); font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        <span>▶ 第2層：禁忌のコード体系</span>
+                        <span>▶ 第2層：コード体系</span>
                         <span style="font-size: 0.7rem; opacity: 0.5;">[CLICK TO OPEN]</span>
                     </summary>
                     <div style="padding: 15px; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(88, 166, 255, 0.1); font-size: 0.9rem;">
-                        純粋なHTML/CSSのみで構築された不滅の空間。
+                        セクションのほとんどは純粋なHTML/CSSのみで構築。
                     </div>
                 </details>
                 <details>
@@ -327,7 +327,7 @@
                         <span style="font-size: 0.7rem; opacity: 0.5;">[CLICK TO OPEN]</span>
                     </summary>
                     <div style="padding: 15px; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(88, 166, 255, 0.1); font-size: 0.9rem;">
-                        下部のお問い合わせフォームをご利用ください。
+                        お問い合わせフォームをご利用ください。
                     </div>
                 </details>
             </div>
@@ -339,7 +339,7 @@
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 14. 魔力増幅炉 (Active Power Core)</h3>
+            <h3>■ 14. Resource Allocation Controller</h3>
             <div class="power-core" style="background: #0d1117; padding: 30px; border: 2px solid #58a6ff; border-radius: 8px; text-align: center;">
                 <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 20px;">スイッチを起動してみてください。</p>
                 <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px;">
@@ -367,7 +367,7 @@
         </section>
 
         <section style="margin-top:40px;">
-            <h3>■ 15. 栄光の凱旋門 (The Glorious Arch)</h3>
+            <h3>■ 15. 内部サーバー接続ゲートウェイ</h3>
             <div class="gate-wrapper" style="position: relative; height: 250px; background: #000; border: 3px double var(--accent); border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
                 <div class="inner-treasure" style="text-align: center; z-index: 1;">
                     <p style="font-size: 1.5rem; color: #fff; text-shadow: 0 0 20px #fff, 0 0 30px var(--accent); font-weight: bold; letter-spacing: 5px;">MASTER OF CODE</p>
