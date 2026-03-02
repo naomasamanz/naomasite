@@ -36,35 +36,32 @@
     </script>
 
     <style>
-        /* --- 基礎設定 --- */
         body { 
             background: #000; 
             color: #0f0; 
             font-family: 'Consolas', monospace; 
-            padding: 0; /* ナビを上部に密着させるため修正 */
+            padding: 0; 
             margin: 0;
             text-align: center; 
         }
 
-        /* --- ナビゲーション（統合防衛術式） --- */
         .research-nav {
             display: flex !important;
-            justify-content: center !important; /* PCでは中央 */
+            justify-content: center !important; 
             align-items: center !important;
             gap: 12px !important;
-            background-color: #000000 !important; /* 漆黒（透過禁止） */
+            background-color: #000000 !important;
             padding: 15px !important;
             position: sticky;
             top: 0;
             z-index: 10000 !important;
-            border-bottom: 1px solid #00ff00 !important; /* 緑の境界線 */
-            overflow-x: auto !important; /* スマホスクロール */
-            white-space: nowrap !important; /* 改行拒否 */
+            border-bottom: 1px solid #00ff00 !important; 
+            overflow-x: auto !important; 
+            white-space: nowrap !important; 
             margin-bottom: 30px !important;
             -webkit-overflow-scrolling: touch;
         }
 
-        /* スマホの時だけ左寄せ */
         @media (max-width: 600px) {
             .research-nav {
                 justify-content: flex-start !important;
@@ -72,10 +69,8 @@
             }
         }
 
-        /* スクロールバー隠蔽 */
         .research-nav::-webkit-scrollbar { display: none; }
 
-        /* ナビ内ボタンの装飾 */
         .research-nav a {
             background-color: #111111 !important;
             color: #ffffff !important;
@@ -97,12 +92,10 @@
             box-shadow: 0 0 15px #00ff00 !important;
         }
 
-        /* --- コンテンツ装飾 --- */
         .main-content { padding: 20px; }
         .warning { border: 2px solid #0f0; padding: 20px; display: inline-block; animation: blink 1s infinite; margin-top: 20px; }
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } }
         
-        /* 戻るボタンなど（ナビ以外）のリンク */
         footer a { color: #fff; text-decoration: none; border: 1px solid #fff; padding: 5px 10px; margin-top: 40px; display: inline-block; }
     </style>
 </head>
@@ -142,29 +135,24 @@
         let clicks = 0;
         let seconds = 0;
 
-        // タイマー
         setInterval(() => {
             seconds++;
             document.getElementById('timer-val').innerText = seconds;
         }, 1000);
 
-        // マウス追跡
         window.addEventListener('mousemove', (e) => {
             document.getElementById('mouse-pos').innerText = `X: ${e.clientX}, Y: ${e.clientY}`;
         });
 
-        // スクロール監視
         window.addEventListener('scroll', () => {
             document.getElementById('scroll-val').innerText = window.scrollY;
         });
 
-        // クリックカウント
         window.addEventListener('click', () => {
             clicks++;
             document.getElementById('click-count').innerText = clicks;
         });
 
-        // --- 記憶の復元 ---
         let savedLog = localStorage.getItem('naoma_log') || "";
         const historyDisplay = document.getElementById('key-history');
         historyDisplay.innerText = savedLog || "Waiting for your thoughts...";
@@ -184,7 +172,6 @@
             document.getElementById('last-key').innerText = keyName;
         });
 
-        // 呪文「naomanaoma」
         let secretBuffer = "";
         window.addEventListener('keydown', (e) => {
             secretBuffer += e.key.toLowerCase();
@@ -203,7 +190,6 @@
             }
         });
 
-        // 端末鑑定
         const observer = setInterval(() => {
             const deviceDisp = document.getElementById('user-device');
             if (deviceDisp) {
@@ -219,14 +205,12 @@
             }
         }, 100);
 
-        // IPアドレス取得API（ipifyを使用）
 fetch('https://api.ipify.org?format=json')
     .then(response => response.json())
     .then(data => {
         const ipDisp = document.getElementById('user-ip');
         if (ipDisp) {
             ipDisp.innerText = data.ip;
-            // ついでにログにも記録しちゃう演出
             console.log("ターゲットのIPを補足: " + data.ip);
         }
     })
